@@ -2,6 +2,42 @@
 
 # Welcome to the Data Science Review Hub
 
-This site contains created and curated reviews and resources to support you on your journey through Codeup's Data Science program and beyond. 
+This site contains created and curated resources and review notebooks to support you on your journey through Codeup's Data Science program and beyond. 
 
-I highly suggest making your own Github Page as a portfolio that shows off your own work throughout the program. It would be a great link to share on your LinkedIn and drop on your resume for potential employers!
+I highly suggest making your own Github Page as a portfolio that shows off your own work throughout the program. It would be a great link to share on your LinkedIn and drop on your resume for potential employers to check out!
+
+___
+## Resources
+
+[Github Page Tutorial](https://ds-review-hub.github.io/github_page_portfolio.pdf)
+
+>Want to make your own site as a personal portfolio using a Github Page? Check out resource map I created that contains everything you need to get started. This will get your site up and running in less than half an hour! When you're ready to make your markdown files and notebooks beautiful, check out the beginner Markdown & HTML Tutorial below. Want to get even MORE creative? Check out Beth Thompson's materials housed on the Video Tutorial Resources page below.
+
+[Markdown & HTML Tutorial](https://ds-review-hub.github.io/markdown_and_html_tutorial)
+
+>This tutorial will show you how to use lots of exciting markdown and html code in your README files as well as your Jupyter Notebooks! Documentation is everything in making a Jupyter Notebook readable, so 
+
+[Video Tutorial Resources](https://ds-review-hub.github.io/tutorial_videos)
+
+>This page houses the links to helpful video tutorials on a variety of topics. I will add new Lunch 'n' Learn videos here as you all volunteer to give them, too!
+___
+## Data Science Tools
+
+
+
+
+
+
+
+___
+## Machine Learning
+
+
+
+
+
+
+
+___
+## Links to Workshops and Extras
+
