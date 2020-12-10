@@ -20,6 +20,8 @@ ___
 [Video Tutorial Resources](https://ds-review-hub.github.io/tutorial_videos)
 
 >This page houses the links to helpful video tutorials on a variety of topics. I will add new Lunch 'n' Learn videos here as you all volunteer to give them, too!
+
+
 ___
 ## Data Science Tools
 
