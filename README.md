@@ -21,6 +21,12 @@ ___
 
 >This page houses the links to helpful video tutorials on a variety of topics. I will add new Lunch 'n' Learn videos here as you all volunteer to give them, too!
 
+[Interviewing Resources](https://ds-review-hub.github.io/interviewing_resources)
+
+>This page houses helpful resources for you to use when preparing yourself for interviewing.
+
+
+
 
 ___
 ## Data Science Tools
@@ -43,3 +49,6 @@ ___
 ___
 ## Links to Workshops and Extras
 
+[Data Skills 101](https://dataskills101.github.io/)
+
+[Intro to ML Workshop - Classification](https://dataskills101.github.io/)
