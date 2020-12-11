@@ -25,8 +25,9 @@ ___
 
 >This page houses helpful resources for you to use when preparing yourself for interviewing.
 
+[Storytelling Resources](https://ds-review-hub.github.io/storytelling)
 
-
+>This page is a collection of resources for putting together and giving great presentations.
 
 ___
 ## Data Science Tools
