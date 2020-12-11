@@ -32,7 +32,9 @@ ___
 ___
 ## Data Science Tools
 
+[SQL Review Notebooks and Resources](https://ds-review-hub.github.io/sql_reviews)
 
+[Python and Pandas Review Notebooks and Resources](https://ds-review-hub.github.io/python_reviews)
 
 
 
