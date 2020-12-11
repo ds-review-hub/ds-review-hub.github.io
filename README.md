@@ -48,10 +48,7 @@ ___
 ## Machine Learning
 
 
-
-
-
-
+Coming Soon! For now, check out the Intro to ML Workshop site below.
 
 ___
 ## Links to Workshops and Extras
@@ -62,4 +59,5 @@ ___
 
 [Intro to ML Workshop - Classification](https://dataskills101.github.io/)
 
->This page houses helpful resources for you to use when getting machine learning. The workshop contains basic python and pandas for data analysis, Google Colab notebooks you can copy and edit, and other relevant resources.
+>This page houses helpful resources for you to use when getting machine learning. The workshop contains basic python and pandas for data analysis, Google Colab notebooks you can copy and edit, and other relevant resources. The Canva presentation link is [here](https://www.canva.com/design/DAEL0tiSEAw/7I1oDBFRULaoAMFrQG-kSw/view?utm_content=DAEL0tiSEAw&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink).
+
