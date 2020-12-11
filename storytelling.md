@@ -1,6 +1,6 @@
 # Storytelling Resources
 
-[Message Mapping](https://dardenreviews.github.io/message_map.pdf)
+[Message Mapping](https://ds-review-hub.github.io/message_map.pdf)
 
 >This is a great strategy for structuring the core content of your presentations; I read about it in Caroline Goyder's amazing book, <u>Gravitas: Communicate with Confidence, Influence and Authority.</u> This <b>'problem-to-solution'</b> style of crafting a story is also covered thoroughly in Nancy Duarte's <u>Resonate</u> and <u>Data Story</u>. If you're a mythology fan, you will recognize this structure as Joseph Campbell's Hero's Journey, too. 
 
