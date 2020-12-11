@@ -1,4 +1,4 @@
-#SQL Resources
+# SQL Resources
 
 >These notebook introduce SQL as a tool to interrogate databases and acquire data for use with python libraries like numpy and pandas. They will cover everything from RDBMS terms and structure to subqueries that involve joining and filtering data from multiple tables.
 

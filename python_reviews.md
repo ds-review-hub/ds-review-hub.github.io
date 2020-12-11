@@ -1,4 +1,4 @@
-#Python Resources
+# Python Resources
 
 >These notebooks explore python basics and move into more complicated concepts like using list comprehensions instead of loops and creating your own functions.
 
