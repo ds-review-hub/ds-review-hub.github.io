@@ -13084,7 +13084,7 @@ div#notebook {
 <script>
 $( document ).ready(function(){
 
-            var cfg = {"base_numbering": 1, "nav_menu": {}, "number_sections": true, "sideBar": true, "skip_h1_title": true, "title_cell": "Table of Contents", "title_sidebar": "Contents", "toc_cell": true, "toc_position": {}, "toc_section_display": true, "toc_window_display": true};
+            var cfg = {"base_numbering": 1, "nav_menu": {}, "number_sections": false, "sideBar": true, "skip_h1_title": true, "title_cell": "Table of Contents", "title_sidebar": "Contents", "toc_cell": false, "toc_position": {}, "toc_section_display": true, "toc_window_display": true};
 
             // fire the main function with these parameters
             require(['nbextensions/toc2/toc2'], function (toc2) {
@@ -13099,15 +13099,7 @@ $( document ).ready(function(){
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><h1>Table of Contents<span class="tocSkip"></span></h1></p>
-<div class="toc"><ul class="toc-item"><li><span><a href="#What-Does-the-CASE-Statement-Do?" data-toc-modified-id="What-Does-the-CASE-Statement-Do?-1"><span class="toc-item-num">1&nbsp;&nbsp;</span><font color="red">What Does the <code>CASE</code> Statement Do?</font></a></span><ul class="toc-item"><li><span><a href="#Case-Statements" data-toc-modified-id="Case-Statements-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>Case Statements</a></span></li></ul></li><li><span><a href="#So-What-Can-I-Do-with-a-Case-Statement?" data-toc-modified-id="So-What-Can-I-Do-with-a-Case-Statement?-2"><span class="toc-item-num">2&nbsp;&nbsp;</span><font color="orange">So What Can I Do with a Case Statement?</font></a></span></li><li><span><a href="#Now-What?" data-toc-modified-id="Now-What?-3"><span class="toc-item-num">3&nbsp;&nbsp;</span><font color="green">Now What?</font></a></span><ul class="toc-item"><li><ul class="toc-item"><li><span><a href="#Create-Categories-to-Classify-Values" data-toc-modified-id="Create-Categories-to-Classify-Values-3.0.1"><span class="toc-item-num">3.0.1&nbsp;&nbsp;</span>Create Categories to Classify Values</a></span></li><li><span><a href="#Normalize-Values-in-Your-Dataset" data-toc-modified-id="Normalize-Values-in-Your-Dataset-3.0.2"><span class="toc-item-num">3.0.2&nbsp;&nbsp;</span>Normalize Values in Your Dataset</a></span></li><li><span><a href="#Create-a-Boolean-Field" data-toc-modified-id="Create-a-Boolean-Field-3.0.3"><span class="toc-item-num">3.0.3&nbsp;&nbsp;</span>Create a Boolean Field</a></span></li><li><span><a href="#Create-a-Dummy-Variable" data-toc-modified-id="Create-a-Dummy-Variable-3.0.4"><span class="toc-item-num">3.0.4&nbsp;&nbsp;</span>Create a Dummy Variable</a></span></li></ul></li></ul></li><li><span><a href="#What-Are-Temporary-Tables?" data-toc-modified-id="What-Are-Temporary-Tables?-4"><span class="toc-item-num">4&nbsp;&nbsp;</span><font color="red">What Are Temporary Tables?</font></a></span></li><li><span><a href="#So-What?" data-toc-modified-id="So-What?-5"><span class="toc-item-num">5&nbsp;&nbsp;</span><font color="orange">So What?</font></a></span></li><li><span><a href="#Now-What?" data-toc-modified-id="Now-What?-6"><span class="toc-item-num">6&nbsp;&nbsp;</span><font color="green">Now What?</font></a></span><ul class="toc-item"><li><span><a href="#Create-Temporary-Tables" data-toc-modified-id="Create-Temporary-Tables-6.1"><span class="toc-item-num">6.1&nbsp;&nbsp;</span>Create Temporary Tables</a></span></li><li><span><a href="#Modify-Temporary-Tables" data-toc-modified-id="Modify-Temporary-Tables-6.2"><span class="toc-item-num">6.2&nbsp;&nbsp;</span>Modify Temporary Tables</a></span></li></ul></li></ul></div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="SQL-Extras">SQL Extras<a class="anchor-link" href="#SQL-Extras">&#182;</a></h1><h2><font color=red>What Does the `CASE` Statement Do?</font></h2>
+<h1 id="SQL-Extras">SQL Extras<a class="anchor-link" href="#SQL-Extras">&#182;</a></h1><h2><font color=red>What Does the CASE Statement Do?</font></h2>
 <h3 id="Case-Statements">Case Statements<a class="anchor-link" href="#Case-Statements">&#182;</a></h3><p><strong>The SQL <code>CASE</code> Statement</strong> is a conditional expression that allows me to create a new temporary column in my result set based on 'If this, then...' logic. A <code>CASE</code>statement is added to the <code>SELECT</code> statement, after all of the existing fields I have selected; it begins with <code>CASE</code> and ends with <code>END AS new_field_name</code>. <strong>Don't forget the comma after the last item in your <code>SELECT</code> list! This is a common error for me, so I want to point it out.</strong></p>
 <div class="alert alert-block alert-warning">It's helpful to include an `ELSE` clause to catch any possible values that fall outside of your conditional clauses because otherwise, if those values exist, they will be returned as `NULL`.</div><h2><font color=orange>So What Can I Do with a Case Statement?</font></h2>
 <p>Using <code>CASE</code> statements comes in very handy when I want to create new fields from existing data in my dataset using conditionals, but I don't have database permissions to create a new table. Temporary tables are useful in this situation, as well. I'll dig into those next.</p>
@@ -13283,19 +13275,6 @@ $( document ).ready(function(){
 
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-    </div>
-</div>
-</div>
-
 </div>
     </div>
   </div>
