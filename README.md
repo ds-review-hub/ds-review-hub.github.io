@@ -58,4 +58,8 @@ ___
 
 [Data Skills 101](https://dataskills101.github.io/)
 
+>This page houses helpful resources for you to use when getting python and pandas including interactive Google Colab notebooks you can make a copy for yourself and edit your notebook.
+
 [Intro to ML Workshop - Classification](https://dataskills101.github.io/)
+
+>This page houses helpful resources for you to use when getting machine learning. The workshop contains basic python and pandas for data analysis, Google Colab notebooks you can copy and edit, and other relevant resources.
