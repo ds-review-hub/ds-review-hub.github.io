@@ -34,7 +34,11 @@ ___
 
 [SQL Review Notebooks and Resources](https://ds-review-hub.github.io/sql_reviews)
 
+>This page houses helpful resources for you to use when getting into SQL for data analysis.
+
 [Python and Pandas Review Notebooks and Resources](https://ds-review-hub.github.io/python_reviews)
+
+>This page houses helpful resources for you to use when learning python and pandas for data analysis.
 
 
 
