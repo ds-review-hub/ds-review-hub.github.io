@@ -13150,6 +13150,11 @@ $( document ).ready(function(){
 <ul>
 <li><code>TEXT</code> is used for strings without limits on length.</li>
 </ul>
+<blockquote><p><strong>Null Data Type</strong></p>
+</blockquote>
+<ul>
+<li><code>NULL</code> is the absence of a value and is treated as a <code>0</code>.</li>
+</ul>
 <blockquote><p><strong>Date and Time Data Types</strong></p>
 </blockquote>
 <div class="alert alert-block alert-info"><b>Tip: </b>Use single quotes to surround a date.</div><ul>
@@ -13191,7 +13196,7 @@ $( document ).ready(function(){
     <span class="n">created_at</span> <span class="k">TIMESTAMP</span> <span class="k">DEFAULT</span> <span class="k">CURRENT_TIMESTAMP</span>
 <span class="p">)</span>  <span class="n">ENGINE</span><span class="o">=</span><span class="n">INNODB</span><span class="p">;</span>
 </pre></div>
-<p><em>Above you see that there are possible column constraints available like <code>NOT NULL</code>, <code>UNIQUE</code>, <code>CHECK</code>, <code>PRIMARY KEY</code>, and <code>FOREIGN KEY</code>.</em></p>
+<p><em>Above you see that there are <strong>possible column constraints</strong> available like <code>NOT NULL</code>, <code>UNIQUE</code>, <code>CHECK</code>, <code>PRIMARY KEY</code>, and <code>FOREIGN KEY</code>.</em></p>
 <p><a href="https://www.mysqltutorial.org/mysql-data-types.aspx/">This</a> is the source of the thorough tutorial on MySQL Data Types and Table Creation with code samples referenced above.</p>
 <hr>
 
@@ -13233,7 +13238,7 @@ $( document ).ready(function(){
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Fundamental-SQL-Terms">Fundamental SQL Terms<a class="anchor-link" href="#Fundamental-SQL-Terms">&#182;</a></h3><p><strong>A Query</strong> is a the request that returns information or records. A query can contain multiple clauses, each containing one or more SQL keywords, but it can also be as simple as a <code>SELECT *</code> statement that returns all fields followed by a <code>FROM table_name</code> clause indicating from where you want the data to come.</p>
+<h3 id="Fundamental-SQL-Terms">Fundamental SQL Terms<a class="anchor-link" href="#Fundamental-SQL-Terms">&#182;</a></h3><p><strong>A Query</strong> is a request that returns information or records. A query can contain multiple clauses, each containing one or more SQL keywords, but it can also be as simple as a <code>SELECT *</code> statement that returns all fields followed by a <code>FROM table_name</code> clause indicating the table you want the data to come from.</p>
 <p><strong>A Statement</strong> is any valid piece of code that is executable by a RDBMS.</p>
 <p><strong>A Clause</strong> is a subsection of a query that contains at least one keyword and the accompanying information, like fields or tables, to be used with the keyword.</p>
 <p><strong>A Keyword</strong> is a reserved word that performs an operation.</p>
@@ -13250,6 +13255,7 @@ $( document ).ready(function(){
 <blockquote><ul>
 <li>What database will you be using?</li>
 <li>What table(s) within the database will you be querying?</li>
+<li>Will you need to join any tables to get the information you want or filter by a specific field?</li>
 <li>What fields in the table are you interested in?</li>
 <li>Will you need to filter your data or are you interested in a specific time range?</li>
 <li>What will your query do, in plain English?</li>
@@ -13278,7 +13284,7 @@ $( document ).ready(function(){
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2><font color=green>Now What?</font></h2>
 <p>Combine operators with clauses like the examples below.</p>
-<h4 id="WHERE"><code>WHERE</code><a class="anchor-link" href="#WHERE">&#182;</a></h4><p>I can add specific conditions to my queries using a <code>WHERE</code> clause paired with different operators to limit the resulting result set to records that satisfy my specific conditions. By using <code>WHERE</code> with the <code>=</code> sign, I am filtering for one specific value, in this case Fleetwood Mac as the artist.</p>
+<h4 id="WHERE-Clause"><code>WHERE</code> Clause<a class="anchor-link" href="#WHERE-Clause">&#182;</a></h4><p>I can add specific conditions to my queries using a <code>WHERE</code> clause paired with different operators to limit the resulting result set to records that satisfy my specific conditions. By using <code>WHERE</code> with the <code>=</code> sign, I am filtering for one specific value, in this case Fleetwood Mac as the artist.</p>
 <div class="highlight"><pre><span></span><span class="c1">--I&#39;m using the albums_db database</span>
 
 <span class="n">USE</span> <span class="n">albums_db</span><span class="p">;</span>
@@ -13289,7 +13295,7 @@ $( document ).ready(function(){
 <span class="k">FROM</span> <span class="n">albums</span>
 <span class="k">WHERE</span> <span class="n">artist</span> <span class="o">=</span> <span class="s1">&#39;Fleetwood Mac&#39;</span><span class="p">;</span>
 </pre></div>
-<h4 id="DISTINCT,-BETWEEN"><code>DISTINCT</code>, <code>BETWEEN</code><a class="anchor-link" href="#DISTINCT,-BETWEEN">&#182;</a></h4><p>I can filter for unique values in a column by using the keyword <code>DISTINCT</code>, and I can get the values that fall within an inclusive range by using the keyword <code>BETWEEN</code>.</p>
+<h4 id="DISTINCT,-BETWEEN-Keywords"><code>DISTINCT</code>, <code>BETWEEN</code> Keywords<a class="anchor-link" href="#DISTINCT,-BETWEEN-Keywords">&#182;</a></h4><p>I can filter for unique values in a column by using the keyword <code>DISTINCT</code>, and I can get the values that fall within an inclusive range by using the keyword <code>BETWEEN</code>.</p>
 <p><code style="background:yellow;color:black">I'm treating release_date below as a date data type; the single quotes can be dropped when it is an integer.</code></p>
 <div class="highlight"><pre><span></span><span class="cm">/*</span>
 <span class="cm">I want to see a list of artists that released albums in the 90s; each artist only needs to be in the list one time, and I want them ordered in descending order by release_date.</span>
@@ -13300,7 +13306,7 @@ $( document ).ready(function(){
 <span class="k">WHERE</span> <span class="n">release_date</span> <span class="k">BETWEEN</span> <span class="s1">&#39;1990&#39;</span> <span class="k">AND</span> <span class="s1">&#39;1999&#39;</span>
 <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">release_date</span> <span class="k">DESC</span><span class="p">;</span>
 </pre></div>
-<h4 id="IN-,-LIKE,-%-(text-wildcard)"><code>IN</code> , <code>LIKE</code>, <code>%</code> (text wildcard)<a class="anchor-link" href="#IN-,-LIKE,-%-(text-wildcard)">&#182;</a></h4><p>Here I use the <code>IN</code> operator to find specific values within a dataset, while using the <code>LIKE</code> operator with a text wildcard (<code>%</code>) to find variations on my input. The <code>%</code> symbol represents one or more of any character, so my <code>WHERE</code> clause is searching rows that have 'rock' somwhere in the value for the genre column.</p>
+<h4 id="IN-,-LIKE,-%-Operators"><code>IN</code> , <code>LIKE</code>, <code>%</code> Operators<a class="anchor-link" href="#IN-,-LIKE,-%-Operators">&#182;</a></h4><p>Here I use the <code>IN</code> operator to find specific values within a dataset, while using the <code>LIKE</code> operator with a text wildcard (<code>%</code>) to find variations on my input. The <code>%</code> symbol represents one or more of any character, so my <code>WHERE</code> clause is searching rows that have 'rock' somwhere in the value for the genre column.</p>
 <div class="highlight"><pre><span></span><span class="cm">/*</span>
 <span class="cm">I want to see the artist name, album name with alias title, and the release date with alias date for the records where the genre has any form of the word rock in it and the release date was in the 90s; I want the records displyed from the newest to oldest release dates.</span>
 <span class="cm">*/</span>
@@ -13313,7 +13319,7 @@ $( document ).ready(function(){
 <span class="k">AND</span> <span class="n">release_date</span> <span class="k">BETWEEN</span> <span class="s1">&#39;1990&#39;</span> <span class="k">AND</span> <span class="s1">&#39;1999&#39;</span>
 <span class="k">ORDER</span> <span class="k">BY</span> <span class="nb">date</span> <span class="k">DESC</span><span class="p">;</span>
 </pre></div>
-<h4 id="AND,-OR"><code>AND</code>, <code>OR</code><a class="anchor-link" href="#AND,-OR">&#182;</a></h4><p>Here I combine operators <code>NOT</code> and <code>LIKE</code> with a wildcard symbol, <code>%</code>, to exclude artists whose names start with the letter 'm' followed by any number of unknown letters. We can use the <code>OR</code> operator to find values that match <strong>any</strong> of our criteria, while using the <code>AND</code> operator requires that a value match <strong>all</strong> of our criteria.</p>
+<h4 id="AND,-OR-Operators"><code>AND</code>, <code>OR</code> Operators<a class="anchor-link" href="#AND,-OR-Operators">&#182;</a></h4><p>Here I combine operators <code>NOT</code> and <code>LIKE</code> with a wildcard symbol, <code>%</code>, to exclude artists whose names start with the letter 'm' followed by any number of unknown letters. We can use the <code>OR</code> operator to find values that match <strong>any</strong> of our criteria, while using the <code>AND</code> operator requires that a value match <strong>all</strong> of our criteria.</p>
 <div class="highlight"><pre><span></span><span class="c1">--I want to see the same list as above except without records for artists whose names start with the letter m.</span>
 
 <span class="k">SELECT</span> <span class="n">artist</span><span class="p">,</span> 
@@ -13325,6 +13331,13 @@ $( document ).ready(function(){
 <span class="k">AND</span> <span class="n">artist</span> <span class="k">NOT</span> <span class="k">LIKE</span> <span class="s1">&#39;m%&#39;</span>
 <span class="k">ORDER</span> <span class="k">BY</span> <span class="nb">date</span> <span class="k">DESC</span><span class="p">;</span>
 </pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Grouping-and-Patterns">Grouping and Patterns<a class="anchor-link" href="#Grouping-and-Patterns">&#182;</a></h4><p>I can use the <code>_</code> character to represent one unknown character before or after a known character. Below, I am using <code>artist LIKE '_a%'</code> to represent an unknown starting character followed by the letter 'a' and any number of other characters. In other words, I am looking for any artist that has the letter 'a' as the second letter in their name.</p>
 <div class="highlight"><pre><span></span><span class="c1">--I&#39;m using the albums_db database</span>
 
@@ -13346,21 +13359,26 @@ $( document ).ready(function(){
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2><font color=red>What Are SQL Functions?</font></h2>
-<p><strong>A SQL Function</strong> is a sub-program used in SQL database applications for processing and manipulating dat; they can be divided into aggregate and scalar functions. I will give examples of scalar types directly below and aggregate types further down in the <code>GROUP BY</code> section, but there are too many built-in functions to exemplify here. You can see a <a href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html">Full List</a> here.</p>
+<p><strong>A SQL Function</strong> is a sub-program used in SQL database applications for processing and manipulating data; they can be divided into aggregate and scalar functions. I will give examples of scalar types directly below and aggregate types further down in the <code>GROUP BY</code> section, but there are too many built-in functions to exemplify here. You can see a <a href="https://dev.mysql.com/doc/refman/5.7/en/string-functions.html">Full List</a> here.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2><font color=orange>So What Are Some Common Built-in Functions?</font></h2>
-<blockquote><p>String Functions (scalar type)</p>
-</blockquote>
-<p>The <code>CONCAT(string_1, string_2)</code> function returns a single string from combined arguments.</p>
+<h3 id="String-Functions-(scalar-type)">String Functions (scalar type)<a class="anchor-link" href="#String-Functions-(scalar-type)">&#182;</a></h3><h4 id="CONCAT()"><code>CONCAT()</code><a class="anchor-link" href="#CONCAT()">&#182;</a></h4><p>The <code>concat()</code> function returns a single string from combined arguments.</p>
 <div class="highlight"><pre><span></span><span class="n">CONCAT</span><span class="p">(</span><span class="s1">&#39;first_name&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;last_name&#39;</span><span class="p">)</span>
 
 <span class="o">-&gt;</span> <span class="n">Faith</span> <span class="n">Kane</span>
 </pre></div>
-<p>The <code>SUBSTR(string, start, n)</code> function returns a string that is n characters long starting from the character that falls at the start position argument passed.</p>
+<h4 id="SUBSTR()"><code>SUBSTR()</code><a class="anchor-link" href="#SUBSTR()">&#182;</a></h4><p>The <code>SUBSTR()</code> function returns a string that is n characters long starting from the character that falls at the start position argument passed.</p>
 <div class="highlight"><pre><span></span><span class="n">SUBSTR</span><span class="p">(</span><span class="n">artist</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 
 <span class="o">-&gt;</span> <span class="n">rtist</span>
 </pre></div>
-<p>The <code>LENGTH(string)</code> function returns the length of the string argument.</p>
+<h4 id="LENGTH()"><code>LENGTH()</code><a class="anchor-link" href="#LENGTH()">&#182;</a></h4><p>The <code>LENGTH()</code> function returns the length of the string argument.</p>
 <div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="k">LENGTH</span><span class="p">(</span><span class="n">last_name</span><span class="p">)</span>
 <span class="k">FROM</span> <span class="n">employees</span>
 <span class="k">WHERE</span> <span class="n">last_name</span> <span class="k">LIKE</span> <span class="s1">&#39;a%&#39;</span><span class="p">;</span>
@@ -13369,42 +13387,48 @@ $( document ).ready(function(){
    <span class="mi">7</span>
    <span class="p">...</span>
 </pre></div>
-<p>The <code>TRIM(string)</code> removes both leading and trailing spaces from the string argument.</p>
-<p>The <code>UPPER(string)</code> and <code>LOWER(string)</code> functions return the string with all characters changed to either uppercase or lowercase.</p>
-<p>The <code>REPLACE(string, from_string, to_string)</code> function is case sensitive and replaces all occurances of the from_string with the to_string.</p>
+<h4 id="TRIM()"><code>TRIM()</code><a class="anchor-link" href="#TRIM()">&#182;</a></h4><p>The <code>TRIM(string)</code> function removes both leading and trailing spaces from the string argument.</p>
+<h4 id="UPPER()"><code>UPPER()</code><a class="anchor-link" href="#UPPER()">&#182;</a></h4><p>The <code>UPPER(string)</code> and <code>LOWER(string)</code> functions return the string with all characters changed to either uppercase or lowercase.</p>
+<h4 id="REPLACE()"><code>REPLACE()</code><a class="anchor-link" href="#REPLACE()">&#182;</a></h4><p>The <code>REPLACE(string, from_string, to_string)</code> function is case sensitive and replaces all occurances of the from_string with the to_string.</p>
 <p><font color=purple>These are just a few common string functions. There are way too many to cover here, so see the full list link above for more.</font></p>
-<blockquote><p>Date and Time Functions (scalar type) <a href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html">Full List</a></p>
-</blockquote>
-<p>The <code>DATE()</code> function extracts the date part of a date or datetime expression.</p>
+<h3 id="Date-and-Time-Functions-(scalar-type)">Date and Time Functions (scalar type)<a class="anchor-link" href="#Date-and-Time-Functions-(scalar-type)">&#182;</a></h3><p><a href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html">Full List</a></p>
+<h4 id="DATE()"><code>DATE()</code><a class="anchor-link" href="#DATE()">&#182;</a></h4><p>The <code>DATE()</code> function extracts the date part of a date or datetime expression.</p>
 <div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="nb">DATE</span><span class="p">(</span><span class="s1">&#39;2020-07-24 01:00:03&#39;</span><span class="p">);</span>
 
 <span class="o">-&gt;</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">24</span>
 </pre></div>
-<p>The <code>NOW()</code> function returns the current date and time.</p>
+<h4 id="NOW()"><code>NOW()</code><a class="anchor-link" href="#NOW()">&#182;</a></h4><p>The <code>NOW()</code> function returns the current date and time.</p>
 <div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">NOW</span><span class="p">();</span>
 
 <span class="o">-&gt;</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">24</span> <span class="mi">00</span><span class="p">:</span><span class="mi">59</span><span class="p">:</span><span class="mi">09</span>
 </pre></div>
-<p>The <code>CURDATE()</code> function returns the date without the time.</p>
+<h4 id="CURDATE()"><code>CURDATE()</code><a class="anchor-link" href="#CURDATE()">&#182;</a></h4><p>The <code>CURDATE()</code> function returns the date without the time.</p>
 <div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">CURDATE</span><span class="p">();</span>
 
 <span class="o">-&gt;</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">24</span>
 </pre></div>
-<p>The <code>CURTIME()</code> function returns the UTC time without the date.</p>
+<h4 id="CURTIME()"><code>CURTIME()</code><a class="anchor-link" href="#CURTIME()">&#182;</a></h4><p>The <code>CURTIME()</code> function returns the UTC time without the date.</p>
 <div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">CURTIME</span><span class="p">();</span>
 
 <span class="o">-&gt;</span> <span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">09</span>
 </pre></div>
-<p>The <code>UNIX_TIMESTAMP()</code> argument returns the number of seconds since January 1, 1970. The %Y-%m-%D format is required by this function if you pass it a date.</p>
+<h4 id="UNIX_TIMESTAMP()"><code>UNIX_TIMESTAMP()</code><a class="anchor-link" href="#UNIX_TIMESTAMP()">&#182;</a></h4><p>The <code>UNIX_TIMESTAMP()</code> argument returns the number of seconds since January 1, 1970. The %Y-%m-%D format is required by this function if you pass it a date.</p>
 <div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">UNIX_TIMESTAMP</span><span class="p">();</span>
 
 <span class="k">returns</span> <span class="mi">1595552508</span>
 </pre></div>
-<p>The <code>DATEDIFF(exp1 - exp2)</code> returns the difference between exp1 and exp2 in days.</p>
+<h4 id="DATEDIFF()"><code>DATEDIFF()</code><a class="anchor-link" href="#DATEDIFF()">&#182;</a></h4><p>The <code>DATEDIFF(exp1 - exp2)</code> returns the difference between exp1 and exp2 in days.</p>
 <div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">DATEDIFF</span><span class="p">(</span><span class="s1">&#39;2020-1-30 23:59:59&#39;</span><span class="p">,</span><span class="s1">&#39;2020-1-29&#39;</span><span class="p">);</span>
 
 <span class="o">-&gt;</span> <span class="mi">1</span>
 </pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2><font color=green>Now What?</font></h2>
 <p>Here's an example of nested string functions in the <code>SELECT</code> statement of SQL query.</p>
 <div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">first_name</span><span class="p">,</span> 
