@@ -36,10 +36,9 @@ ___
 
 >This page houses helpful resources for you to use when getting into SQL for data analysis.
 
-Look for python and pandas notebooks coming soon...
+[Python and Pandas Review Notebooks and Resources](https://ds-review-hub.github.io/python_reviews)
 
-
-
+>This page houses helpful resources for you to use when learning python and pandas for data analysis.
 
 ___
 ## Machine Learning
@@ -50,5 +49,10 @@ Coming Soon! For now, check out the Intro to ML Workshop site below.
 ___
 ## Links to Workshops and Extras
 
-Lots more coming soon...
+[Data Skills 101](https://dataskills101.github.io/)
 
+>This page houses helpful resources for you to use when getting python and pandas including interactive Google Colab notebooks you can make a copy of for yourself and edit your notebook.
+
+[Intro to ML Workshop - Classification](https://dataskills101.github.io/)
+
+>This page houses helpful resources for you to use when getting machine learning. The workshop contains basic python and pandas for data analysis, Google Colab notebooks you can copy and edit, and other relevant resources. The Canva presentation link is [here](https://www.canva.com/design/DAEL0tiSEAw/7I1oDBFRULaoAMFrQG-kSw/view?utm_content=DAEL0tiSEAw&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink).
