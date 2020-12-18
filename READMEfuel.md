@@ -15,7 +15,7 @@ ___
 
 [Markdown & HTML Tutorial](https://ds-review-hub.github.io/markdown_and_html_tutorial)
 
->This tutorial will show you how to use lots of exciting markdown and html code in your README files as well as your Jupyter Notebooks! Documentation is everything in making a Jupyter Notebook readable, so 
+>This tutorial will show you how to use lots of exciting markdown and html code in your README files as well as your Jupyter Notebooks! Documentation is everything in making a Jupyter Notebook readable, so learning to use some Markdown and HTML to make it look great is worth your while.
 
 [Video Tutorial Resources](https://ds-review-hub.github.io/tutorial_videos)
 
