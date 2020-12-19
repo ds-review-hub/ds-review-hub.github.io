@@ -51,7 +51,7 @@ ___
 
 [Data Skills 101](https://dataskills101.github.io/)
 
->This page houses helpful resources for you to use when getting into python and pandas including interactive Google Colab notebooks you can make a copy of for yourself and edit your notebook.
+>This page houses helpful resources for you to use when getting into python and pandas including interactive Google Colab notebooks you can make a copy of for yourself and edit as your own notebook.
 
 [Intro to ML Workshop - Classification](https://dataskills101.github.io/)
 
