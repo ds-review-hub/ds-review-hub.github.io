@@ -13245,6 +13245,13 @@ $( document ).ready(function(){
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2><font color=green>Now What?</font></h2>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="JOIN-Examples"><code>JOIN</code> Examples<a class="anchor-link" href="#JOIN-Examples">&#182;</a></h3><p>Let's check out some code examples. These can serve as useful syntax references when you try to write a query down the road and haven't seen SQL in a few weeks!</p>
 <div class="highlight"><pre><span></span><span class="c1">-- Query SELECTS all from simple joining of employees and salaries tables.</span>
 
@@ -13257,7 +13264,8 @@ $( document ).ready(function(){
 <span class="k">SELECT</span> <span class="n">d</span><span class="p">.</span><span class="n">dept_name</span> <span class="k">AS</span> <span class="s1">&#39;Department Name&#39;</span><span class="p">,</span> 
        <span class="n">CONCAT</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">first_name</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">.</span><span class="n">last_name</span><span class="p">)</span> <span class="k">AS</span> <span class="s1">&#39;Department Manager&#39;</span>
 <span class="k">FROM</span> <span class="n">employees</span> <span class="k">AS</span> <span class="n">e</span>
-<span class="k">JOIN</span> <span class="n">dept_manager</span> <span class="k">AS</span> <span class="n">dm</span> <span class="k">ON</span> <span class="n">e</span><span class="p">.</span><span class="n">emp_no</span> <span class="o">=</span> <span class="n">dm</span><span class="p">.</span><span class="n">emp_no</span> <span class="k">AND</span> <span class="n">to_date</span> <span class="o">&gt;</span> <span class="n">CURDATE</span><span class="p">()</span>
+<span class="k">JOIN</span> <span class="n">dept_manager</span> <span class="k">AS</span> <span class="n">dm</span> <span class="k">ON</span> <span class="n">e</span><span class="p">.</span><span class="n">emp_no</span> <span class="o">=</span> <span class="n">dm</span><span class="p">.</span><span class="n">emp_no</span> 
+    <span class="k">AND</span> <span class="n">to_date</span> <span class="o">&gt;</span> <span class="n">CURDATE</span><span class="p">()</span>
 <span class="k">JOIN</span> <span class="n">departments</span> <span class="k">AS</span> <span class="n">d</span> <span class="k">ON</span> <span class="n">dm</span><span class="p">.</span><span class="n">dept_no</span> <span class="o">=</span> <span class="n">d</span><span class="p">.</span><span class="n">dept_no</span>
 <span class="k">WHERE</span> <span class="n">e</span><span class="p">.</span><span class="n">gender</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span>
 <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">d</span><span class="p">.</span><span class="n">dept_name</span><span class="p">;</span>
@@ -13270,7 +13278,8 @@ $( document ).ready(function(){
 <span class="k">JOIN</span> <span class="n">dept_emp</span> <span class="k">AS</span> <span class="n">de</span> <span class="k">ON</span> <span class="n">de</span><span class="p">.</span><span class="n">emp_no</span> <span class="o">=</span> <span class="n">t</span><span class="p">.</span><span class="n">emp_no</span> 
     <span class="k">AND</span> <span class="n">de</span><span class="p">.</span><span class="n">to_date</span> <span class="o">&gt;</span> <span class="n">CURDATE</span><span class="p">()</span> 
     <span class="k">AND</span> <span class="n">t</span><span class="p">.</span><span class="n">to_date</span> <span class="o">&gt;</span> <span class="n">CURDATE</span><span class="p">()</span>
-<span class="k">JOIN</span> <span class="n">departments</span> <span class="k">AS</span> <span class="n">d</span> <span class="k">ON</span> <span class="n">d</span><span class="p">.</span><span class="n">dept_no</span> <span class="o">=</span> <span class="n">de</span><span class="p">.</span><span class="n">dept_no</span> <span class="k">AND</span> <span class="n">d</span><span class="p">.</span><span class="n">dept_name</span> <span class="o">=</span> <span class="s1">&#39;Customer Service&#39;</span>
+<span class="k">JOIN</span> <span class="n">departments</span> <span class="k">AS</span> <span class="n">d</span> <span class="k">ON</span> <span class="n">d</span><span class="p">.</span><span class="n">dept_no</span> <span class="o">=</span> <span class="n">de</span><span class="p">.</span><span class="n">dept_no</span> 
+    <span class="k">AND</span> <span class="n">d</span><span class="p">.</span><span class="n">dept_name</span> <span class="o">=</span> <span class="s1">&#39;Customer Service&#39;</span>
 <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">t</span><span class="p">.</span><span class="n">title</span><span class="p">;</span>
 </pre></div>
 <div class="highlight"><pre><span></span><span class="cm">/*</span>
@@ -13280,8 +13289,10 @@ $( document ).ready(function(){
 <div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">d</span><span class="p">.</span><span class="n">dept_name</span><span class="p">,</span> 
        <span class="n">ROUND</span><span class="p">(</span><span class="k">AVG</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">salary</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="n">average_salary</span>
 <span class="k">FROM</span> <span class="n">departments</span> <span class="k">AS</span> <span class="n">d</span>
-<span class="k">JOIN</span> <span class="n">dept_emp</span> <span class="k">AS</span> <span class="n">de</span> <span class="k">ON</span> <span class="n">de</span><span class="p">.</span><span class="n">dept_no</span> <span class="o">=</span> <span class="n">d</span><span class="p">.</span><span class="n">dept_no</span> <span class="k">AND</span> <span class="n">de</span><span class="p">.</span><span class="n">to_date</span> <span class="o">&gt;</span> <span class="n">CURDATE</span><span class="p">()</span>
-<span class="k">JOIN</span> <span class="n">salaries</span> <span class="k">AS</span> <span class="n">s</span> <span class="k">ON</span> <span class="n">s</span><span class="p">.</span><span class="n">emp_no</span> <span class="o">=</span> <span class="n">de</span><span class="p">.</span><span class="n">emp_no</span> <span class="k">AND</span> <span class="n">s</span><span class="p">.</span><span class="n">to_date</span> <span class="o">&gt;</span> <span class="n">CURDATE</span><span class="p">()</span>
+<span class="k">JOIN</span> <span class="n">dept_emp</span> <span class="k">AS</span> <span class="n">de</span> <span class="k">ON</span> <span class="n">de</span><span class="p">.</span><span class="n">dept_no</span> <span class="o">=</span> <span class="n">d</span><span class="p">.</span><span class="n">dept_no</span> 
+    <span class="k">AND</span> <span class="n">de</span><span class="p">.</span><span class="n">to_date</span> <span class="o">&gt;</span> <span class="n">CURDATE</span><span class="p">()</span>
+<span class="k">JOIN</span> <span class="n">salaries</span> <span class="k">AS</span> <span class="n">s</span> <span class="k">ON</span> <span class="n">s</span><span class="p">.</span><span class="n">emp_no</span> <span class="o">=</span> <span class="n">de</span><span class="p">.</span><span class="n">emp_no</span> 
+    <span class="k">AND</span> <span class="n">s</span><span class="p">.</span><span class="n">to_date</span> <span class="o">&gt;</span> <span class="n">CURDATE</span><span class="p">()</span>
 <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">d</span><span class="p">.</span><span class="n">dept_name</span>
 <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">average_salary</span> <span class="k">DESC</span>
 <span class="k">LIMIT</span> <span class="mi">1</span><span class="p">;</span>
@@ -13290,8 +13301,11 @@ $( document ).ready(function(){
 
 <span class="k">SELECT</span> <span class="n">e</span><span class="p">.</span><span class="n">first_name</span><span class="p">,</span> <span class="n">e</span><span class="p">.</span><span class="n">last_name</span>
 <span class="k">FROM</span> <span class="n">departments</span> <span class="k">AS</span> <span class="n">d</span>
-<span class="k">JOIN</span> <span class="n">dept_emp</span> <span class="k">AS</span> <span class="n">de</span> <span class="k">ON</span> <span class="n">de</span><span class="p">.</span><span class="n">dept_no</span> <span class="o">=</span> <span class="n">d</span><span class="p">.</span><span class="n">dept_no</span> <span class="k">AND</span> <span class="n">de</span><span class="p">.</span><span class="n">to_date</span> <span class="o">&gt;</span> <span class="n">CURDATE</span><span class="p">()</span> <span class="k">AND</span> <span class="n">d</span><span class="p">.</span><span class="n">dept_name</span> <span class="o">=</span> <span class="s1">&#39;Marketing&#39;</span>
-<span class="k">JOIN</span> <span class="n">salaries</span> <span class="k">AS</span> <span class="n">s</span> <span class="k">ON</span> <span class="n">s</span><span class="p">.</span><span class="n">emp_no</span> <span class="o">=</span> <span class="n">de</span><span class="p">.</span><span class="n">emp_no</span> <span class="k">AND</span> <span class="n">s</span><span class="p">.</span><span class="n">to_date</span> <span class="o">&gt;</span> <span class="n">CURDATE</span><span class="p">()</span>
+<span class="k">JOIN</span> <span class="n">dept_emp</span> <span class="k">AS</span> <span class="n">de</span> <span class="k">ON</span> <span class="n">de</span><span class="p">.</span><span class="n">dept_no</span> <span class="o">=</span> <span class="n">d</span><span class="p">.</span><span class="n">dept_no</span> 
+    <span class="k">AND</span> <span class="n">de</span><span class="p">.</span><span class="n">to_date</span> <span class="o">&gt;</span> <span class="n">CURDATE</span><span class="p">()</span> 
+    <span class="k">AND</span> <span class="n">d</span><span class="p">.</span><span class="n">dept_name</span> <span class="o">=</span> <span class="s1">&#39;Marketing&#39;</span>
+<span class="k">JOIN</span> <span class="n">salaries</span> <span class="k">AS</span> <span class="n">s</span> <span class="k">ON</span> <span class="n">s</span><span class="p">.</span><span class="n">emp_no</span> <span class="o">=</span> <span class="n">de</span><span class="p">.</span><span class="n">emp_no</span> 
+    <span class="k">AND</span> <span class="n">s</span><span class="p">.</span><span class="n">to_date</span> <span class="o">&gt;</span> <span class="n">CURDATE</span><span class="p">()</span>
 <span class="k">JOIN</span> <span class="n">employees</span> <span class="k">AS</span> <span class="n">e</span> <span class="k">ON</span> <span class="n">e</span><span class="p">.</span><span class="n">emp_no</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="n">emp_no</span>
 <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">s</span><span class="p">.</span><span class="n">salary</span> <span class="k">DESC</span>
 <span class="k">LIMIT</span> <span class="mi">1</span><span class="p">;</span>
@@ -13305,7 +13319,8 @@ $( document ).ready(function(){
 <span class="k">FROM</span> <span class="n">dept_emp</span> <span class="k">AS</span> <span class="n">de</span>
 <span class="k">JOIN</span> <span class="n">employees</span> <span class="k">AS</span> <span class="n">e</span> <span class="k">USING</span><span class="p">(</span><span class="n">emp_no</span><span class="p">)</span>
 <span class="k">JOIN</span> <span class="n">departments</span> <span class="k">AS</span> <span class="n">d</span> <span class="k">ON</span> <span class="n">d</span><span class="p">.</span><span class="n">dept_no</span> <span class="o">=</span> <span class="n">de</span><span class="p">.</span><span class="n">dept_no</span>
-<span class="k">JOIN</span> <span class="n">dept_manager</span> <span class="k">AS</span> <span class="n">dm</span> <span class="k">ON</span> <span class="n">dm</span><span class="p">.</span><span class="n">dept_no</span> <span class="o">=</span> <span class="n">d</span><span class="p">.</span><span class="n">dept_no</span> <span class="k">AND</span> <span class="n">dm</span><span class="p">.</span><span class="n">to_date</span> <span class="o">&gt;</span> <span class="n">CURDATE</span><span class="p">()</span>
+<span class="k">JOIN</span> <span class="n">dept_manager</span> <span class="k">AS</span> <span class="n">dm</span> <span class="k">ON</span> <span class="n">dm</span><span class="p">.</span><span class="n">dept_no</span> <span class="o">=</span> <span class="n">d</span><span class="p">.</span><span class="n">dept_no</span> 
+    <span class="k">AND</span> <span class="n">dm</span><span class="p">.</span><span class="n">to_date</span> <span class="o">&gt;</span> <span class="n">CURDATE</span><span class="p">()</span>
 <span class="k">JOIN</span> <span class="n">employees</span> <span class="k">AS</span> <span class="n">managers</span> <span class="k">ON</span> <span class="n">managers</span><span class="p">.</span><span class="n">emp_no</span> <span class="o">=</span> <span class="n">dm</span><span class="p">.</span><span class="n">emp_no</span>
 <span class="k">WHERE</span> <span class="n">de</span><span class="p">.</span><span class="n">to_date</span> <span class="o">&gt;</span> <span class="n">CURDATE</span><span class="p">()</span>
 <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">d</span><span class="p">.</span><span class="n">dept_name</span><span class="p">;</span>
@@ -13319,9 +13334,30 @@ $( document ).ready(function(){
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2><font color=red>What Is a Subquery?</font></h2>
 <p>A subquery is when one query is nested inside of another; they are most commonly used in <code>SELECT</code>, <code>FROM</code>, and <code>WHERE</code> clauses but can also be used in a <code>JOIN</code> clause. When a subquery is in your <code>FROM</code> clause, it is called a derived table, and it <strong>MUST</strong> be given a table alias.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2><font color=orange>So What Are They Used For?</font></h2>
 <p>Using a subquery allows us to use a query result set from one table when querying another table without using a <code>JOIN</code>. Here we are using <code>WHERE</code> with <code>IN</code> in a subquery. This type of subquery is fast, but the rub is that we don't have all of the columns available in the inner query. Its usefulness depends on your data needs.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2><font color=green>Now What?</font></h2>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Subquery-Examples">Subquery Examples<a class="anchor-link" href="#Subquery-Examples">&#182;</a></h3><p>Let's check out some code examples. These can serve as useful syntax references when you try to write a query down the road and haven't seen SQL in a few weeks!</p>
 <p>Here is an example of using two subqueries in the <code>WHERE</code> clause with the operator <code>AND</code>.</p>
 <div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">first_name</span><span class="p">,</span> <span class="n">last_name</span>
@@ -13329,7 +13365,8 @@ $( document ).ready(function(){
 <span class="k">WHERE</span> <span class="n">emp_no</span> <span class="k">IN</span> <span class="p">(</span>
     <span class="k">SELECT</span> <span class="n">emp_no</span>
     <span class="k">FROM</span> <span class="n">salaries</span>
-    <span class="k">WHERE</span> <span class="n">salary</span> <span class="k">BETWEEN</span> <span class="mi">60000</span> <span class="k">AND</span> <span class="mi">70000</span> <span class="k">AND</span> <span class="n">to_date</span> <span class="o">&gt;</span> <span class="n">CURDATE</span><span class="p">()</span>
+    <span class="k">WHERE</span> <span class="n">salary</span> <span class="k">BETWEEN</span> <span class="mi">60000</span> <span class="k">AND</span> <span class="mi">70000</span> 
+        <span class="k">AND</span> <span class="n">to_date</span> <span class="o">&gt;</span> <span class="n">CURDATE</span><span class="p">()</span>
     <span class="p">)</span>
 <span class="k">AND</span> <span class="n">emp_no</span> <span class="k">IN</span> <span class="p">(</span>
     <span class="k">SELECT</span> <span class="n">emp_no</span>
@@ -13344,7 +13381,7 @@ $( document ).ready(function(){
     <span class="k">from</span> <span class="n">salaries</span> 
     <span class="k">where</span> <span class="n">salary</span> <span class="k">between</span> <span class="mi">60000</span> <span class="k">and</span> <span class="mi">70000</span>
 <span class="p">)</span> <span class="k">as</span> <span class="n">sal</span>
-<span class="k">JOIN</span> <span class="n">dept_emp</span> <span class="k">ON</span> <span class="n">dept_emp</span><span class="p">.</span><span class="n">emp_no</span> <span class="o">=</span> <span class="n">sal</span><span class="p">.</span><span class="n">emp_no</span>
+<span class="k">JOIN</span> <span class="n">dept_emp</span> <span class="n">USEING</span><span class="p">(</span><span class="n">emp_no</span><span class="p">)</span>
 <span class="k">JOIN</span> <span class="n">departments</span> <span class="k">USING</span><span class="p">(</span><span class="n">dept_no</span><span class="p">);</span>
 </pre></div>
 <p>However, you can also use a subquery in a <code>JOIN</code> clause. Here, we are selecting from a derived table. This method can be computationally expensive, but it gifts you with added flexibility.</p>
@@ -13354,7 +13391,7 @@ $( document ).ready(function(){
     <span class="k">SELECT</span> <span class="n">salary</span><span class="p">,</span> <span class="n">emp_no</span>
     <span class="k">FROM</span> <span class="n">salaries</span>
     <span class="k">WHERE</span> <span class="n">salary</span> <span class="k">BETWEEN</span> <span class="mi">60000</span> <span class="k">AND</span> <span class="mi">70000</span>
-    <span class="k">AND</span> <span class="n">to_date</span> <span class="o">&gt;</span> <span class="n">CURDATE</span><span class="p">()</span>
+        <span class="k">AND</span> <span class="n">to_date</span> <span class="o">&gt;</span> <span class="n">CURDATE</span><span class="p">()</span>
 <span class="p">)</span> <span class="k">AS</span> <span class="n">monies</span> <span class="k">USING</span><span class="p">(</span><span class="n">emp_no</span><span class="p">);</span>
 </pre></div>
 <p>Here, I'm using a subquery instead of a self join to get the same result set as in the self join example above.</p>
