@@ -11,7 +11,7 @@ ___
 
 [Github Page Tutorial](https://ds-review-hub.github.io/github_page_portfolio.pdf)
 
->Want to make your own Github Page like this one as a personal portfolio? Check out this resource map I created that contains everything you need to get started. This will get your site up and running in less than half an hour! When you're ready to make your markdown files and notebooks beautiful, check out the beginner Markdown & HTML Tutorial below. Want to get even MORE creative? Check out Beth Thompson's materials housed on the Video Tutorial Resources page below.
+>Want to make your own Github Page like this one as a personal portfolio? Check out this resource map I created that contains everything you need to get started. This will get your site up and running in less than half an hour! When you're ready to make your markdown files and notebooks beautiful, check out the beginner Markdown & HTML Tutorial below. Want to get even MORE creative? Check out the materials housed on the Video Tutorial Resources page below.
 
 [Markdown & HTML Tutorial](https://ds-review-hub.github.io/markdown_and_html_tutorial)
 
