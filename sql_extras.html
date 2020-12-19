@@ -13099,35 +13099,75 @@ $( document ).ready(function(){
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="SQL-Extras">SQL Extras<a class="anchor-link" href="#SQL-Extras">&#182;</a></h1><h2><font color=red>What Does the CASE Statement Do?</font></h2>
+<h1 id="SQL-Case-and-Temp-Tables">SQL Case and Temp Tables<a class="anchor-link" href="#SQL-Case-and-Temp-Tables">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2><font color=red>What Does the CASE Statement Do?</font></h2>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Case-Statements">Case Statements<a class="anchor-link" href="#Case-Statements">&#182;</a></h3><p><strong>The SQL <code>CASE</code> Statement</strong> is a conditional expression that allows me to create a new temporary column in my result set based on 'If this, then...' logic. A <code>CASE</code>statement is added to the <code>SELECT</code> statement, after all of the existing fields I have selected; it begins with <code>CASE</code> and ends with <code>END AS new_field_name</code>. <strong>Don't forget the comma after the last item in your <code>SELECT</code> list! This is a common error for me, so I want to point it out.</strong></p>
-<div class="alert alert-block alert-warning">It's helpful to include an `ELSE` clause to catch any possible values that fall outside of your conditional clauses because otherwise, if those values exist, they will be returned as `NULL`.</div><h2><font color=orange>So What Can I Do with a Case Statement?</font></h2>
+<div class="alert alert-block alert-warning">It's helpful to include an `ELSE` clause to catch any possible values that fall outside of your conditional clauses because otherwise, if those values exist, they will be returned as `NULL`.</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2><font color=orange>So What Can I Do with a Case Statement?</font></h2>
 <p>Using <code>CASE</code> statements comes in very handy when I want to create new fields from existing data in my dataset using conditionals, but I don't have database permissions to create a new table. Temporary tables are useful in this situation, as well. I'll dig into those next.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2><font color=green>Now What?</font></h2>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Create-Categories-to-Classify-Values">Create Categories to Classify Values<a class="anchor-link" href="#Create-Categories-to-Classify-Values">&#182;</a></h4><blockquote><p>For example, if I have a field called <code>high_temp</code> containing integers that represent the high temperature recorded for a particular day, I can add a <code>CASE</code> statement to my query that will create a new field called <code>weather</code> classifying values in <code>high_temp</code> as one of three categorical variables, <code>cold</code>, <code>warm</code>, <code>hot</code>, based on temperature ranges that I set as conditionals.</p>
 </blockquote>
 <p>I can create a column of categorical variables from a numeric column. I can even add a <code>GROUP BY</code> and a <code>COUNT(*)</code> to find out which category in the <code>weather</code> field has the highest count.</p>
 <div class="highlight"><pre><span></span><span class="n">USE</span> <span class="n">us_weather_db</span><span class="p">;</span>
 <span class="k">SELECT</span> <span class="n">high_temp</span><span class="p">,</span>
-        <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">AS</span> <span class="n">days</span><span class="p">,</span>
-    <span class="k">CASE</span> <span class="n">high_temp</span> <span class="o">&gt;</span> <span class="mi">90</span> <span class="k">THEN</span> <span class="s1">&#39;hot&#39;</span>
-        <span class="k">WHEN</span> <span class="n">high_temp</span> <span class="k">BETWEEN</span> <span class="mi">70</span> <span class="k">AND</span> <span class="mi">90</span> <span class="k">THEN</span> <span class="s1">&#39;warm&#39;</span>
-        <span class="k">WHEN</span> <span class="n">high_temp</span> <span class="o">&lt;</span> <span class="mi">70</span> <span class="k">THEN</span> <span class="s1">&#39;cold&#39;</span>
-        <span class="k">ELSE</span> <span class="s1">&#39;idk&#39;</span>
-    <span class="k">END</span> <span class="k">AS</span> <span class="s1">&#39;weather&#39;</span>
+       <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">AS</span> <span class="n">days</span><span class="p">,</span>
+       <span class="k">CASE</span> <span class="n">high_temp</span> <span class="o">&gt;</span> <span class="mi">90</span> <span class="k">THEN</span> <span class="s1">&#39;hot&#39;</span>
+           <span class="k">WHEN</span> <span class="n">high_temp</span> <span class="k">BETWEEN</span> <span class="mi">70</span> <span class="k">AND</span> <span class="mi">90</span> <span class="k">THEN</span> <span class="s1">&#39;warm&#39;</span>
+           <span class="k">WHEN</span> <span class="n">high_temp</span> <span class="o">&lt;</span> <span class="mi">70</span> <span class="k">THEN</span> <span class="s1">&#39;cold&#39;</span>
+           <span class="k">ELSE</span> <span class="s1">&#39;idk&#39;</span>
+       <span class="k">END</span> <span class="k">AS</span> <span class="s1">&#39;weather&#39;</span>
 <span class="k">FROM</span> <span class="n">us_weather</span>
 <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">high_temp</span>
 <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">days</span> <span class="k">DESC</span><span class="p">;</span>
 </pre></div>
 <p>My query can have conditionals that use values from more than one field to create a new column. By throwing in a <code>COUNT(*) AS number_customers</code>, I have a useful result set for making comparisons.</p>
 <div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">AS</span> <span class="n">number_customers</span><span class="p">,</span>
-        <span class="k">CASE</span> <span class="k">WHEN</span> <span class="n">internet_service_type_id</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">AND</span> <span class="n">device_protection</span> <span class="o">=</span> <span class="s1">&#39;Yes&#39;</span> <span class="k">THEN</span> <span class="s1">&#39;DSL_Protected&#39;</span>
-            <span class="k">WHEN</span> <span class="n">internet_service_type_id</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">AND</span> <span class="n">device_protection</span> <span class="o">=</span> <span class="s1">&#39;No&#39;</span> <span class="k">THEN</span> <span class="s1">&#39;DSL_Unprotected&#39;</span>
-            <span class="k">WHEN</span> <span class="n">internet_service_type_id</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">AND</span> <span class="n">device_protection</span> <span class="o">=</span> <span class="s1">&#39;Yes&#39;</span> <span class="k">THEN</span> <span class="s1">&#39;Fiber_Optic_Protected&#39;</span>
-            <span class="k">WHEN</span> <span class="n">internet_service_type_id</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">AND</span> <span class="n">device_protection</span> <span class="o">=</span> <span class="s1">&#39;No&#39;</span> <span class="k">THEN</span> <span class="s1">&#39;Fiber_Optic_Unprotected&#39;</span>
-            <span class="k">WHEN</span> <span class="n">internet_service_type_id</span> <span class="o">=</span> <span class="mi">3</span> <span class="k">THEN</span> <span class="s1">&#39;No_Internet_Service&#39;</span>
+       <span class="k">CASE</span> <span class="k">WHEN</span> <span class="n">internet_service_type_id</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">AND</span> <span class="n">device_protection</span> <span class="o">=</span> <span class="s1">&#39;Yes&#39;</span> 
+                 <span class="k">THEN</span> <span class="s1">&#39;DSL_Protected&#39;</span>
+            <span class="k">WHEN</span> <span class="n">internet_service_type_id</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">AND</span> <span class="n">device_protection</span> <span class="o">=</span> <span class="s1">&#39;No&#39;</span> 
+                 <span class="k">THEN</span> <span class="s1">&#39;DSL_Unprotected&#39;</span>
+            <span class="k">WHEN</span> <span class="n">internet_service_type_id</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">AND</span> <span class="n">device_protection</span> <span class="o">=</span> <span class="s1">&#39;Yes&#39;</span> 
+                 <span class="k">THEN</span> <span class="s1">&#39;Fiber_Optic_Protected&#39;</span>
+            <span class="k">WHEN</span> <span class="n">internet_service_type_id</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">AND</span> <span class="n">device_protection</span> <span class="o">=</span> <span class="s1">&#39;No&#39;</span> 
+                 <span class="k">THEN</span> <span class="s1">&#39;Fiber_Optic_Unprotected&#39;</span>
+            <span class="k">WHEN</span> <span class="n">internet_service_type_id</span> <span class="o">=</span> <span class="mi">3</span> 
+                 <span class="k">THEN</span> <span class="s1">&#39;No_Internet_Service&#39;</span>
             <span class="k">ELSE</span> <span class="n">internet_service_type_id</span>
-        <span class="k">END</span> <span class="k">AS</span> <span class="n">internet_types</span>
+       <span class="k">END</span> <span class="k">AS</span> <span class="n">internet_types</span>
 <span class="k">FROM</span> <span class="n">customers</span>
 <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">internet_types</span>
 <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">number_customers</span><span class="p">;</span>
@@ -13138,26 +13178,40 @@ $( document ).ready(function(){
    <span class="mi">1526</span> <span class="n">No_Internet_Service</span>
    <span class="mi">1739</span> <span class="n">Fiber_Optic_Unprotected</span>
 </pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Normalize-Values-in-Your-Dataset">Normalize Values in Your Dataset<a class="anchor-link" href="#Normalize-Values-in-Your-Dataset">&#182;</a></h4><p>Sometimes my dataset may be messy (hahaha, sometimes), and I will need to normalize the values. <code>CASE</code> can come in handy here, as well.</p>
 <div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">title</span><span class="p">,</span>
        <span class="n">salary</span><span class="p">,</span>
        <span class="n">gender</span><span class="p">,</span>
-    <span class="k">CASE</span> <span class="n">gender</span>
-        <span class="k">WHEN</span> <span class="s1">&#39;M&#39;</span> <span class="k">THEN</span> <span class="s1">&#39;male&#39;</span>
-        <span class="k">WHEN</span> <span class="s1">&#39;0&#39;</span> <span class="k">THEN</span> <span class="s1">&#39;male&#39;</span>
-        <span class="k">WHEN</span> <span class="s1">&#39;F&#39;</span> <span class="k">THEN</span> <span class="s1">&#39;female&#39;</span>
-        <span class="k">WHEN</span> <span class="s1">&#39;1&#39;</span> <span class="k">THEN</span> <span class="s1">&#39;female&#39;</span>
-        <span class="k">ELSE</span> <span class="s1">&#39;neither&#39;</span>
-    <span class="k">END</span> <span class="k">AS</span> <span class="n">gender_norm</span>
+       <span class="k">CASE</span> <span class="n">gender</span>
+           <span class="k">WHEN</span> <span class="s1">&#39;M&#39;</span> <span class="k">THEN</span> <span class="s1">&#39;male&#39;</span>
+           <span class="k">WHEN</span> <span class="s1">&#39;0&#39;</span> <span class="k">THEN</span> <span class="s1">&#39;male&#39;</span>
+           <span class="k">WHEN</span> <span class="s1">&#39;F&#39;</span> <span class="k">THEN</span> <span class="s1">&#39;female&#39;</span>
+           <span class="k">WHEN</span> <span class="s1">&#39;1&#39;</span> <span class="k">THEN</span> <span class="s1">&#39;female&#39;</span>
+           <span class="k">ELSE</span> <span class="s1">&#39;neither&#39;</span>
+       <span class="k">END</span> <span class="k">AS</span> <span class="n">gender_norm</span>
 <span class="k">FROM</span> <span class="n">us_employees</span><span class="p">;</span>
 </pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Create-a-Boolean-Field">Create a Boolean Field<a class="anchor-link" href="#Create-a-Boolean-Field">&#182;</a></h4><p>Sometimes it's easier to work with a boolean value, and <code>CASE</code> can be helpful here, as well. Here I create a new column called <code>is_female</code> containing the value <code>1</code> if <code>female</code> and <code>0</code> if <code>male</code></p>
 <div class="highlight"><pre><span></span><span class="n">USE</span> <span class="n">titanic_db</span><span class="p">;</span>
 <span class="k">SELECT</span> <span class="n">sex</span><span class="p">,</span>
-    <span class="k">CASE</span> <span class="n">sex</span> 
-        <span class="k">WHEN</span> <span class="s1">&#39;female&#39;</span> <span class="k">THEN</span> <span class="mi">1</span>
-        <span class="k">ELSE</span> <span class="mi">0</span>
-    <span class="k">END</span> <span class="k">AS</span> <span class="n">is_female</span>
+       <span class="k">CASE</span> <span class="n">sex</span> 
+           <span class="k">WHEN</span> <span class="s1">&#39;female&#39;</span> <span class="k">THEN</span> <span class="mi">1</span>
+           <span class="k">ELSE</span> <span class="mi">0</span>
+       <span class="k">END</span> <span class="k">AS</span> <span class="n">is_female</span>
 <span class="k">FROM</span> <span class="n">passengers</span><span class="p">;</span> 
 
 <span class="o">-&gt;</span> <span class="n">male</span>     <span class="mi">0</span>
@@ -13177,6 +13231,13 @@ $( document ).ready(function(){
    <span class="n">female</span>   <span class="mi">1</span>
    <span class="n">male</span>     <span class="mi">0</span>
 </pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Create-a-Dummy-Variable">Create a Dummy Variable<a class="anchor-link" href="#Create-a-Dummy-Variable">&#182;</a></h4><p>I can add a condition in my <code>SELECT</code> statement that will return <code>1</code> if the condition evaluates to True and a <code>1</code> if the condition evaluates to False.</p>
 <div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">sex</span><span class="p">,</span> 
        <span class="n">sex</span> <span class="o">=</span> <span class="s1">&#39;female&#39;</span> <span class="k">AS</span> <span class="n">is_female</span>
@@ -13197,9 +13258,30 @@ $( document ).ready(function(){
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2><font color=red>What Are Temporary Tables?</font></h2>
 <p><strong>Temporary Tables</strong> exist only until you end your database session; if you lose your connection or close your database session, these tables will disappear.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2><font color=orange>So What?</font></h2>
 <p>I can create a temporary table when I want to query a subset of a dataset. I can modify a temporary table even when I don't have the needed permissions to modify data in a database.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2><font color=green>Now What?</font></h2>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Create-Temporary-Tables">Create Temporary Tables<a class="anchor-link" href="#Create-Temporary-Tables">&#182;</a></h3><div class="highlight"><pre><span></span><span class="c1">-- Create a temporary table using my database access.</span>
 
 <span class="n">USE</span> <span class="n">bayes_123</span><span class="p">;</span>
@@ -13208,23 +13290,30 @@ $( document ).ready(function(){
 
 <span class="k">CREATE</span> <span class="k">TEMPORARY</span> <span class="k">TABLE</span> <span class="n">dept_employees</span> <span class="k">AS</span>
 <span class="k">SELECT</span> <span class="n">emp_no</span><span class="p">,</span> 
-    <span class="n">CONCAT</span><span class="p">(</span><span class="n">first_name</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">last_name</span><span class="p">)</span> <span class="k">AS</span> <span class="n">full_name</span><span class="p">,</span> 
-    <span class="n">dept_no</span><span class="p">,</span> 
-    <span class="n">dept_name</span><span class="p">,</span>
-    <span class="n">salary</span>
+       <span class="n">CONCAT</span><span class="p">(</span><span class="n">first_name</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">last_name</span><span class="p">)</span> <span class="k">AS</span> <span class="n">full_name</span><span class="p">,</span> 
+       <span class="n">dept_no</span><span class="p">,</span> 
+       <span class="n">dept_name</span><span class="p">,</span>
+       <span class="n">salary</span>
 <span class="k">FROM</span> <span class="n">employees</span><span class="p">.</span><span class="n">employees</span>
 <span class="k">JOIN</span> <span class="n">employees</span><span class="p">.</span><span class="n">salaries</span> <span class="k">USING</span><span class="p">(</span><span class="n">emp_no</span><span class="p">)</span>
 <span class="k">JOIN</span> <span class="n">employees</span><span class="p">.</span><span class="n">dept_emp</span> <span class="k">USING</span><span class="p">(</span><span class="n">emp_no</span><span class="p">)</span>
 <span class="k">JOIN</span> <span class="n">employees</span><span class="p">.</span><span class="n">departments</span> <span class="k">USING</span><span class="p">(</span><span class="n">dept_no</span><span class="p">)</span>
 <span class="k">WHERE</span> <span class="n">employees</span><span class="p">.</span><span class="n">departments</span><span class="p">.</span><span class="n">dept_name</span> <span class="o">=</span> <span class="s1">&#39;Customer Service&#39;</span>
-<span class="k">AND</span> <span class="n">employees</span><span class="p">.</span><span class="n">dept_emp</span><span class="p">.</span><span class="n">to_date</span> <span class="o">&gt;</span> <span class="n">CURDATE</span><span class="p">()</span>
-<span class="k">AND</span> <span class="n">employees</span><span class="p">.</span><span class="n">salaries</span><span class="p">.</span><span class="n">to_date</span> <span class="o">&gt;</span> <span class="n">CURDATE</span><span class="p">();</span>
+    <span class="k">AND</span> <span class="n">employees</span><span class="p">.</span><span class="n">dept_emp</span><span class="p">.</span><span class="n">to_date</span> <span class="o">&gt;</span> <span class="n">CURDATE</span><span class="p">()</span>
+    <span class="k">AND</span> <span class="n">employees</span><span class="p">.</span><span class="n">salaries</span><span class="p">.</span><span class="n">to_date</span> <span class="o">&gt;</span> <span class="n">CURDATE</span><span class="p">();</span>
 </pre></div>
 <div class="highlight"><pre><span></span><span class="c1">-- Once I have created my dept_employees table, I can query this subset of the employees dataset.</span>
 
 <span class="k">SELECT</span> <span class="n">ROUND</span><span class="p">(</span><span class="k">AVG</span><span class="p">(</span><span class="n">salary</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="n">avg_salary</span>
 <span class="k">FROM</span> <span class="n">dept_employees</span><span class="p">;</span>
 </pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Modify-Temporary-Tables">Modify Temporary Tables<a class="anchor-link" href="#Modify-Temporary-Tables">&#182;</a></h3><p>After you create a temporary table, you can make changes.</p>
 <div class="highlight"><pre><span></span><span class="n">USE</span> <span class="n">bayes_123</span><span class="p">;</span>
 
