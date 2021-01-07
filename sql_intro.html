@@ -13468,7 +13468,7 @@ $( document ).ready(function(){
 </li>
 </ul>
 <h5 id="Aggregating-Data">Aggregating Data<a class="anchor-link" href="#Aggregating-Data">&#182;</a></h5><p>I can use the <code>GROUP BY</code> clause with aggregate functions to return summary statistics.</p>
-<div class="alert alert-block alert-danger">Any non-aggregated column included in your SELECT statement must also be included in your GROUP BY clause. If it's listed in your SELECT statement, it must be in your GROUP BY caluse; if it's listed in your GROUP BY clause, it must be listed in your SELECT statement.</div><p>A <code>GROUP BY</code> clause can be combined with aggregate functions to turn a range of numbers into a single data point based on a variety of mathematical operations.</p>
+<div class="alert alert-block alert-danger">If a field is listed in your GROUP BY clause, it must be listed in your SELECT statement. Think of this as the dimension by which you will calculate a metric.</div><p>A <code>GROUP BY</code> clause can be combined with aggregate functions to turn a range of numbers into a single data point based on a variety of mathematical operations.</p>
 <blockquote><p><code>SUM()</code>, <code>MIN()</code>, <code>MAX()</code>, <code>COUNT()</code>, <code>AVG()</code>, <code>STDDEV()</code></p>
 </blockquote>
 <div class="alert alert-block alert-info"><b>Tip: </b>Nest your aggregate function in a ROUND(value, digits after decimal place) function when you're ready to clean up your results.</div>
