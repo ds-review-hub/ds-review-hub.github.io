@@ -13290,7 +13290,7 @@ $( document ).ready(function(){
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Numeric-Types--&gt;-int,-float"><strong>Numeric Types -&gt;</strong> <code>int</code>, <code>float</code><a class="anchor-link" href="#Numeric-Types--&gt;-int,-float">&#182;</a></h4><p>An <code>int</code> is a whole number and a <code>float</code> is a decimal number. <em>Jumping ahead a bit, you will find out that missing values are also considered <code>float</code> types.</em></p>
+<h4 id="Numeric-Types--&gt;-int,-float"><strong>Numeric Types -&gt;</strong> <code>int</code>, <code>float</code><a class="anchor-link" href="#Numeric-Types--&gt;-int,-float">&#182;</a></h4><p>An <code>int</code> is a whole number and a <code>float</code> is a decimal number. Both <code>int</code> and <code>float</code> data types are immutable objects. <em>Jumping ahead a bit, you will find out that missing values are also considered <code>float</code> types.</em></p>
 
 </div>
 </div>
@@ -13407,7 +13407,7 @@ $( document ).ready(function(){
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Boolean-Type--&gt;-bool"><strong>Boolean Type -&gt;</strong> <code>bool</code><a class="anchor-link" href="#Boolean-Type--&gt;-bool">&#182;</a></h4><p>Boolean values, <code>True</code> and <code>False</code>, are not strings, so they do not go in quotation marks, and they are case sensitive. Rather they inform me if my expression or condition logic evaluates to <code>True</code> or <code>False</code>. It's common to hear that a value is truthy or falsy. You can also think of boolean values as binary integers in that <code>True == 1</code> and <code>False == 0</code>.</p>
+<h4 id="Boolean-Type--&gt;-bool"><strong>Boolean Type -&gt;</strong> <code>bool</code><a class="anchor-link" href="#Boolean-Type--&gt;-bool">&#182;</a></h4><p>Boolean values, <code>True</code> and <code>False</code>, are not strings, so they do not go in quotation marks, and they are case sensitive. Rather they inform me if my expression or condition logic evaluates to <code>True</code> or <code>False</code>. It's common to hear that a value is truthy or falsy. You can also think of boolean values as binary integers in that <code>True == 1</code> and <code>False == 0</code>. This data type is also immutable.</p>
 
 </div>
 </div>
@@ -13597,7 +13597,7 @@ $( document ).ready(function(){
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>A Python String</strong> can be surrounded by single or double quotation marks. I can have an empty string with no characters or a string can contain multiple words, numbers, symbols, and whitespace characters. Click <a href="#strings">here</a> to see what you can do with strings.</p>
+<p><strong>A Python String</strong> can be surrounded by single or double quotation marks. I can have an empty string with no characters or a string can contain multiple words, numbers, symbols, and whitespace characters. The string data type is an immutable object, so if you want to keep changes you make to your string using a method, for example, you have to either assign or reassign the results of the operation to a variable. Click <a href="#strings">here</a> to see what you can do with strings.</p>
 
 </div>
 </div>
@@ -14217,7 +14217,7 @@ $( document ).ready(function(){
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>A Python dictionary</strong> object is made up key:value pairs separated by a comma. It is a mutable object that does not allow duplicates. <em>Notice the curly brackets surrounding the key:value pairs.</em></p>
+<p><strong>A Python dictionary</strong> object is an unordered collection of data values made up of key:value pairs with a <code>:</code> separating each key and its value and a <code>,</code> separating each key:pair. It is a mutable object but it does not allow duplicate keys. If you try to assign a new key:value pair to an existing dictionary with a key that already exists in your dictionary, it will not add the new key:value pair but instead update the value of the existing key in your dictionary. <em>Notice the curly brackets surrounding the key:value pairs.</em></p>
 <p>I can create a Python dictionary in several different ways:</p>
 
 </div>
@@ -14225,7 +14225,7 @@ $( document ).ready(function(){
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># I can create an empty dictionary as simply as this with the dictionary constructor...</span>
@@ -14257,7 +14257,7 @@ $( document ).ready(function(){
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[24]:</div>
+    <div class="prompt output_prompt">Out[2]:</div>
 
 
 
@@ -14274,7 +14274,7 @@ $( document ).ready(function(){
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># I can create a populated dictionary from the very start; notice it can contain key/value pairs.</span>
@@ -14306,13 +14306,63 @@ $( document ).ready(function(){
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[25]:</div>
+    <div class="prompt output_prompt">Out[3]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
 <pre>{&#39;weekday&#39;: &#39;Thursday&#39;, &#39;day&#39;: 20, &#39;month&#39;: &#39;October&#39;, &#39;year&#39;: 2020}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Watch what happens if I try to add a new key:value pair to my dictionary with a duplicate key.</span>
+
+<span class="n">day_dict</span><span class="p">[</span><span class="s1">&#39;weekday&#39;</span><span class="p">]</span> <span class="o">=</span>  <span class="s1">&#39;Saturday&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># When I use dictionary indexing to access the value of weekday now, the value of weekday has been updated.</span>
+
+<span class="n">day_dict</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[8]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;weekday&#39;: &#39;Saturday&#39;, &#39;day&#39;: 20, &#39;month&#39;: &#39;October&#39;, &#39;year&#39;: 2020}</pre>
 </div>
 
 </div>
@@ -14331,7 +14381,7 @@ $( document ).ready(function(){
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">day_dict</span><span class="p">[</span><span class="s1">&#39;weekday&#39;</span><span class="p">]</span>
@@ -14347,13 +14397,13 @@ $( document ).ready(function(){
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[26]:</div>
+    <div class="prompt output_prompt">Out[7]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&#39;Thursday&#39;</pre>
+<pre>&#39;Saturday&#39;</pre>
 </div>
 
 </div>
@@ -14671,14 +14721,14 @@ $( document ).ready(function(){
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="String-Methods">String Methods<a class="anchor-link" href="#String-Methods">&#182;</a></h3><p>There are a ton of useful built-in methods that can be accessed using dot notation with Python string variables. To check out some of these methods, let's create a variable that holds a string as an example. To check out way more, check the doc <a href="https://www.tutorialspoint.com/python/python_strings.htm">here</a>.</p>
+<h3 id="String-Methods">String Methods<a class="anchor-link" href="#String-Methods">&#182;</a></h3><p>There are a ton of useful built-in methods that can be accessed using dot notation with Python string objects. These are basically built-in functions that can be used with this type of object. To check out some of these methods, let's create a variable that holds a string object as an example. To check out way more, check the doc <a href="https://www.tutorialspoint.com/python/python_strings.htm">here</a>.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">a_string</span> <span class="o">=</span> <span class="s1">&#39;I am a string!&#39;</span>
@@ -14691,7 +14741,7 @@ $( document ).ready(function(){
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[33]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">a_string</span><span class="p">)</span>
@@ -14707,7 +14757,7 @@ $( document ).ready(function(){
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[33]:</div>
+    <div class="prompt output_prompt">Out[10]:</div>
 
 
 
@@ -14733,14 +14783,14 @@ $( document ).ready(function(){
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id=".lower(),-.upper(),-.capitalize(),-.title(),-swapcase()"><code>.lower()</code>, <code>.upper()</code>, <code>.capitalize()</code>, <code>.title()</code>, <code>swapcase()</code><a class="anchor-link" href="#.lower(),-.upper(),-.capitalize(),-.title(),-swapcase()">&#182;</a></h4><p>These string methods transform the characters in my string to either lowercase or uppercase in various ways. Check out the examples below:</p>
+<h4 id=".lower(),-.upper(),-.capitalize(),-.title(),-swapcase()"><code>.lower()</code>, <code>.upper()</code>, <code>.capitalize()</code>, <code>.title()</code>, <code>swapcase()</code><a class="anchor-link" href="#.lower(),-.upper(),-.capitalize(),-.title(),-swapcase()">&#182;</a></h4><p>These string methods return new strings with the characters either lowercase or uppercase in various ways. Since Python strings objects are immuntable, if I want to store the new string, I have to assign it to a new variable or reassign it to the original variable. Check out the examples below:</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[34]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">a_string</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
@@ -14756,13 +14806,48 @@ $( document ).ready(function(){
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[34]:</div>
+    <div class="prompt output_prompt">Out[11]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
 <pre>&#39;i am a string!&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Notice that the original string has not been mutated because I didn&#39;t reassign the results above.</span>
+
+<span class="n">a_string</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[12]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;I am a string!&#39;</pre>
 </div>
 
 </div>
@@ -14908,7 +14993,7 @@ $( document ).ready(function(){
 <div class="prompt input_prompt">In&nbsp;[39]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Using a string method doesn&#39;t mutate my original string; it returns a copy I can use or assign.</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Again, using a string method doesn&#39;t mutate my original string; it returns a copy I can use or assign.</span>
 
 <span class="n">a_string</span>
 </pre></div>
@@ -15070,13 +15155,13 @@ $( document ).ready(function(){
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id=".strip(),-.replace()"><code>.strip()</code>, <code>.replace()</code><a class="anchor-link" href="#.strip(),-.replace()">&#182;</a></h4><p>These string methods are useful to perform a little string cleanup by removing any whitespace from the beginning or end of my string and replacing a string with another string.</p>
-<div class="highlight"><pre><span></span><span class="c1"># default for strip is to take out whitespace; `[chars]` is optional.</span>
+<div class="highlight"><pre><span></span><span class="c1"># The default behavior for strip is to take out leading or trailing whitespace; `[chars]` is optional.</span>
 
 <span class="nb">str</span><span class="o">.</span><span class="n">strip</span><span class="p">([</span><span class="n">chars</span><span class="p">])</span>
 <span class="nb">str</span><span class="o">.</span><span class="n">lstrip</span><span class="p">([</span><span class="n">chars</span><span class="p">])</span>
 <span class="nb">str</span><span class="o">.</span><span class="n">rstrip</span><span class="p">([</span><span class="n">chars</span><span class="p">])</span>
 
-<span class="c1"># default replaces all occurences of the old with the new; this can be adjusted.</span>
+<span class="c1"># The default behavior of replace replaces ALL occurences of the old with the new; this can be adjusted.</span>
 
 <span class="n">string</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">old</span><span class="p">,</span> <span class="n">new</span><span class="p">,</span> <span class="p">[</span><span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
