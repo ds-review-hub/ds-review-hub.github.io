@@ -10,7 +10,7 @@ Pandas Review Notebooks
 
 >These notebooks introduce the pandas library from Series objects to DataFrame objects including their common attributes, methods, and chaining techniques.
 
-[Pandas Series Review Notebook](https://ds-review-hub.github.io/pandas_series_review)
+[Pandas Series Review Notebook](https://ds-review-hub.github.io/pandas_series_review/pandas_series_review)
 
 >This notebook covers creating, indexing, and using methods and attributes with the pandas Series object.
 
