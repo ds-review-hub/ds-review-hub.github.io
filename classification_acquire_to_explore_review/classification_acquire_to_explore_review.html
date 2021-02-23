@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>classification_review</title>
+<title>classification_acquire_to_explore_review</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13139,7 +13139,7 @@ $( document ).ready(function(){
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Classification">Classification<a class="anchor-link" href="#Classification">&#182;</a></h2>
+<h1 id="Classification">Classification<a class="anchor-link" href="#Classification">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -14270,7 +14270,8 @@ $( document ).ready(function(){
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Preparation---Imputing-and-Encoding-Focus">Preparation - Imputing and Encoding Focus<a class="anchor-link" href="#Preparation---Imputing-and-Encoding-Focus">&#182;</a></h2>
+<h2 id="Prepare">Prepare<a class="anchor-link" href="#Prepare">&#182;</a></h2><p>This notebook will have an Imputing and Encoding focus. In Regression, I will focus more on scaling.</p>
+
 </div>
 </div>
 </div>
@@ -14905,14 +14906,14 @@ dtype: float64</pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Encoding-Technique-Before-Splitting">Encoding Technique Before Splitting<a class="anchor-link" href="#Encoding-Technique-Before-Splitting">&#182;</a></h3>
+<h4 id="Encoding-Technique-Before-Splitting">Encoding Technique Before Splitting<a class="anchor-link" href="#Encoding-Technique-Before-Splitting">&#182;</a></h4>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="pd.get_dummies()"><code>pd.get_dummies()</code><a class="anchor-link" href="#pd.get_dummies()">&#182;</a></h4><p>Remeber that I perform this manipulation here before I split my data. This is a simple way to encode categorical variables, and we will look at some more sophisticated techniques a bit farther down.</p>
+<h5 id="pd.get_dummies()"><code>pd.get_dummies()</code><a class="anchor-link" href="#pd.get_dummies()">&#182;</a></h5><p>Remeber that I perform this manipulation here before I split my data. This is a simple way to encode categorical variables, and we will look at some more sophisticated techniques a bit farther down.</p>
 
 </div>
 </div>
@@ -15137,7 +15138,7 @@ dtype: float64</pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id=".drop()"><code>.drop()</code><a class="anchor-link" href="#.drop()">&#182;</a></h4><p>If I'm going to drop any columns or rows, I can do it right here before the split. There are some categorical columns I'm not dropping because I want to use them in explore. I'm choosing to keep my dataframe exploration-friendly, and I can curate columns for modeling later.</p>
+<h5 id=".drop()"><code>.drop()</code><a class="anchor-link" href="#.drop()">&#182;</a></h5><p>If I'm going to drop any columns or rows, I can do it right here before the split. There are some categorical columns I'm not dropping because I want to use them in explore. I'm choosing to keep my dataframe exploration-friendly, and I can curate columns for modeling later.</p>
 
 </div>
 </div>
@@ -15204,7 +15205,7 @@ memory usage: 78.4+ KB
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Split-Your-Data">Split Your Data<a class="anchor-link" href="#Split-Your-Data">&#182;</a></h3>
+<h2 id="Split-Your-Data">Split Your Data<a class="anchor-link" href="#Split-Your-Data">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -15213,6 +15214,54 @@ memory usage: 78.4+ KB
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong><font color=red></font></strong></p>
 <div class="alert alert-block alert-warning">Split before you begin exploring variable relationships or performing calculations like find the mean to impute for missing values.</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3><strong><font color=red>What is Splitting?</font></strong></h3>
+<p>At this stage, you will create train (in-sample), validate (out-of-sample), and test (out-of-sample) dataframes using the train_test_split function from Sklearn. This will randomly split your dataset into train, validate, and test by the percentage you pass into the function. You will use the train set to do exactly that, train your model to make predictions. You will use your validate set to evalute your model's performance on unseen data and ensure that it didn't learn too much from your train set causing it to 'overfit' on a particular set of data. You will repeat that process for each model you create, and finally you will choose your best model to use with your test dataset.</p>
+<p><img src="data:image/jpeg;base64,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" alt="train, validate, test split"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="alert alert-block alert-warning">
+<b>Be Aware:</b> You may need to stratify your split on a particular feature, so that the proportion of a feature's values is the same in your train, validate, and test datasets. You can pass the stratify parameter as an option to your train_test_split.
+</div><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="c1"># Create test dataset</span>
+
+<span class="n">train_validate</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> 
+                                        <span class="n">test_size</span><span class="o">=.</span><span class="mi">2</span><span class="p">,</span> 
+                                        <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">,</span> 
+                                        <span class="n">stratify</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
+<span class="c1"># Create train and validate datsets</span>
+
+<span class="n">train</span><span class="p">,</span> <span class="n">validate</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">train_validate</span><span class="p">,</span> 
+                                   <span class="n">test_size</span><span class="o">=.</span><span class="mi">3</span><span class="p">,</span> 
+                                   <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">,</span> 
+                                   <span class="n">stratify</span><span class="o">=</span><span class="n">train_validate</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
+
+<span class="c1"># Take a look at your split datasets</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;train -&gt; </span><span class="si">{</span><span class="n">train</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;validate -&gt; </span><span class="si">{</span><span class="n">validate</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;test -&gt; </span><span class="si">{</span><span class="n">test</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+
 </div>
 </div>
 </div>
@@ -15281,7 +15330,33 @@ test -&gt; (179, 13)
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Now I can investigate the relationship between two columns.</strong></p>
+<h3><strong><font color=orange>So What?</font></strong></h3>
+<p>You may <strong>explore individual variables before splitting</strong> your data into train, validate, and test datasets, so that you can look at distributions, identify outliers, Nulls, etc. However, <strong>when looking at interactions of variables</strong>, your data should first be split before you explore. You should also split your data <strong>before</strong> you scale. This is because your validate and test data should remain unseen as much as possible as it is supposed to be unknown at this stage.</p>
+<p><em>An important component of Data Science is that peers must be able to replicate what you have done to your data, especially if you are going to deploy your model to be used in the future. By splitting your data into train, validate, and test sets early on in the pipeline, you are also confirming that any processing you completed on your train set is repeatable on your validate and test datasets as well as unseen future sets.</em></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3><strong><font color=green>Now What?</font></strong></h3>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Now I can investigate the relationship between two columns without worrying about data leakage from supposedly unseen or future data by using my train dataset.</strong></p>
 
 </div>
 </div>
@@ -15430,14 +15505,14 @@ test -&gt; (179, 13)
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Imputing-Techniques">Imputing Techniques<a class="anchor-link" href="#Imputing-Techniques">&#182;</a></h3>
+<h4 id="Imputing-Techniques">Imputing Techniques<a class="anchor-link" href="#Imputing-Techniques">&#182;</a></h4>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id=".fillna()"><code>.fillna()</code><a class="anchor-link" href="#.fillna()">&#182;</a></h4><p><strong>Fill null values in a column in your datasets with a constant like 0; reassign to original dataframes.</strong></p>
+<h5 id=".fillna()"><code>.fillna()</code><a class="anchor-link" href="#.fillna()">&#182;</a></h5><p><strong>Fill null values in a column in your datasets with a constant like 0; reassign to original dataframes.</strong></p>
 <div class="highlight"><pre><span></span><span class="n">train</span><span class="p">[</span><span class="s1">&#39;col&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">train</span><span class="p">[</span><span class="s1">&#39;col&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="n">validate</span><span class="p">[</span><span class="s1">&#39;col&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">validate</span><span class="p">[</span><span class="s1">&#39;col&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -15516,7 +15591,7 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_82_0.png"
+<img src="output_88_0.png"
 >
 </div>
 
@@ -15537,7 +15612,7 @@ test -&gt; (179, 13)
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id=".SimpleImputer()"><code>.SimpleImputer()</code><a class="anchor-link" href="#.SimpleImputer()">&#182;</a></h4><p>We can also use some more sophisticated techniques using sklearn. <strong>Sklearn's SimpleImputer ONLY works on numeric columns.</strong></p>
+<h5 id=".SimpleImputer()"><code>.SimpleImputer()</code><a class="anchor-link" href="#.SimpleImputer()">&#182;</a></h5><p>We can also use some more sophisticated techniques using sklearn. <strong>Sklearn's SimpleImputer ONLY works on numeric columns.</strong></p>
 <p><strong>Create the imputer; pick your strategy.</strong></p>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <span class="n">SimpleImputer</span>
 
@@ -15568,7 +15643,7 @@ test -&gt; (179, 13)
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="What-if-our-missing-values-are-in-a-categorical-column?">What if our missing values are in a categorical column?<a class="anchor-link" href="#What-if-our-missing-values-are-in-a-categorical-column?">&#182;</a></h4><p>Here's one way you could handle this if without dropping observations.</p>
+<h5 id="What-if-our-missing-values-are-in-a-categorical-column?">What if our missing values are in a categorical column?<a class="anchor-link" href="#What-if-our-missing-values-are-in-a-categorical-column?">&#182;</a></h5><p>Here's one way you could handle this if without dropping observations.</p>
 <div class="highlight"><pre><span></span><span class="n">cat_mode</span> <span class="o">=</span> <span class="n">train</span><span class="p">[</span><span class="s1">&#39;Label&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
 <span class="n">train</span><span class="p">[</span><span class="s1">&#39;cat_column&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">train</span><span class="p">[</span><span class="s1">&#39;cat_column&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">cat_mode</span><span class="p">)</span>
@@ -15719,14 +15794,14 @@ test -&gt; (179, 13)
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Encoding-Techniques-AFTER-Splitting">Encoding Techniques AFTER Splitting<a class="anchor-link" href="#Encoding-Techniques-AFTER-Splitting">&#182;</a></h3>
+<h4 id="Encoding-Techniques-AFTER-Splitting">Encoding Techniques AFTER Splitting<a class="anchor-link" href="#Encoding-Techniques-AFTER-Splitting">&#182;</a></h4>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="LabelEncoder()"><code>LabelEncoder()</code><a class="anchor-link" href="#LabelEncoder()">&#182;</a></h4><p><strong>Create the Encoder Object.</strong></p>
+<h5 id="LabelEncoder()"><code>LabelEncoder()</code><a class="anchor-link" href="#LabelEncoder()">&#182;</a></h5><p><strong>Create the Encoder Object.</strong></p>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">LabelEncoder</span>
 
 <span class="n">le</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
@@ -15761,7 +15836,7 @@ test -&gt; (179, 13)
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="OneHotEncoder()"><code>OneHotEncoder()</code><a class="anchor-link" href="#OneHotEncoder()">&#182;</a></h4><p><strong>Create the OHE Object.</strong></p>
+<h5 id="OneHotEncoder()"><code>OneHotEncoder()</code><a class="anchor-link" href="#OneHotEncoder()">&#182;</a></h5><p><strong>Create the OHE Object.</strong></p>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">OneHotEncoder</span>
 
 <span class="n">ohe</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">sparse</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">categories</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
@@ -15802,7 +15877,7 @@ test -&gt; (179, 13)
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Exploring">Exploring<a class="anchor-link" href="#Exploring">&#182;</a></h2>
+<h2 id="Explore">Explore<a class="anchor-link" href="#Explore">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -15879,7 +15954,7 @@ test -&gt; (179, 13)
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="plt.rc()"><code>plt.rc()</code><a class="anchor-link" href="#plt.rc()">&#182;</a></h4><p>Set uniform chart and font sizes at the top of your notebook if you like.</p>
+<h5 id="plt.rc()"><code>plt.rc()</code><a class="anchor-link" href="#plt.rc()">&#182;</a></h5><p>Set uniform chart and font sizes at the top of your notebook if you like.</p>
 <div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;figure&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">num</span><span class="p">))</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">num</span><span class="p">)</span>
@@ -15899,7 +15974,7 @@ test -&gt; (179, 13)
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="sns.countplot()-subplots"><code>sns.countplot()</code> subplots<a class="anchor-link" href="#sns.countplot()-subplots">&#182;</a></h4><p>Compare Categorical Values in <code>Embarked</code>using subplot Barplots.</p>
+<h5 id="sns.countplot()-subplots"><code>sns.countplot()</code> subplots<a class="anchor-link" href="#sns.countplot()-subplots">&#182;</a></h5><p>Compare Categorical Values in <code>Embarked</code>using subplot Barplots.</p>
 
 </div>
 </div>
@@ -16027,118 +16102,6 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_111_0.png"
->
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="sns.boxplot()"><code>sns.boxplot()</code><a class="anchor-link" href="#sns.boxplot()">&#182;</a></h4><p>Boxplots to show Distribution of Age by Sex and Survival</p>
-<div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;categorical&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;continous&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span> <span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;categorical&#39;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[36]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;survived&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;Purples&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;How Do Age and Sex Relate to Survival?&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-
-<div class="output_png output_subarea ">
-<img src="output_114_0.png"
->
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="sns.swarmplot()"><code>sns.swarmplot()</code><a class="anchor-link" href="#sns.swarmplot()">&#182;</a></h4><p>Swarmplots to show Distribution of a Continuous Variable grouped by Categorical Variables.</p>
-<div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">swarmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;categorical&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;continous&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span> <span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;categorical&#39;</span>  <span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[37]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">swarmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span> <span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;survived&#39;</span>  <span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;How Do Age and Sex Relate to Survival?&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-
-<div class="output_png output_subarea ">
 <img src="output_117_0.png"
 >
 </div>
@@ -16160,8 +16123,8 @@ test -&gt; (179, 13)
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="sns.violinplot()"><code>sns.violinplot()</code><a class="anchor-link" href="#sns.violinplot()">&#182;</a></h4><p>Violinplot Similar to Boxplots.</p>
-<div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;categorical&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;continous&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span> <span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;categorical&#39;</span>  <span class="p">)</span>
+<h5 id="sns.boxplot()"><code>sns.boxplot()</code><a class="anchor-link" href="#sns.boxplot()">&#182;</a></h5><p>Boxplots to show Distribution of Age by Sex and Survival</p>
+<div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;categorical&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;continous&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span> <span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;categorical&#39;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -16169,15 +16132,13 @@ test -&gt; (179, 13)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[38]:</div>
+<div class="prompt input_prompt">In&nbsp;[36]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;fare&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span> <span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;survived&#39;</span>  <span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;survived&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;Purples&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;How Do Fare and Sex Relate to Survival Status?&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;How Do Age and Sex Relate to Survival?&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;fare in US $&#39;</span><span class="p">)</span>
-
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
@@ -16218,7 +16179,121 @@ test -&gt; (179, 13)
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id=".hist()-subplots"><code>.hist()</code> subplots<a class="anchor-link" href="#.hist()-subplots">&#182;</a></h4><p>Histogram Subplots to View Distribution of Fare by Survival Status.</p>
+<h5 id="sns.swarmplot()"><code>sns.swarmplot()</code><a class="anchor-link" href="#sns.swarmplot()">&#182;</a></h5><p>Swarmplots to show Distribution of a Continuous Variable grouped by Categorical Variables.</p>
+<div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">swarmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;categorical&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;continous&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span> <span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;categorical&#39;</span>  <span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">swarmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span> <span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;survived&#39;</span>  <span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;How Do Age and Sex Relate to Survival?&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="output_123_0.png"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="sns.violinplot()"><code>sns.violinplot()</code><a class="anchor-link" href="#sns.violinplot()">&#182;</a></h5><p>Violinplot Similar to Boxplots.</p>
+<div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;categorical&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;continous&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span> <span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;categorical&#39;</span>  <span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[38]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;fare&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span> <span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;survived&#39;</span>  <span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;How Do Fare and Sex Relate to Survival Status?&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;fare in US $&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="output_126_0.png"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id=".hist()-subplots"><code>.hist()</code> subplots<a class="anchor-link" href="#.hist()-subplots">&#182;</a></h5><p>Histogram Subplots to View Distribution of Fare by Survival Status.</p>
 
 </div>
 </div>
@@ -16262,7 +16337,7 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_123_0.png"
+<img src="output_129_0.png"
 >
 </div>
 
@@ -16283,7 +16358,7 @@ test -&gt; (179, 13)
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="pd.crosstab-with-sns.heatmap()"><code>pd.crosstab</code> with <code>sns.heatmap()</code><a class="anchor-link" href="#pd.crosstab-with-sns.heatmap()">&#182;</a></h4><p>Crosstab with Heatmap to Group Variables and Visualize Correlations.</p>
+<h5 id="pd.crosstab-with-sns.heatmap()"><code>pd.crosstab</code> with <code>sns.heatmap()</code><a class="anchor-link" href="#pd.crosstab-with-sns.heatmap()">&#182;</a></h5><p>Crosstab with Heatmap to Group Variables and Visualize Correlations.</p>
 
 </div>
 </div>
@@ -16325,7 +16400,7 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_126_0.png"
+<img src="output_132_0.png"
 >
 </div>
 
@@ -16381,7 +16456,7 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_128_0.png"
+<img src="output_134_0.png"
 >
 </div>
 
@@ -16402,7 +16477,7 @@ test -&gt; (179, 13)
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id=".groupby()"><code>.groupby()</code><a class="anchor-link" href="#.groupby()">&#182;</a></h3><p><strong>Use a Groupby to Explore Different Aggregations of Your Data.</strong></p>
+<h5 id=".groupby()"><code>.groupby()</code><a class="anchor-link" href="#.groupby()">&#182;</a></h5><p><strong>Use a Groupby to Explore Different Aggregations of Your Data.</strong></p>
 <p>The <code>.groupby()</code> here creates a Series with an index containing the categories present in the <code>Survived</code> column and the average fare price for each index category.</p>
 <blockquote><p>To inspect percentages by group, set <code>normalize=True</code>.</p>
 </blockquote>
@@ -16488,7 +16563,7 @@ Name: fare, dtype: float64</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="output_133_0.png"
+<img src="output_139_0.png"
 >
 </div>
 
@@ -16559,7 +16634,7 @@ Name: fare, dtype: float64</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="output_136_0.png"
+<img src="output_142_0.png"
 >
 </div>
 
@@ -16612,7 +16687,7 @@ Name: fare, dtype: float64</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="output_138_0.png"
+<img src="output_144_0.png"
 >
 </div>
 
@@ -16633,7 +16708,7 @@ Name: fare, dtype: float64</pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="pd.crosstab()-and-pd.pivot_table()-with-sns.heatmap()"><code>pd.crosstab()</code> and <code>pd.pivot_table()</code> with <code>sns.heatmap()</code><a class="anchor-link" href="#pd.crosstab()-and-pd.pivot_table()-with-sns.heatmap()">&#182;</a></h3><p>Exploring 2 Different Categorical Values</p>
+<h5 id="pd.crosstab()-and-pd.pivot_table()-with-sns.heatmap()"><code>pd.crosstab()</code> and <code>pd.pivot_table()</code> with <code>sns.heatmap()</code><a class="anchor-link" href="#pd.crosstab()-and-pd.pivot_table()-with-sns.heatmap()">&#182;</a></h5><p>Exploring 2 Different Categorical Values</p>
 
 </div>
 </div>
@@ -16670,7 +16745,7 @@ Name: fare, dtype: float64</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="output_141_0.png"
+<img src="output_147_0.png"
 >
 </div>
 
@@ -16797,7 +16872,7 @@ Name: fare, dtype: float64</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="output_144_0.png"
+<img src="output_150_0.png"
 >
 </div>
 
@@ -16818,7 +16893,7 @@ Name: fare, dtype: float64</pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="pd.cut()-and-pd.qcut()"><code>pd.cut()</code> and <code>pd.qcut()</code><a class="anchor-link" href="#pd.cut()-and-pd.qcut()">&#182;</a></h4><p><strong>I can use binning for exploration.</strong></p>
+<h5 id="pd.cut()-and-pd.qcut()"><code>pd.cut()</code> and <code>pd.qcut()</code><a class="anchor-link" href="#pd.cut()-and-pd.qcut()">&#182;</a></h5><p><strong>I can use binning for exploration.</strong></p>
 <div class="highlight"><pre><span></span><span class="c1"># for even intervals but not evenly distributed values in each bin</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">column</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="p">[],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[])</span>   
 
@@ -17057,7 +17132,7 @@ Name: survived, dtype: float64</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="output_149_0.png"
+<img src="output_155_0.png"
 >
 </div>
 
@@ -17102,7 +17177,7 @@ Name: survived, dtype: float64</pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Subplots-Using-Simple-pyplot-Code">Subplots Using Simple pyplot Code<a class="anchor-link" href="#Subplots-Using-Simple-pyplot-Code">&#182;</a></h4><div class="highlight"><pre><span></span><span class="c1"># figure 1 of 2; everything up until the next subplot is on the first plot</span>
+<h5 id="Subplots-Using-Simple-pyplot-Code">Subplots Using Simple pyplot Code<a class="anchor-link" href="#Subplots-Using-Simple-pyplot-Code">&#182;</a></h5><div class="highlight"><pre><span></span><span class="c1"># figure 1 of 2; everything up until the next subplot is on the first plot</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">211</span><span class="p">)</span> 
 
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
@@ -17131,7 +17206,7 @@ Name: survived, dtype: float64</pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Subplots-Using-Matplotlib-Object-Oriented-API">Subplots Using Matplotlib Object-Oriented API<a class="anchor-link" href="#Subplots-Using-Matplotlib-Object-Oriented-API">&#182;</a></h4><p>A figure in matplotlib is divided into two different objects:</p>
+<h5 id="Subplots-Using-Matplotlib-Object-Oriented-API">Subplots Using Matplotlib Object-Oriented API<a class="anchor-link" href="#Subplots-Using-Matplotlib-Object-Oriented-API">&#182;</a></h5><p>A figure in matplotlib is divided into two different objects:</p>
 <ul>
 <li><p>The Figure Class: It can contain one or more axes objects.</p>
 </li>
@@ -17204,7 +17279,7 @@ Name: survived, dtype: float64</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="output_159_0.png"
+<img src="output_165_0.png"
 >
 </div>
 
@@ -17213,1418 +17288,6 @@ Name: survived, dtype: float64</pre>
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>I'm ready to build my first model; I'm going to build a simple MVP Logistic Regression Model and see if I can beat my baseline accuracy.</strong></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr style="border-top: 10px groove crimson; margin-top: 1px; margin-bottom: 1px"></hr>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Modeling">Modeling<a class="anchor-link" href="#Modeling">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr style="border-top: 10px groove crimson; margin-top: 1px; margin-bottom: 1px"></hr>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3><font color=red>What is a Logistic Regression Model?</font></h3>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li><p><strong>A Logistic Regression Model</strong> maps any real value into a number between 0 and 1 representing the probability that an observation is in the positive class.</p>
-</li>
-<li><p><strong>Overall</strong>, makes a great baseline model because of the quick and easy implementation and ease of interpretation.</p>
-</li>
-<li><p><strong>Pros:</strong> Easy to interpret, fast to train and predict making this a great first classification model to try.</p>
-</li>
-<li><p><strong>Cons:</strong> Not as interpretable as showing a picture like a Decision Tree Classifier, assumption that the X predictors are independent, multi-class classification gets more complicated to interpret and explain</p>
-</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3><font color=orange>So What?</font></h3>
-<ul>
-<li>Both Scikit-Learn and Statsmodels can be used to create and evaluate Logistic Regression Classifiers.</li>
-</ul>
-<ul>
-<li>When we have a multiclass classifier, the coefficients of the X variables can inform us of their importance. </li>
-</ul>
-<ul>
-<li>Our predictions are a number between 0 and 1 informing us of the probability that an observation is in the positive class.</li>
-</ul>
-<ul>
-<li>We can set a threshold to 'snap' our probabilities to a 0 or 1, not a member of our positive class or member of the positive class respectively.</li>
-</ul>
-<ul>
-<li>As you decrease your threshold, the Recall of your model increases. This is a good idea when you want to decrease your Type II errors or False Negatives. When it's more costly to miss a positive, you might decrease your threshold a bit.</li>
-</ul>
-<ul>
-<li>As you increase your threshold, the Precision of your model increases. This is a good idea when you want to decrease your Type I errors or False Positives. When it's more costly to falsely identify an observation as a positive case that is actually a negative case, you might want to increase your threshold a bit.</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3><font color=green>Now What?</font></h3>
-<p>Now I need to create a Baseline to compare my models to. Then, I'll create my first Logistic Regression Model; if its accuracy is better than my baseline, then I'll evaulate it.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Baseline">Baseline<a class="anchor-link" href="#Baseline">&#182;</a></h3><p><strong>Predicting the most common case for everything.</strong></p>
-<p>62% of the observations did not survive. So, if you predict all of your observations did not survive, your baseline will predict its target correctly 62% of the time, or in other words, <strong>your baseline accuracy is 62%.</strong> If your model doesn't predict correctly more than 62% of the time, your model doesn't add value.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[53]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">train</span><span class="o">.</span><span class="n">survived</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[53]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>0    0.616466
-1    0.383534
-Name: survived, dtype: float64</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Define-X-and-y">Define X and y<a class="anchor-link" href="#Define-X-and-y">&#182;</a></h4>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[54]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># I will decide here what my X variables will be; my y is `survived`, my target.</span>
-
-<span class="n">train</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[54]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>survived</th>
-      <th>pclass</th>
-      <th>sex</th>
-      <th>age</th>
-      <th>sibsp</th>
-      <th>parch</th>
-      <th>fare</th>
-      <th>class</th>
-      <th>embark_town</th>
-      <th>alone</th>
-      <th>is_female</th>
-      <th>Q</th>
-      <th>S</th>
-      <th>age_group</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>583</th>
-      <td>0</td>
-      <td>1</td>
-      <td>male</td>
-      <td>36.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>40.125</td>
-      <td>First</td>
-      <td>Cherbourg</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>adult</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[55]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># I will drop any remaining categorical features I have left.</span>
-
-<span class="n">X_train</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;survived&#39;</span><span class="p">,</span> <span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="s1">&#39;embark_town&#39;</span><span class="p">,</span> <span class="s1">&#39;age_group&#39;</span><span class="p">])</span>
-<span class="n">y_train</span> <span class="o">=</span> <span class="n">train</span><span class="p">[[</span><span class="s1">&#39;survived&#39;</span><span class="p">]]</span>
-
-<span class="n">X_validate</span> <span class="o">=</span> <span class="n">validate</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;survived&#39;</span><span class="p">,</span><span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="s1">&#39;embark_town&#39;</span><span class="p">])</span>
-<span class="n">y_validate</span> <span class="o">=</span> <span class="n">validate</span><span class="p">[[</span><span class="s1">&#39;survived&#39;</span><span class="p">]]</span>
-
-<span class="n">X_test</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;survived&#39;</span><span class="p">,</span><span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="s1">&#39;embark_town&#39;</span><span class="p">])</span>
-<span class="n">y_test</span> <span class="o">=</span> <span class="n">test</span><span class="p">[[</span><span class="s1">&#39;survived&#39;</span><span class="p">]]</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[56]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># One last check of my data; all of my columns need to be numeric</span>
-
-<span class="n">X_train</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[56]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>pclass</th>
-      <th>age</th>
-      <th>sibsp</th>
-      <th>parch</th>
-      <th>fare</th>
-      <th>alone</th>
-      <th>is_female</th>
-      <th>Q</th>
-      <th>S</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>583</th>
-      <td>1</td>
-      <td>36.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>40.125</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[57]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># This is my target variable, my label.</span>
-
-<span class="n">y_train</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[57]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>survived</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>583</th>
-      <td>0</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Create-Logistic-Regression-Model">Create Logistic Regression Model<a class="anchor-link" href="#Create-Logistic-Regression-Model">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[58]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create a simple Logistic Regression model to start.</span>
-
-<span class="n">logit</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h5 id="Fit-the-Logistic-Regression-Model">Fit the Logistic Regression Model<a class="anchor-link" href="#Fit-the-Logistic-Regression-Model">&#182;</a></h5>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[59]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">logit</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[59]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>LogisticRegression(C=1.0, class_weight=None, dual=False, fit_intercept=True,
-                   intercept_scaling=1, l1_ratio=None, max_iter=100,
-                   multi_class=&#39;auto&#39;, n_jobs=None, penalty=&#39;l2&#39;,
-                   random_state=123, solver=&#39;lbfgs&#39;, tol=0.0001, verbose=0,
-                   warm_start=False)</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h5 id="Print-the-coefficients-and-intercept-of-the-model">Print the coefficients and intercept of the model<a class="anchor-link" href="#Print-the-coefficients-and-intercept-of-the-model">&#182;</a></h5>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[60]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Columns: </span><span class="si">{</span><span class="n">X_train</span><span class="o">.</span><span class="n">columns</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Coefficient: </span><span class="si">{</span><span class="n">logit</span><span class="o">.</span><span class="n">coef_</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Intercept: </span><span class="si">{</span><span class="n">logit</span><span class="o">.</span><span class="n">intercept_</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Columns: Index([&#39;pclass&#39;, &#39;age&#39;, &#39;sibsp&#39;, &#39;parch&#39;, &#39;fare&#39;, &#39;alone&#39;, &#39;is_female&#39;, &#39;Q&#39;,
-       &#39;S&#39;],
-      dtype=&#39;object&#39;)
-
-Coefficient: [[-1.18971499e+00 -3.56146280e-02 -5.18819408e-01 -1.48130530e-01
-  -9.39922926e-04 -6.59951184e-01  2.72614345e+00  7.89591377e-01
-   7.16839055e-02]]
-
-Intercept: [2.79501842]
-
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr style="border-top: 10px groove darkviolet; margin-top: 1px; margin-bottom: 1px"></hr>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Evaluating">Evaluating<a class="anchor-link" href="#Evaluating">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr style="border-top: 10px groove darkviolet; margin-top: 1px; margin-bottom: 1px"></hr>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3><strong><font color=red>What Are Evaluation Metrics for Classification Models?</font></strong></h3>
-<p>There are different metrics we can use to understand how well our classification model is predicting. Context will guide you toward the most valuable metric for your particular situation.</p>
-<p><img src="https://i.stack.imgur.com/LIWH1.jpg" alt="image.png"></p>
-<hr>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<blockquote><p><strong>Accuracy:</strong> This tells you how often your classifier is <strong>predicting correctly overall</strong>.</p>
-</blockquote>
-<p>This is the ratio of all of your correct predictions over all of your observations.</p>
-<p>(Total Number Correct / Total Number of Data Points) -&gt; (TP + TN / TP + TN + FP + FN)</p>
-<hr>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<blockquote><p><strong>Recall:</strong> The Recall score (<strong>True Positive Rate or Sensitivity</strong>) tells you how often your classifier is catching the positive cases in your dataset. It describes how good the model is at predicting the positive class when the actual outcome is positive. In other words, Recall tells you what percentage of the time your model is identifying the relevant instance in your dataset.</p>
-</blockquote>
-<p>You have to decide which is more important in your situation. Is it more expensive in your specific context to miss a positive instance? If so, optimize for Recall.</p>
-<p><strong><font color=green>The Higher the Recall Score == The better your Classifier is at catching the actual positive cases in your dataset.</font></strong></p>
-<p><strong><font color=red>The Lower the Recall Score == The more your Classifier is making Type II Errors / Misses / False Negatives.</font></strong></p>
-<p>(Total Number of Correct Positive Predictions / Total Number of Actual Positive Observations in Dataset) -&gt; (TP / TP + FN)</p>
-<hr>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<blockquote><p><strong>Precision:</strong> The Precision score tells you how often your model was able to <strong>predict positives correctly.</strong> In other words, precision is the proportion of observations your model predicts to be relevant that were actually relevant and not false alarms or false positives.</p>
-</blockquote>
-<p><strong><font color=green>The Higher the Precision Score == The better your Classifier is at Predicting Positives Precisely in your dataset.</font></strong></p>
-<p><strong><font color=red>The lower the Precision Score == The more your Classifier predicted a lot of positives where there were none, False Positives / Type I Errors / False Alarms</font></strong></p>
-<ul>
-<li>If your model's Precision score goes up, the cost is that your model's Recall score goes down. You have to decide which is more important in your situation. Is it better to predict a False Positive instance than to miss a Positive instance? If so, optimize for precision.</li>
-</ul>
-<p>(Total Number of Correct Positive Predictions / Total Number of Observations Predicted as Postive by Model) -&gt; (TP / TP + FP)</p>
-<hr>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<blockquote><p><strong>f1-score:</strong> The balanced harmonic mean of Recall and Precision, giving both metrics equal weight. The higher the F-Measure is, the better when you are looking to optimize for both Recall and Precision.</p>
-</blockquote>
-<hr>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<blockquote><p><strong>ROC Curve:</strong> The Receiver Operating Characteristic Curve (ROC Curve) summarizes the trade-off between the true positive rate and false positive rate for a predictive model using different probability thresholds. ROC curves are appropriate when the observations are balanced between each class in a binary classification problem.</p>
-</blockquote>
-<p><img src="https://3qeqpr26caki16dnhd19sv6by6v-wpengine.netdna-ssl.com/wp-content/uploads/2018/08/ROC-Curve-Plot-for-a-No-Skill-Classifier-and-a-Logistic-Regression-Model.png" alt="image.png"></p>
-<ul>
-<li>It is a plot of the false positive rate (x-axis) versus the true positive rate (y-axis) for a number of different candidate threshold values between 0.0 and 1.0. Put another way, it plots the false alarm rate versus the hit rate.</li>
-</ul>
-<hr>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>To evaluate the performance of your classification model, you can also create a Confustion Matrix. We'll do this in a bit.</strong></p>
-<p><img src="data:image/png;base64,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" alt="image.png"></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3><font color=orange>So What If...?</font></h3>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Recall-in-Context">Recall in Context<a class="anchor-link" href="#Recall-in-Context">&#182;</a></h4><ul>
-<li>If your Recall score is high, your model didn’t miss a lot of positives; it's good at catching positive instances.</li>
-</ul>
-<blockquote><p>For example, if your model is predicting positive for churn and your Recall score is high, your model is good at identifying customers who are positive for churn or actually churning.</p>
-</blockquote>
-<ul>
-<li>As your Recall score gets lower, your model is not predicting more of the positives that are actually there; you are missing Positive observations.</li>
-</ul>
-<blockquote><p>For example, if your model is predicting positive for churn and your Recall score is low, your model is not good at identifying customers who are churning. It is predicting a lot of False Negatives; you are missing the opportunity to find and woo customers who are going to churn. These are Misses, missed opportunities to identify and keep customers who are actually positive for churn. <strong>These are Type II Errors</strong></p>
-</blockquote>
-<p><strong>You want to optimize for recall when missed positives (False Negatives) are expensive.</strong></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Precision-in-Context">Precision in Context<a class="anchor-link" href="#Precision-in-Context">&#182;</a></h4><ul>
-<li>The higher your precision score is, the better your model is at <strong>Predicting Positives Precisely!</strong> It avoids predicting a lot of False Positives but it is missing more of the Actual Positives, too. </li>
-</ul>
-<ul>
-<li>As your Precision score gets lower, your model predicted a lot of False Postives or positives where there were none. These are <strong>Type I Errors.</strong></li>
-</ul>
-<p><strong>You want to optimize for Precision when False Positives are more expensive than False Negatives.</strong></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3><font color=green>Now What?</font></h3>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Create-Evaluation-DataFrame">Create Evaluation DataFrame<a class="anchor-link" href="#Create-Evaluation-DataFrame">&#182;</a></h4>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[61]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create eval_df and rename the train survived column actual.</span>
-<span class="n">train_eval_df</span> <span class="o">=</span> <span class="n">train</span><span class="p">[[</span><span class="s1">&#39;survived&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;survived&#39;</span><span class="p">:</span> <span class="s1">&#39;actual&#39;</span><span class="p">})</span>
-
-<span class="c1"># Predict whether a passenger will survive using the X_train data; add column to eval_df</span>
-<span class="n">train_eval_df</span><span class="p">[</span><span class="s1">&#39;yhat&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">logit</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
-
-<span class="c1"># Estimate the probability of a passenger surviving using the X_train data; add col to eval_df</span>
-
-<span class="n">train_eval_df</span><span class="p">[</span><span class="s1">&#39;probs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">logit</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_train</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
-
-<span class="n">train_eval_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[61]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>actual</th>
-      <th>yhat</th>
-      <th>probs</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>583</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0.407457</td>
-    </tr>
-    <tr>
-      <th>165</th>
-      <td>1</td>
-      <td>0</td>
-      <td>0.207752</td>
-    </tr>
-    <tr>
-      <th>50</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0.038700</td>
-    </tr>
-    <tr>
-      <th>259</th>
-      <td>1</td>
-      <td>1</td>
-      <td>0.779046</td>
-    </tr>
-    <tr>
-      <th>306</th>
-      <td>1</td>
-      <td>1</td>
-      <td>0.924861</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Create-evaluation-DataFrame-for-validate-dataset">Create evaluation DataFrame for validate dataset<a class="anchor-link" href="#Create-evaluation-DataFrame-for-validate-dataset">&#182;</a></h4>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[62]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create eval_df and rename survived column actual.</span>
-<span class="n">val_eval_df</span> <span class="o">=</span> <span class="n">validate</span><span class="p">[[</span><span class="s1">&#39;survived&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;survived&#39;</span><span class="p">:</span> <span class="s1">&#39;actual&#39;</span><span class="p">})</span>
-
-<span class="c1"># Predict whether a passenger will survive using the training data; add column to eval_df</span>
-<span class="n">val_eval_df</span><span class="p">[</span><span class="s1">&#39;yhat&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">logit</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_validate</span><span class="p">)</span>
-
-<span class="c1"># Estimate the probability of a passenger surviving using the training data; add col to eval_df</span>
-
-<span class="n">val_eval_df</span><span class="p">[</span><span class="s1">&#39;probs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">logit</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_validate</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
-
-<span class="n">val_eval_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[62]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>actual</th>
-      <th>yhat</th>
-      <th>probs</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>610</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0.342058</td>
-    </tr>
-    <tr>
-      <th>424</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0.116145</td>
-    </tr>
-    <tr>
-      <th>568</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0.076009</td>
-    </tr>
-    <tr>
-      <th>334</th>
-      <td>1</td>
-      <td>1</td>
-      <td>0.937128</td>
-    </tr>
-    <tr>
-      <th>101</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0.081153</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Accuracy-Score">Accuracy Score<a class="anchor-link" href="#Accuracy-Score">&#182;</a></h4>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[63]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">logit</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[63]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>0.8132530120481928</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Recall-Score">Recall Score<a class="anchor-link" href="#Recall-Score">&#182;</a></h4>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[64]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">recall_score</span><span class="p">(</span><span class="n">train_eval_df</span><span class="o">.</span><span class="n">actual</span><span class="p">,</span> <span class="n">train_eval_df</span><span class="o">.</span><span class="n">yhat</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[64]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([0.8762215 , 0.71204188])</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Precision-Score">Precision Score<a class="anchor-link" href="#Precision-Score">&#182;</a></h4>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[65]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">precision_score</span><span class="p">(</span><span class="n">train_eval_df</span><span class="o">.</span><span class="n">actual</span><span class="p">,</span> <span class="n">train_eval_df</span><span class="o">.</span><span class="n">yhat</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[65]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([0.83024691, 0.7816092 ])</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Confusion-Matrix">Confusion Matrix<a class="anchor-link" href="#Confusion-Matrix">&#182;</a></h4>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[66]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">train_eval_df</span><span class="o">.</span><span class="n">actual</span><span class="p">,</span> <span class="n">y_pred</span><span class="o">=</span><span class="n">train_eval_df</span><span class="o">.</span><span class="n">yhat</span><span class="p">)</span>
-<span class="n">cm</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[66]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([[269,  38],
-       [ 55, 136]])</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[71]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">xlabels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Pred Did Not Survive&#39;</span><span class="p">,</span> <span class="s1">&#39;Pred Survived&#39;</span><span class="p">]</span>
-<span class="n">ylabels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Actual Did Not Survive&#39;</span><span class="p">,</span> <span class="s1">&#39;Actual Survived&#39;</span><span class="p">]</span>
-
-<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Purples&#39;</span><span class="p">,</span> 
-            <span class="n">xticklabels</span><span class="o">=</span><span class="n">xlabels</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="n">ylabels</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Confustion Matrix&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-
-<div class="output_png output_subarea ">
-<img src="output_221_0.png"
->
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>OR</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[72]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">train_eval_df</span><span class="o">.</span><span class="n">actual</span><span class="p">,</span> 
-            <span class="n">columns</span><span class="o">=</span><span class="n">train_eval_df</span><span class="o">.</span><span class="n">yhat</span><span class="p">,</span> 
-            <span class="n">rownames</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Actual&#39;</span><span class="p">],</span> 
-            <span class="n">colnames</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Predicted&#39;</span><span class="p">])</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[72]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th>Predicted</th>
-      <th>0</th>
-      <th>1</th>
-    </tr>
-    <tr>
-      <th>Actual</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>269</td>
-      <td>38</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>55</td>
-      <td>136</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Classification-Report">Classification Report<a class="anchor-link" href="#Classification-Report">&#182;</a></h4>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[69]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># My LR model is beating my baseline accuracy at predicting my target value, survived.</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">train_eval_df</span><span class="o">.</span><span class="n">actual</span><span class="p">,</span> <span class="n">y_pred</span><span class="o">=</span><span class="n">train_eval_df</span><span class="o">.</span><span class="n">yhat</span><span class="p">))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>              precision    recall  f1-score   support
-
-           0       0.83      0.88      0.85       307
-           1       0.78      0.71      0.75       191
-
-    accuracy                           0.81       498
-   macro avg       0.81      0.79      0.80       498
-weighted avg       0.81      0.81      0.81       498
-
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[70]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># I can try this model on out-of-sample data using my validate dataset.</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">val_eval_df</span><span class="o">.</span><span class="n">actual</span><span class="p">,</span> <span class="n">y_pred</span><span class="o">=</span><span class="n">val_eval_df</span><span class="o">.</span><span class="n">yhat</span><span class="p">))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>              precision    recall  f1-score   support
-
-           0       0.80      0.86      0.83       132
-           1       0.74      0.66      0.70        82
-
-    accuracy                           0.78       214
-   macro avg       0.77      0.76      0.76       214
-weighted avg       0.78      0.78      0.78       214
-
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Takeaways-from-MVP-Logistic-Regression-Model-Evaluation">Takeaways from MVP Logistic Regression Model Evaluation<a class="anchor-link" href="#Takeaways-from-MVP-Logistic-Regression-Model-Evaluation">&#182;</a></h3><ul>
-<li><p>My accuracy drops from 81% on my train dataset to 78% on my validate dataset.</p>
-</li>
-<li><p>I would now go back and probably try a Decision Tree model to see if I can beat this simple LR model.</p>
-</li>
-<li><p>I'm not going to test this model until I know if I can beat it with another type of Classification Algorithm.</p>
-</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr style="border-top: 10px groove silver; margin-top: 1px; margin-bottom: 1px"></hr>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Conclusions">Conclusions<a class="anchor-link" href="#Conclusions">&#182;</a></h2><ul>
-<li><p>At this point, I have a Logistic Regression Model that is beating my baseline accuracy by almost 20%. This model has value!</p>
-</li>
-<li><p>If I have time, I can go back and tweak the hyperparameters to tune my model.</p>
-</li>
-<li><p>I can also try other types of Classification models from here, and see which one predicts the best on unseen (out-of-sample) data by using the validate dataset.</p>
-</li>
-<li><p>Finally, I will evaulate my best model on unseen (out-of-sample) data by using the test dataset.</p>
-</li>
-</ul>
-
-</div>
-</div>
 </div>
     </div>
   </div>
