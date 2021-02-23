@@ -48,7 +48,7 @@ ___
 ## Machine Learning
 
 
-Coming Soon! For now, check out the Intro to ML Workshop site below.
+[Classifcation Review Notebook](https://dataskills101.github.io/classification_review/classifcation_review)
 
 ___
 ## Links to Workshops and Extras
