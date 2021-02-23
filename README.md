@@ -48,7 +48,7 @@ ___
 ## Machine Learning
 
 
-[Classifcation Review Notebook](https://ds-review-hub.github.io/classification_review/classifcation_review)
+[Classification Review Notebook](https://ds-review-hub.github.io/classification_review/classification_review)
 
 ___
 ## Links to Workshops and Extras
