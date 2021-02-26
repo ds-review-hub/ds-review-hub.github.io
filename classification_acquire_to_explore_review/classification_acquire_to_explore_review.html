@@ -16917,7 +16917,7 @@ test -&gt; (179, 13)
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h5 id="sns.catplot()"><code>sns.catplot()</code><a class="anchor-link" href="#sns.catplot()">&#182;</a></h5><p>We can use a seaborn catplot to explore a continuous and a categorical variable; hue allows me to bring in another categorical variable.</p>
+<h5 id="sns.catplot()"><code>sns.catplot()</code><a class="anchor-link" href="#sns.catplot()">&#182;</a></h5><p>We can use a seaborn catplot to explore a continuous and a categorical variable; hue allows me to bring in another categorical variable. <code>catplot</code> also has lots of parameters you can use to add even more dimensions to your chart.</p>
 
 </div>
 </div>
@@ -16927,7 +16927,9 @@ test -&gt; (179, 13)
 <div class="prompt input_prompt">In&nbsp;[49]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;fare&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># The kind default argument is &#39;strip&#39;, but you have many options available.</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;fare&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Second and Third Class Tickets All Below $100&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -16998,6 +17000,87 @@ test -&gt; (179, 13)
 </div>
 
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[87]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Change the argument you pass to the kind parameter.</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;fare&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;survived&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;box&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Second and Third Class Tickets All Below $100&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="output_160_0.png"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[100]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># I can pass arguments to the col and row parameters, too.</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;embark_town&#39;</span><span class="p">,</span>  
+                <span class="n">y</span><span class="o">=</span><span class="s1">&#39;fare&#39;</span><span class="p">,</span>  
+                <span class="n">col</span><span class="o">=</span><span class="s1">&#39;survived&#39;</span><span class="p">,</span>
+                <span class="n">row</span><span class="o">=</span><span class="s1">&#39;class&#39;</span><span class="p">,</span>
+                <span class="n">data</span><span class="o">=</span><span class="n">train</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="output_161_0.png"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -17041,7 +17124,7 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_162_0.png"
+<img src="output_164_0.png"
 >
 </div>
 
@@ -17078,7 +17161,7 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_163_0.png"
+<img src="output_165_0.png"
 >
 </div>
 
@@ -17134,7 +17217,7 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_166_0.png"
+<img src="output_168_0.png"
 >
 </div>
 
@@ -17190,7 +17273,7 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_169_0.png"
+<img src="output_171_0.png"
 >
 </div>
 
@@ -17264,7 +17347,7 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_174_0.png"
+<img src="output_176_0.png"
 >
 </div>
 
@@ -17328,7 +17411,7 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_177_0.png"
+<img src="output_179_0.png"
 >
 </div>
 
@@ -17384,7 +17467,7 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_179_0.png"
+<img src="output_181_0.png"
 >
 </div>
 
@@ -17440,7 +17523,7 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_181_0.png"
+<img src="output_183_0.png"
 >
 </div>
 
@@ -17547,7 +17630,7 @@ Name: fare, dtype: float64</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="output_186_0.png"
+<img src="output_188_0.png"
 >
 </div>
 
@@ -17743,7 +17826,7 @@ Name: class, dtype: float64</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="output_191_0.png"
+<img src="output_193_0.png"
 >
 </div>
 
@@ -17796,7 +17879,7 @@ Name: class, dtype: float64</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="output_193_0.png"
+<img src="output_195_0.png"
 >
 </div>
 
@@ -18170,7 +18253,7 @@ Name: class, dtype: float64</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="output_200_0.png"
+<img src="output_202_0.png"
 >
 </div>
 
@@ -18299,7 +18382,7 @@ Name: class, dtype: float64</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="output_203_0.png"
+<img src="output_205_0.png"
 >
 </div>
 
@@ -18564,7 +18647,7 @@ Name: survived, dtype: float64</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="output_209_0.png"
+<img src="output_211_0.png"
 >
 </div>
 
@@ -18656,7 +18739,7 @@ Name: survived, dtype: float64</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="output_211_0.png"
+<img src="output_213_0.png"
 >
 </div>
 
