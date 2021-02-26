@@ -15067,29 +15067,29 @@ dtype: float64</pre>
   </thead>
   <tbody>
     <tr>
-      <th>327</th>
+      <th>64</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>312</th>
       <td>0</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>544</th>
+      <th>352</th>
       <td>0</td>
       <td>0</td>
     </tr>
     <tr>
-      <th>42</th>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>488</th>
+      <th>438</th>
       <td>0</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>80</th>
+      <th>647</th>
       <td>0</td>
-      <td>1</td>
+      <td>0</td>
     </tr>
   </tbody>
 </table>
@@ -15178,42 +15178,42 @@ dtype: float64</pre>
   </thead>
   <tbody>
     <tr>
-      <th>393</th>
-      <td>393</td>
+      <th>172</th>
+      <td>172</td>
       <td>1</td>
-      <td>1</td>
-      <td>female</td>
-      <td>23.0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>113.2750</td>
-      <td>C</td>
-      <td>First</td>
-      <td>D</td>
-      <td>Cherbourg</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>794</th>
-      <td>794</td>
-      <td>0</td>
       <td>3</td>
-      <td>male</td>
-      <td>25.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>7.8958</td>
+      <td>female</td>
+      <td>1.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>11.1333</td>
       <td>S</td>
       <td>Third</td>
       <td>None</td>
       <td>Southampton</td>
-      <td>1</td>
-      <td>0</td>
       <td>0</td>
       <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>468</th>
+      <td>468</td>
+      <td>0</td>
+      <td>3</td>
+      <td>male</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>7.7250</td>
+      <td>Q</td>
+      <td>Third</td>
+      <td>None</td>
+      <td>Queenstown</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
     </tr>
   </tbody>
 </table>
@@ -16307,16 +16307,16 @@ test -&gt; (179, 13)
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h5 id="sns.distplot()"><code>sns.distplot()</code><a class="anchor-link" href="#sns.distplot()">&#182;</a></h5>
+<h5 id="sns.displot()"><code>sns.displot()</code><a class="anchor-link" href="#sns.displot()">&#182;</a></h5>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[39]:</div>
+<div class="prompt input_prompt">In&nbsp;[48]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">train</span><span class="o">.</span><span class="n">fare</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;dodgerblue&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">train</span><span class="o">.</span><span class="n">fare</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;dodgerblue&#39;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribution of Fare&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Passenger Count&#39;</span><span class="p">)</span>
@@ -16553,6 +16553,101 @@ test -&gt; (179, 13)
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="sns.pairplot()-&amp;-sns.pairgrid()"><code>sns.pairplot()</code> &amp; <code>sns.pairgrid()</code><a class="anchor-link" href="#sns.pairplot()-&amp;-sns.pairgrid()">&#182;</a></h5><p>These two seaborn plotting methods allow you to see a lot quickly.</p>
+<p><a href="https://stackoverflow.com/questions/34087126/plot-lower-triangle-in-a-seaborn-pairgrid">source of code</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[83]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">train</span><span class="p">,</span> <span class="n">corner</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="output_144_0.png"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[47]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">hide_current_axis</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">PairGrid</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;survived&#39;</span><span class="p">,</span> <span class="n">diag_sharey</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">map_lower</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">map_diag</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">,</span> <span class="n">multiple</span><span class="o">=</span><span class="s2">&quot;stack&quot;</span><span class="p">,</span> <span class="n">element</span><span class="o">=</span><span class="s2">&quot;step&quot;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">map_upper</span><span class="p">(</span><span class="n">hide_current_axis</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="output_145_0.png"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h5 id="subplots-.hist()">subplots <code>.hist()</code><a class="anchor-link" href="#subplots-.hist()">&#182;</a></h5><p>Histogram Subplots to View Distribution of Fare by Survival Status.</p>
 
 </div>
@@ -16597,7 +16692,7 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_144_0.png"
+<img src="output_148_0.png"
 >
 </div>
 
@@ -16746,7 +16841,7 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_148_0.png"
+<img src="output_152_0.png"
 >
 </div>
 
@@ -16801,7 +16896,7 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_151_0.png"
+<img src="output_155_0.png"
 >
 </div>
 
@@ -16854,7 +16949,7 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_154_0.png"
+<img src="output_158_0.png"
 >
 </div>
 
@@ -16893,7 +16988,7 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_155_0.png"
+<img src="output_159_0.png"
 >
 </div>
 
@@ -16946,7 +17041,7 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_158_0.png"
+<img src="output_162_0.png"
 >
 </div>
 
@@ -16983,7 +17078,7 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_159_0.png"
+<img src="output_163_0.png"
 >
 </div>
 
@@ -17039,7 +17134,7 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_162_0.png"
+<img src="output_166_0.png"
 >
 </div>
 
@@ -17095,7 +17190,7 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_165_0.png"
+<img src="output_169_0.png"
 >
 </div>
 
@@ -17169,7 +17264,7 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_170_0.png"
+<img src="output_174_0.png"
 >
 </div>
 
@@ -17233,7 +17328,7 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_173_0.png"
+<img src="output_177_0.png"
 >
 </div>
 
@@ -17289,7 +17384,7 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_175_0.png"
+<img src="output_179_0.png"
 >
 </div>
 
@@ -17345,7 +17440,7 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_177_0.png"
+<img src="output_181_0.png"
 >
 </div>
 
@@ -17452,7 +17547,7 @@ Name: fare, dtype: float64</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="output_182_0.png"
+<img src="output_186_0.png"
 >
 </div>
 
@@ -17648,7 +17743,7 @@ Name: class, dtype: float64</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="output_187_0.png"
+<img src="output_191_0.png"
 >
 </div>
 
@@ -17701,7 +17796,7 @@ Name: class, dtype: float64</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="output_189_0.png"
+<img src="output_193_0.png"
 >
 </div>
 
@@ -18075,7 +18170,7 @@ Name: class, dtype: float64</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="output_196_0.png"
+<img src="output_200_0.png"
 >
 </div>
 
@@ -18204,7 +18299,7 @@ Name: class, dtype: float64</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="output_199_0.png"
+<img src="output_203_0.png"
 >
 </div>
 
@@ -18469,7 +18564,7 @@ Name: survived, dtype: float64</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="output_205_0.png"
+<img src="output_209_0.png"
 >
 </div>
 
@@ -18561,7 +18656,7 @@ Name: survived, dtype: float64</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="output_207_0.png"
+<img src="output_211_0.png"
 >
 </div>
 
