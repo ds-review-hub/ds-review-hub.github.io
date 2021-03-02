@@ -1,6 +1,10 @@
 # Video Tutorial Resources
 
-![Flying Cat](https://miro.medium.com/max/640/0*E031YgZzn21iOf4Q.gif)
+**Spend some time with some magical resources**
+
+<img width="100" align="center" src=https://miro.medium.com/max/640/0*E031YgZzn21iOf4Q.gif >
+
+___
 
 ### <font color="orange">How to Create a Kickass Presentation with Daniel Guerrero</font>
 
