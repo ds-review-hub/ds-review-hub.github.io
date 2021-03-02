@@ -60,3 +60,7 @@ ___
 [Intro to ML Workshop - Classification](https://faithkane3.github.io/)
 
 >This page houses helpful resources for you to use when getting into machine learning. The workshop contains basic python and pandas for data analysis, Google Colab notebooks you can copy and edit, and other relevant resources. The Canva presentation link is [here](https://www.canva.com/design/DAEL0tiSEAw/7I1oDBFRULaoAMFrQG-kSw/view?utm_content=DAEL0tiSEAw&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink).
+
+[She Code Connect Python Workshop](https://colab.research.google.com/drive/1FEq_HTDw7fpVdPBFufShf2K8oeTLRDPn?usp=sharing)
+
+>This links to a Google Colab Notebook for an Intro to Python Workshop I created and delivered for She Code Connect. If you or someone you know are interested in having fun learning some of the very basics of python, the interactive notebook lives at the link above, and the video of me walking through the notebook lives [here](https://youtu.be/X-ym8duzQwI).
