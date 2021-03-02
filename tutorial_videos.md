@@ -55,4 +55,4 @@ ___
 [Beth's Tab-Flow Canva Presentation](https://ds-review-hub.github.io/Tab-Flow)
 
 
-[Beth's Personalized Git Tutorial](https://ds-review-hub.github.io/personalize_git)
+[Beth's Personalized Git Tutorial](https://ds-review-hub.github.io/personalize_git.pdf)
