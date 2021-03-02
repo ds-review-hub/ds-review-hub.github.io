@@ -2,7 +2,7 @@
 
 **Spend some time with some magical resources**
 
-<img width="100" align="center" src=https://miro.medium.com/max/640/0*E031YgZzn21iOf4Q.gif >
+<img width="100" src=https://miro.medium.com/max/640/0*E031YgZzn21iOf4Q.gif >
 
 ___
 
