@@ -64,3 +64,5 @@ ___
 [She Code Connect Python Workshop](https://colab.research.google.com/drive/1FEq_HTDw7fpVdPBFufShf2K8oeTLRDPn?usp=sharing)
 
 >This links to a Google Colab Notebook for an Intro to Python Workshop I created and delivered for She Code Connect. If you or someone you know are interested in having fun learning some of the very basics of python, the interactive notebook lives at the link above, and the video of me walking through the notebook lives [here](https://youtu.be/X-ym8duzQwI).
+
+![profile-visitors](https://visitor-badge.glitch.me/badge?page_id=ds-review-hub.github.io/)
