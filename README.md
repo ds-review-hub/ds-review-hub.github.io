@@ -1,4 +1,4 @@
-![Welcome Banner](https://i.pinimg.com/564x/28/d7/73/28d7734a4276106b20f37f459196454b.jpg)
+![Welcome Banner](https://i.pinimg.com/564x/bd/a5/99/bda599a6ddb4e30c1e99e649597e6330.jpg)
 
 This site contains created and curated resources and review notebooks to support you on your journey through Codeup's Data Science program and beyond. This site will grow with you throughout the course, so bookmark it and keep it handy for support!
 
