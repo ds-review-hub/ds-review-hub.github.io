@@ -48,8 +48,6 @@ ___
 
 ### <font color="orange">Canva 101 with Beth Thompson</font>
 
-[![Beth Thompson's Lunch 'n' Learn - Canva101](https://res.cloudinary.com/marcomontalbano/image/upload/v1604503454/video_to_markdown/images/youtube--hHDzlH8P5o8-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://youtu.be/hHDzlH8P5o8 "Beth Thompson's Lunch 'n' Learn - Canva101")
-
 [Beth's Canva 101 Repo](https://github.com/ThompsonBethany01/Canva_101)
 
 ___
