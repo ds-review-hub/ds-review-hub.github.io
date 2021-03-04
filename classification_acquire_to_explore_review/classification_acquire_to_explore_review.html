@@ -13098,7 +13098,7 @@ $( document ).ready(function(){
 
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[35]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -13117,7 +13117,11 @@ $( document ).ready(function(){
 <span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <span class="n">SimpleImputer</span>
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">OneHotEncoder</span>
 
-<span class="c1"># turn off pink warning boxes for demo</span>
+<span class="c1"># modeling and evaluating</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">precision_score</span><span class="p">,</span> <span class="n">recall_score</span><span class="p">,</span> <span class="n">accuracy_score</span>
+
+<span class="c1"># turn off pink warning boxes</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
 
@@ -15067,27 +15071,27 @@ dtype: float64</pre>
   </thead>
   <tbody>
     <tr>
-      <th>40</th>
+      <th>343</th>
       <td>0</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>280</th>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>420</th>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>809</th>
+      <th>234</th>
       <td>0</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>23</th>
+      <th>868</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>78</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>666</th>
       <td>0</td>
       <td>1</td>
     </tr>
@@ -15178,34 +15182,34 @@ dtype: float64</pre>
   </thead>
   <tbody>
     <tr>
-      <th>257</th>
-      <td>257</td>
-      <td>1</td>
-      <td>1</td>
-      <td>female</td>
-      <td>30.0</td>
+      <th>0</th>
       <td>0</td>
       <td>0</td>
-      <td>86.5000</td>
+      <td>3</td>
+      <td>male</td>
+      <td>22.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>7.2500</td>
       <td>S</td>
-      <td>First</td>
-      <td>B</td>
+      <td>Third</td>
+      <td>None</td>
       <td>Southampton</td>
-      <td>1</td>
-      <td>1</td>
+      <td>0</td>
+      <td>0</td>
       <td>0</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>692</th>
-      <td>692</td>
-      <td>1</td>
+      <th>810</th>
+      <td>810</td>
+      <td>0</td>
       <td>3</td>
       <td>male</td>
-      <td>NaN</td>
+      <td>26.0</td>
       <td>0</td>
       <td>0</td>
-      <td>56.4958</td>
+      <td>7.8875</td>
       <td>S</td>
       <td>Third</td>
       <td>None</td>
@@ -15712,11 +15716,17 @@ test -&gt; (179, 13)
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h5 id=".SimpleImputer()"><code>.SimpleImputer()</code><a class="anchor-link" href="#.SimpleImputer()">&#182;</a></h5><p>We can also use some more sophisticated techniques using sklearn. <strong>Sklearn's SimpleImputer ONLY works on numeric columns.</strong></p>
-<p><strong>Create the imputer; pick your strategy.</strong></p>
+<h5 id=".SimpleImputer()"><code>.SimpleImputer()</code><a class="anchor-link" href="#.SimpleImputer()">&#182;</a></h5><p>We can also use some more sophisticated techniques using sklearn. 
+<strong>Create the imputer; pick your strategy.</strong></p>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <span class="n">SimpleImputer</span>
 
-<span class="n">imputer</span> <span class="o">=</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">impute</span><span class="o">.</span><span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+<span class="c1"># I can impute the mean value in a column</span>
+
+<span class="n">imputer</span> <span class="o">=</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">impute</span><span class="o">.</span><span class="n">SimpleImputer</span><span class="p">(</span><span class="n">missing_values</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">NaN</span><span class="p">,</span> <span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+
+<span class="c1"># I can impute the mode value in a column</span>
+
+<span class="n">imputer</span> <span class="o">=</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">impute</span><span class="o">.</span><span class="n">SimpleImputer</span><span class="p">(</span><span class="n">missing_values</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;most_frequent&#39;</span><span class="p">)</span>
 </pre></div>
 <p><strong>Fit the imputer to train dataframe.</strong></p>
 <div class="highlight"><pre><span></span><span class="n">imputer</span> <span class="o">=</span> <span class="n">imputer</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train</span><span class="p">[[</span><span class="s1">&#39;column&#39;</span><span class="p">]])</span>
@@ -15732,36 +15742,35 @@ test -&gt; (179, 13)
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[40]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Acquire and split fresh data, so I can demo imputing the mode for embark_town.</span>
 
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h5 id="What-if-our-missing-values-are-in-a-categorical-column?">What if our missing values are in a categorical column?<a class="anchor-link" href="#What-if-our-missing-values-are-in-a-categorical-column?">&#182;</a></h5><p>Here's one way you could handle this if without dropping observations.</p>
-<div class="highlight"><pre><span></span><span class="n">cat_mode</span> <span class="o">=</span> <span class="n">train</span><span class="p">[</span><span class="s1">&#39;Label&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">titanic_df</span> <span class="o">=</span> <span class="n">get_titanic_data</span><span class="p">()</span>
 
-<span class="n">train</span><span class="p">[</span><span class="s1">&#39;cat_column&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">train</span><span class="p">[</span><span class="s1">&#39;cat_column&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">cat_mode</span><span class="p">)</span>
+<span class="n">train_validate</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">titanic_df</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=.</span><span class="mi">2</span><span class="p">,</span> 
+                                        <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">,</span> 
+                                        <span class="n">stratify</span><span class="o">=</span><span class="n">titanic_df</span><span class="o">.</span><span class="n">survived</span><span class="p">)</span>
 
-<span class="n">validate</span><span class="p">[</span><span class="s1">&#39;cat_column&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">validate</span><span class="p">[</span><span class="s1">&#39;cat_column&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">cat_mode</span><span class="p">)</span>
-
-<span class="n">test</span><span class="p">[</span><span class="s1">&#39;cat_column&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">test</span><span class="p">[</span><span class="s1">&#39;cat_column&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">cat_mode</span><span class="p">)</span>
+<span class="n">train</span><span class="p">,</span> <span class="n">validate</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">train_validate</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=.</span><span class="mi">3</span><span class="p">,</span> 
+                                   <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">,</span> 
+                                   <span class="n">stratify</span><span class="o">=</span><span class="n">train_validate</span><span class="o">.</span><span class="n">survived</span><span class="p">)</span>
 </pre></div>
 
+    </div>
 </div>
 </div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="prompt input_prompt">In&nbsp;[43]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">train</span><span class="p">[</span><span class="s1">&#39;embark_town&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">train</span><span class="o">.</span><span class="n">embark_town</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -15774,13 +15783,17 @@ test -&gt; (179, 13)
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[32]:</div>
+    <div class="prompt output_prompt">Out[43]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>1</pre>
+<pre>Southampton    354
+Cherbourg      102
+Queenstown      41
+NaN              1
+Name: embark_town, dtype: int64</pre>
 </div>
 
 </div>
@@ -15791,13 +15804,53 @@ test -&gt; (179, 13)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[33]:</div>
+<div class="prompt input_prompt">In&nbsp;[62]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Establish the mode categorical value using the train dataset.</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">imputer</span> <span class="o">=</span> <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">missing_values</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;most_frequent&#39;</span><span class="p">)</span>
+</pre></div>
 
-<span class="n">embark_mode</span> <span class="o">=</span> <span class="n">train</span><span class="p">[</span><span class="s1">&#39;embark_town&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">embark_mode</span>
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[65]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">imputer</span> <span class="o">=</span> <span class="n">imputer</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train</span><span class="p">[[</span><span class="s1">&#39;embark_town&#39;</span><span class="p">]])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[68]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Use the imputer I fit on train to transform train, validate, and test which fills missing values.</span>
+
+<span class="n">train</span><span class="p">[[</span><span class="s1">&#39;embark_town&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">imputer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">train</span><span class="p">[[</span><span class="s1">&#39;embark_town&#39;</span><span class="p">]])</span>
+<span class="n">validate</span><span class="p">[[</span><span class="s1">&#39;embark_town&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">imputer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">validate</span><span class="p">[[</span><span class="s1">&#39;embark_town&#39;</span><span class="p">]])</span>
+<span class="n">test</span><span class="p">[[</span><span class="s1">&#39;embark_town&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">imputer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">test</span><span class="p">[[</span><span class="s1">&#39;embark_town&#39;</span><span class="p">]])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[69]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">train</span><span class="o">.</span><span class="n">embark_town</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -15810,71 +15863,16 @@ test -&gt; (179, 13)
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[33]:</div>
+    <div class="prompt output_prompt">Out[69]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&#39;Southampton&#39;</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Fill null values in <code>embark_town</code> in all datasets with <code>embark_mode</code> value; reassign to dataframes.</strong></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[34]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">train</span><span class="p">[</span><span class="s1">&#39;embark_town&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">train</span><span class="p">[</span><span class="s1">&#39;embark_town&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">embark_mode</span><span class="p">)</span>
-<span class="n">validate</span><span class="p">[</span><span class="s1">&#39;embark_town&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">validate</span><span class="p">[</span><span class="s1">&#39;embark_town&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">embark_mode</span><span class="p">)</span>
-<span class="n">test</span><span class="p">[</span><span class="s1">&#39;embark_town&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">test</span><span class="p">[</span><span class="s1">&#39;embark_town&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">embark_mode</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[35]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Validate our fill on train dataset.</span>
-
-<span class="n">train</span><span class="p">[</span><span class="s1">&#39;embark_town&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[35]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>0</pre>
+<pre>Southampton    355
+Cherbourg      102
+Queenstown      41
+Name: embark_town, dtype: int64</pre>
 </div>
 
 </div>
@@ -16057,7 +16055,7 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_111_0.png"
+<img src="output_110_0.png"
 >
 </div>
 
@@ -16231,7 +16229,7 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_123_0.png"
+<img src="output_122_0.png"
 >
 </div>
 
@@ -16286,7 +16284,7 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_126_0.png"
+<img src="output_125_0.png"
 >
 </div>
 
@@ -16341,7 +16339,7 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_129_0.png"
+<img src="output_128_0.png"
 >
 </div>
 
@@ -16403,7 +16401,7 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_133_0.png"
+<img src="output_132_0.png"
 >
 </div>
 
@@ -16461,7 +16459,7 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_136_0.png"
+<img src="output_135_0.png"
 >
 </div>
 
@@ -16524,7 +16522,7 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_140_0.png"
+<img src="output_139_0.png"
 >
 </div>
 
@@ -16585,7 +16583,7 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_144_0.png"
+<img src="output_143_0.png"
 >
 </div>
 
@@ -16627,7 +16625,7 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_145_0.png"
+<img src="output_144_0.png"
 >
 </div>
 
@@ -16692,7 +16690,7 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_148_0.png"
+<img src="output_147_0.png"
 >
 </div>
 
@@ -16841,7 +16839,7 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_152_0.png"
+<img src="output_151_0.png"
 >
 </div>
 
@@ -16896,7 +16894,7 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_155_0.png"
+<img src="output_154_0.png"
 >
 </div>
 
@@ -16917,7 +16915,7 @@ test -&gt; (179, 13)
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h5 id="sns.catplot()"><code>sns.catplot()</code><a class="anchor-link" href="#sns.catplot()">&#182;</a></h5><p>We can use a seaborn catplot to explore a continuous and a categorical variable; hue allows me to bring in another categorical variable. <code>catplot</code> also has lots of parameters you can use to add even more dimensions to your chart.</p>
+<h5 id="sns.catplot()"><code>sns.catplot()</code><a class="anchor-link" href="#sns.catplot()">&#182;</a></h5><p>We can use a seaborn catplot to explore a continuous and a categorical variable; hue allows me to bring in another categorical variable. <code>catplot</code> also has lots of parameters you can use to add even more dimensions to you</p>
 
 </div>
 </div>
@@ -16951,7 +16949,7 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_158_0.png"
+<img src="output_157_0.png"
 >
 </div>
 
@@ -16990,7 +16988,7 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_159_0.png"
+<img src="output_158_0.png"
 >
 </div>
 
@@ -17029,7 +17027,7 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_160_0.png"
+<img src="output_159_0.png"
 >
 </div>
 
@@ -17071,7 +17069,7 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_161_0.png"
+<img src="output_160_0.png"
 >
 </div>
 
@@ -17124,7 +17122,7 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_164_0.png"
+<img src="output_163_0.png"
 >
 </div>
 
@@ -17161,7 +17159,7 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_165_0.png"
+<img src="output_164_0.png"
 >
 </div>
 
@@ -17217,7 +17215,7 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_168_0.png"
+<img src="output_167_0.png"
 >
 </div>
 
@@ -17273,7 +17271,7 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_171_0.png"
+<img src="output_170_0.png"
 >
 </div>
 
@@ -17347,7 +17345,7 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_176_0.png"
+<img src="output_175_0.png"
 >
 </div>
 
@@ -17411,7 +17409,7 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_179_0.png"
+<img src="output_178_0.png"
 >
 </div>
 
@@ -17467,7 +17465,7 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_181_0.png"
+<img src="output_180_0.png"
 >
 </div>
 
@@ -17523,7 +17521,7 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_183_0.png"
+<img src="output_182_0.png"
 >
 </div>
 
@@ -17630,7 +17628,7 @@ Name: fare, dtype: float64</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="output_188_0.png"
+<img src="output_187_0.png"
 >
 </div>
 
@@ -17826,7 +17824,7 @@ Name: class, dtype: float64</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="output_193_0.png"
+<img src="output_192_0.png"
 >
 </div>
 
@@ -17879,7 +17877,7 @@ Name: class, dtype: float64</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="output_195_0.png"
+<img src="output_194_0.png"
 >
 </div>
 
@@ -18253,7 +18251,7 @@ Name: class, dtype: float64</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="output_202_0.png"
+<img src="output_201_0.png"
 >
 </div>
 
@@ -18382,7 +18380,7 @@ Name: class, dtype: float64</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="output_205_0.png"
+<img src="output_204_0.png"
 >
 </div>
 
@@ -18647,7 +18645,7 @@ Name: survived, dtype: float64</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="output_211_0.png"
+<img src="output_210_0.png"
 >
 </div>
 
@@ -18739,7 +18737,7 @@ Name: survived, dtype: float64</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="output_213_0.png"
+<img src="output_212_0.png"
 >
 </div>
 
