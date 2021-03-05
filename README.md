@@ -46,7 +46,7 @@ ___
 ## Machine Learning
 
 
-[Classification Acquire to Explore Review Notebook](https://ds-review-hub.github.io/classification_acquire_to_explore_review/classification_acquire_to_explore_review)
+[Classification Acquire to Explore Review Notebook](https://ds-review-hub.github.io/classification_project_review/classification_project_review)
 
 >This page walks through the first half of the data science pipeline for a potential classification project. Lots of handy code snippets and explanations.
 
