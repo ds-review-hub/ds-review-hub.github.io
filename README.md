@@ -48,7 +48,7 @@ ___
 
 [Classification Project Review Notebook](https://ds-review-hub.github.io/classification_project_review/classification_project_review)
 
->This page walks through the first half of the data science pipeline for a potential classification project. Lots of handy code snippets and explanations.
+>This page walks through the data science pipeline for a simple classification project. Lots of handy code snippets and explanations.
 
 ___
 ## Links to Workshops and Extras
