@@ -13098,7 +13098,7 @@ $( document ).ready(function(){
 
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -14389,7 +14389,7 @@ $( document ).ready(function(){
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3><strong><font color=red>What are Data Imputation and Data Encoding?</font></strong></h3>
-<p><strong>Imputation</strong> is the process of replacing missing data with substituted values. You might choose to impute the mean, median, or mode of a given column to fill any holes or cells with missing data. Maybe you want to do something a little more complex like use a linear regression model to predict the missing values that you will impute. Depending on the situation, you might just decide to drop rows or columns that have more than a certain percentage of missing values. Whatever you decide to do, you first need to inspect your dataset for Null values.</p>
+<p><strong>Imputation</strong> is the process of replacing missing data with substituted values. You might choose to impute the mean, median, or mode of a given column to fill any holes or cells missing data. Maybe you want to do something a little more complex like use a linear regression model to predict the missing values that you will impute. Depending on the situation, you might just decide to drop rows or columns that have more than a certain percentage of missing values. Whatever you decide to do, you first need to inspect your dataset for Null values.</p>
 <p><strong>Encoding</strong> is when you convert a string to an integer representation making a categorical value useable in a ML model.</p>
 <p><strong><font color=purple>I'll demonstrate a few different techniques to handle these tasks below.</font></strong></p>
 
@@ -14438,7 +14438,7 @@ $( document ).ready(function(){
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id=".map()-to-Create-Column"><code>.map()</code> to Create Column<a class="anchor-link" href="#.map()-to-Create-Column">&#182;</a></h4><p>I'm adding a column here, <code>is_female</code>, and demonstrating how I could do that using <code>df.map()</code>.</p>
+<h4 id=".map()-to-Create-Column"><code>.map()</code> to Create Column<a class="anchor-link" href="#.map()-to-Create-Column">&#182;</a></h4><p>I'm adding a column here, <code>is_female</code>, and demonstrating how I could do that using <code>df.map()</code>. This is a very simple way to create one binary column from two columns thus reducing the dimensionality of my dataset.</p>
 
 </div>
 </div>
@@ -15071,27 +15071,27 @@ dtype: float64</pre>
   </thead>
   <tbody>
     <tr>
-      <th>343</th>
+      <th>154</th>
       <td>0</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>234</th>
+      <th>678</th>
       <td>0</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>868</th>
+      <th>872</th>
       <td>0</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>78</th>
+      <th>450</th>
       <td>0</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>666</th>
+      <th>721</th>
       <td>0</td>
       <td>1</td>
     </tr>
@@ -15182,42 +15182,42 @@ dtype: float64</pre>
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
+      <th>658</th>
+      <td>658</td>
       <td>0</td>
-      <td>0</td>
-      <td>3</td>
+      <td>2</td>
       <td>male</td>
-      <td>22.0</td>
-      <td>1</td>
+      <td>23.0</td>
       <td>0</td>
-      <td>7.2500</td>
+      <td>0</td>
+      <td>13.0000</td>
       <td>S</td>
-      <td>Third</td>
+      <td>Second</td>
       <td>None</td>
       <td>Southampton</td>
-      <td>0</td>
+      <td>1</td>
       <td>0</td>
       <td>0</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>810</th>
-      <td>810</td>
+      <th>64</th>
+      <td>64</td>
       <td>0</td>
-      <td>3</td>
+      <td>1</td>
       <td>male</td>
-      <td>26.0</td>
+      <td>NaN</td>
       <td>0</td>
       <td>0</td>
-      <td>7.8875</td>
-      <td>S</td>
-      <td>Third</td>
+      <td>27.7208</td>
+      <td>C</td>
+      <td>First</td>
       <td>None</td>
-      <td>Southampton</td>
+      <td>Cherbourg</td>
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>1</td>
+      <td>0</td>
     </tr>
   </tbody>
 </table>
@@ -15425,6 +15425,86 @@ test -&gt; (179, 13)
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Split-Function">Split Function<a class="anchor-link" href="#Split-Function">&#182;</a></h3><p>I can create a function that does one thing, split my titanic data into train, validate, and test.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">split_data</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Takes in the titanic df and returns train, validate, and test dfs.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">train_validate</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=.</span><span class="mi">2</span><span class="p">,</span> 
+                                        <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">,</span> 
+                                        <span class="n">stratify</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">survived</span><span class="p">)</span>
+
+    <span class="n">train</span><span class="p">,</span> <span class="n">validate</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">train_validate</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=.</span><span class="mi">3</span><span class="p">,</span> 
+                                   <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">,</span> 
+                                   <span class="n">stratify</span><span class="o">=</span><span class="n">train_validate</span><span class="o">.</span><span class="n">survived</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">train</span><span class="p">,</span> <span class="n">validate</span><span class="p">,</span> <span class="n">test</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">train</span><span class="p">,</span> <span class="n">validate</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="n">split_data</span><span class="p">(</span><span class="n">titanic_df</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;train -&gt; </span><span class="si">{</span><span class="n">train</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;validate -&gt; </span><span class="si">{</span><span class="n">validate</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;test -&gt; </span><span class="si">{</span><span class="n">test</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>train -&gt; (498, 13)
+validate -&gt; (214, 13)
+test -&gt; (179, 13)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <hr>
 
 </div>
@@ -15467,7 +15547,7 @@ test -&gt; (179, 13)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[32]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">train</span><span class="o">.</span><span class="n">sibsp</span><span class="p">,</span> <span class="n">train</span><span class="o">.</span><span class="n">parch</span><span class="p">)</span>
@@ -15483,7 +15563,7 @@ test -&gt; (179, 13)
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[29]:</div>
+    <div class="prompt output_prompt">Out[32]:</div>
 
 
 
@@ -15645,7 +15725,7 @@ test -&gt; (179, 13)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="prompt input_prompt">In&nbsp;[33]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Calculate our fill value using train dataset only.</span>
@@ -15668,7 +15748,7 @@ test -&gt; (179, 13)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Validate that our fill was successful.</span>
@@ -15695,8 +15775,212 @@ test -&gt; (179, 13)
 
 
 <div class="output_png output_subarea ">
-<img src="output_88_0.png"
+<img src="output_92_0.png"
 >
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Prepare-Function">Prepare Function<a class="anchor-link" href="#Prepare-Function">&#182;</a></h3><p>I can put all of the steps I used throughout prepare into a function making my process easy to reproduce.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">prep_titanic_data</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Takes in the titanic df and creates an is_female column, creates dummy vars for embarked,</span>
+<span class="sd">    drops [&#39;deck&#39;, &#39;passenger_id&#39;, &#39;embarked&#39;] cols, and splits data</span>
+<span class="sd">    Returns train, validate, and test dfs.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c1"># Encode gender in one column.</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;is_female&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sex</span><span class="o">.</span><span class="n">map</span><span class="p">({</span><span class="s1">&#39;female&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;male&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">})</span>
+    
+    <span class="c1"># Encode embarked by creating dummy vars and concat with original df</span>
+    <span class="n">embarked_dummies</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">embarked</span><span class="p">,</span> <span class="n">drop_first</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span> <span class="n">embarked_dummies</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="c1"># Drop [&#39;deck&#39;, &#39;passenger_id&#39;, &#39;embarked&#39;] cols</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;deck&#39;</span><span class="p">,</span> <span class="s1">&#39;passenger_id&#39;</span><span class="p">,</span> <span class="s1">&#39;embarked&#39;</span><span class="p">])</span>
+    <span class="n">train</span><span class="p">,</span> <span class="n">validate</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="n">split_data</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    
+    <span class="c1">#Calculate our fill value for age using train dataset only.</span>
+    <span class="n">avg_age</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">age</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+    <span class="c1"># Fill null values in all of our datasets using our hardcoded value.</span>
+    <span class="n">train</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">age</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">avg_age</span><span class="p">)</span>
+    <span class="n">validate</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">validate</span><span class="o">.</span><span class="n">age</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">avg_age</span><span class="p">)</span>
+    <span class="n">test</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">age</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">avg_age</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">train</span><span class="p">,</span> <span class="n">validate</span><span class="p">,</span> <span class="n">test</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[36]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">titanic_df</span> <span class="o">=</span> <span class="n">get_titanic_data</span><span class="p">()</span>
+<span class="n">train</span><span class="p">,</span> <span class="n">validate</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="n">prep_titanic_data</span><span class="p">(</span><span class="n">titanic_df</span><span class="p">)</span>
+<span class="n">train</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[36]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>survived</th>
+      <th>pclass</th>
+      <th>sex</th>
+      <th>age</th>
+      <th>sibsp</th>
+      <th>parch</th>
+      <th>fare</th>
+      <th>class</th>
+      <th>embark_town</th>
+      <th>alone</th>
+      <th>is_female</th>
+      <th>Q</th>
+      <th>S</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>583</th>
+      <td>0</td>
+      <td>1</td>
+      <td>male</td>
+      <td>36.000000</td>
+      <td>0</td>
+      <td>0</td>
+      <td>40.1250</td>
+      <td>First</td>
+      <td>Cherbourg</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>165</th>
+      <td>1</td>
+      <td>3</td>
+      <td>male</td>
+      <td>9.000000</td>
+      <td>0</td>
+      <td>2</td>
+      <td>20.5250</td>
+      <td>Third</td>
+      <td>Southampton</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>0</td>
+      <td>3</td>
+      <td>male</td>
+      <td>7.000000</td>
+      <td>4</td>
+      <td>1</td>
+      <td>39.6875</td>
+      <td>Third</td>
+      <td>Southampton</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>259</th>
+      <td>1</td>
+      <td>2</td>
+      <td>female</td>
+      <td>50.000000</td>
+      <td>0</td>
+      <td>1</td>
+      <td>26.0000</td>
+      <td>Second</td>
+      <td>Southampton</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>306</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>29.678105</td>
+      <td>0</td>
+      <td>0</td>
+      <td>110.8833</td>
+      <td>First</td>
+      <td>Cherbourg</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 </div>
 
 </div>
@@ -15744,20 +16028,241 @@ test -&gt; (179, 13)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[40]:</div>
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Acquire and split fresh data, so I can demo imputing the mode for embark_town.</span>
 
 <span class="n">titanic_df</span> <span class="o">=</span> <span class="n">get_titanic_data</span><span class="p">()</span>
+<span class="n">train</span><span class="p">,</span> <span class="n">validate</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="n">prep_titanic_data</span><span class="p">(</span><span class="n">titanic_df</span><span class="p">)</span>
+</pre></div>
 
-<span class="n">train_validate</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">titanic_df</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=.</span><span class="mi">2</span><span class="p">,</span> 
-                                        <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">,</span> 
-                                        <span class="n">stratify</span><span class="o">=</span><span class="n">titanic_df</span><span class="o">.</span><span class="n">survived</span><span class="p">)</span>
+    </div>
+</div>
+</div>
 
-<span class="n">train</span><span class="p">,</span> <span class="n">validate</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">train_validate</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=.</span><span class="mi">3</span><span class="p">,</span> 
-                                   <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">,</span> 
-                                   <span class="n">stratify</span><span class="o">=</span><span class="n">train_validate</span><span class="o">.</span><span class="n">survived</span><span class="p">)</span>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[38]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">train</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[38]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>survived</th>
+      <th>pclass</th>
+      <th>sex</th>
+      <th>age</th>
+      <th>sibsp</th>
+      <th>parch</th>
+      <th>fare</th>
+      <th>class</th>
+      <th>embark_town</th>
+      <th>alone</th>
+      <th>is_female</th>
+      <th>Q</th>
+      <th>S</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>583</th>
+      <td>0</td>
+      <td>1</td>
+      <td>male</td>
+      <td>36.000000</td>
+      <td>0</td>
+      <td>0</td>
+      <td>40.1250</td>
+      <td>First</td>
+      <td>Cherbourg</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>165</th>
+      <td>1</td>
+      <td>3</td>
+      <td>male</td>
+      <td>9.000000</td>
+      <td>0</td>
+      <td>2</td>
+      <td>20.5250</td>
+      <td>Third</td>
+      <td>Southampton</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>0</td>
+      <td>3</td>
+      <td>male</td>
+      <td>7.000000</td>
+      <td>4</td>
+      <td>1</td>
+      <td>39.6875</td>
+      <td>Third</td>
+      <td>Southampton</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>259</th>
+      <td>1</td>
+      <td>2</td>
+      <td>female</td>
+      <td>50.000000</td>
+      <td>0</td>
+      <td>1</td>
+      <td>26.0000</td>
+      <td>Second</td>
+      <td>Southampton</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>306</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>29.678105</td>
+      <td>0</td>
+      <td>0</td>
+      <td>110.8833</td>
+      <td>First</td>
+      <td>Cherbourg</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[39]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">train</span><span class="o">.</span><span class="n">embark_town</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[39]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Southampton    354
+Cherbourg      102
+Queenstown      41
+NaN              1
+Name: embark_town, dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[40]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">imputer</span> <span class="o">=</span> <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">missing_values</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;most_frequent&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[41]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">imputer</span> <span class="o">=</span> <span class="n">imputer</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train</span><span class="p">[[</span><span class="s1">&#39;embark_town&#39;</span><span class="p">]])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[42]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Use the imputer I fit on train to transform train, validate, and test which fills missing values.</span>
+
+<span class="n">train</span><span class="p">[[</span><span class="s1">&#39;embark_town&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">imputer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">train</span><span class="p">[[</span><span class="s1">&#39;embark_town&#39;</span><span class="p">]])</span>
+<span class="n">validate</span><span class="p">[[</span><span class="s1">&#39;embark_town&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">imputer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">validate</span><span class="p">[[</span><span class="s1">&#39;embark_town&#39;</span><span class="p">]])</span>
+<span class="n">test</span><span class="p">[[</span><span class="s1">&#39;embark_town&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">imputer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">test</span><span class="p">[[</span><span class="s1">&#39;embark_town&#39;</span><span class="p">]])</span>
 </pre></div>
 
     </div>
@@ -15784,86 +16289,6 @@ test -&gt; (179, 13)
 <div class="output_area">
 
     <div class="prompt output_prompt">Out[43]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>Southampton    354
-Cherbourg      102
-Queenstown      41
-NaN              1
-Name: embark_town, dtype: int64</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[62]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">imputer</span> <span class="o">=</span> <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">missing_values</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;most_frequent&#39;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[65]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">imputer</span> <span class="o">=</span> <span class="n">imputer</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train</span><span class="p">[[</span><span class="s1">&#39;embark_town&#39;</span><span class="p">]])</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[68]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Use the imputer I fit on train to transform train, validate, and test which fills missing values.</span>
-
-<span class="n">train</span><span class="p">[[</span><span class="s1">&#39;embark_town&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">imputer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">train</span><span class="p">[[</span><span class="s1">&#39;embark_town&#39;</span><span class="p">]])</span>
-<span class="n">validate</span><span class="p">[[</span><span class="s1">&#39;embark_town&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">imputer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">validate</span><span class="p">[[</span><span class="s1">&#39;embark_town&#39;</span><span class="p">]])</span>
-<span class="n">test</span><span class="p">[[</span><span class="s1">&#39;embark_town&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">imputer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">test</span><span class="p">[[</span><span class="s1">&#39;embark_town&#39;</span><span class="p">]])</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[69]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">train</span><span class="o">.</span><span class="n">embark_town</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[69]:</div>
 
 
 
@@ -16033,7 +16458,7 @@ Name: embark_town, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[36]:</div>
+<div class="prompt input_prompt">In&nbsp;[44]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">anatomy_of_a_figure</span><span class="p">()</span>
@@ -16055,7 +16480,7 @@ Name: embark_town, dtype: int64</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="output_110_0.png"
+<img src="output_119_0.png"
 >
 </div>
 
@@ -16172,6 +16597,7 @@ Name: embark_town, dtype: int64</pre>
 <h3><font color=green>Now What?</font></h3>
 <p><strong>Below is a collection of some possibilities for exploring categorical and continuous values.</strong></p>
 <p>If you want more, check out <a href="https://www.machinelearningplus.com/plots/top-50-matplotlib-visualizations-the-master-plots-python/">this article</a> showing 50 amazing matplotlib visualizations with code. It's organized by purpose of visualization objective, so it's easy to navigate, too.</p>
+<p>Also, keep in mind that the pandas <code>.plot()</code> function is a very powerful and simple way to explore and get to know your data quickly with minimal code. Check out <a href="https://towardsdatascience.com/data-visualization-with-pandas-1571bbc541c8">this article</a> to refresh your memory.</p>
 
 </div>
 </div>
@@ -16202,7 +16628,7 @@ Name: embark_town, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[37]:</div>
+<div class="prompt input_prompt">In&nbsp;[45]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">train</span><span class="o">.</span><span class="n">fare</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;dodgerblue&#39;</span><span class="p">)</span>
@@ -16229,7 +16655,7 @@ Name: embark_town, dtype: int64</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="output_122_0.png"
+<img src="output_131_0.png"
 >
 </div>
 
@@ -16256,7 +16682,7 @@ Name: embark_town, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[38]:</div>
+<div class="prompt input_prompt">In&nbsp;[46]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;embark_town&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;Purples&#39;</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
@@ -16284,7 +16710,7 @@ Name: embark_town, dtype: int64</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="output_125_0.png"
+<img src="output_134_0.png"
 >
 </div>
 
@@ -16311,7 +16737,7 @@ Name: embark_town, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[39]:</div>
+<div class="prompt input_prompt">In&nbsp;[47]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">train</span><span class="o">.</span><span class="n">fare</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;dodgerblue&#39;</span><span class="p">)</span>
@@ -16339,7 +16765,7 @@ Name: embark_town, dtype: int64</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="output_128_0.png"
+<img src="output_137_0.png"
 >
 </div>
 
@@ -16359,7 +16785,7 @@ Name: embark_town, dtype: int64</pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="https://i.pinimg.com/originals/e9/f0/9f/e9f09ffbc346ebc6a3dfed66408c11ab.png" alt="Boxplots Explained"></p>
+<p><img src="https://i.pinimg.com/originals/e9/f0/9f/e9f09ffbc346ebc6a3dfed66408c11ab.png" width="550" title="boxplot image"></p>
 
 </div>
 </div>
@@ -16374,7 +16800,7 @@ Name: embark_town, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[40]:</div>
+<div class="prompt input_prompt">In&nbsp;[48]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">train</span><span class="o">.</span><span class="n">age</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;Purples&#39;</span><span class="p">)</span>
@@ -16401,7 +16827,7 @@ Name: embark_town, dtype: int64</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="output_132_0.png"
+<img src="output_141_0.png"
 >
 </div>
 
@@ -16429,7 +16855,7 @@ Name: embark_town, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[41]:</div>
+<div class="prompt input_prompt">In&nbsp;[49]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.ticker</span> <span class="k">as</span> <span class="nn">ticker</span>
@@ -16439,172 +16865,6 @@ Name: embark_town, dtype: int64</pre>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribution of Fare&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Passenger Count&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Fare in $&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-
-<div class="output_png output_subarea ">
-<img src="output_135_0.png"
->
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h5 id="Univariate---sns.swarmplot()">Univariate - <code>sns.swarmplot()</code><a class="anchor-link" href="#Univariate---sns.swarmplot()">&#182;</a></h5><p>This is another way to examine a distribution of a variable. I could easliy bring in the <code>hue</code> argument and make this bivariate exploration.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[42]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">swarmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">train</span><span class="o">.</span><span class="n">fare</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;dodgerblue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">8</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribution of Fare&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Fare in $&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-
-<div class="output_png output_subarea ">
-<img src="output_139_0.png"
->
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Bivariate-&amp;-Multivariate-Exploration">Bivariate &amp; Multivariate Exploration<a class="anchor-link" href="#Bivariate-&amp;-Multivariate-Exploration">&#182;</a></h4><p>Once you begin bi- and multivariate exploration to look at relationships between variables, you <strong>must</strong> split your data first, and use your train dataset to keep your unseen data in validate and test unseen. Bivariate and multivariate analyses use dependent variables to explain independent variables. "Bivariate and multivariate analyses are statistical methods to investigate relationships between data samples. Bivariate analysis looks at two paired data sets, studying whether a relationship exists between them. Multivariate analysis uses two or more variables and analyzes which, if any, are correlated with a specific outcome. The goal in the latter case is to determine which variables influence or cause the outcome." <a href="https://sciencing.com/advantages-disadvantages-multiple-regression-model-12070171.html">source</a></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h5 id="sns.pairplot()-&amp;-sns.pairgrid()"><code>sns.pairplot()</code> &amp; <code>sns.pairgrid()</code><a class="anchor-link" href="#sns.pairplot()-&amp;-sns.pairgrid()">&#182;</a></h5><p>These two seaborn plotting methods allow you to see a lot quickly.</p>
-<p><a href="https://stackoverflow.com/questions/34087126/plot-lower-triangle-in-a-seaborn-pairgrid">source of code</a></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[81]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">train</span><span class="p">,</span> <span class="n">corner</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;survived&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-
-<div class="output_png output_subarea ">
-<img src="output_143_0.png"
->
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[44]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">hide_current_axis</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">PairGrid</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;survived&#39;</span><span class="p">,</span> <span class="n">diag_sharey</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">g</span><span class="o">.</span><span class="n">map_lower</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
-<span class="n">g</span><span class="o">.</span><span class="n">map_diag</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">,</span> <span class="n">multiple</span><span class="o">=</span><span class="s2">&quot;stack&quot;</span><span class="p">,</span> <span class="n">element</span><span class="o">=</span><span class="s2">&quot;step&quot;</span><span class="p">)</span>
-<span class="n">g</span><span class="o">.</span><span class="n">map_upper</span><span class="p">(</span><span class="n">hide_current_axis</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -16646,30 +16906,20 @@ Name: embark_town, dtype: int64</pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h5 id="subplots-.hist()">subplots <code>.hist()</code><a class="anchor-link" href="#subplots-.hist()">&#182;</a></h5><p>Histogram Subplots to View Distribution of Fare by Survival Status.</p>
+<h5 id="Univariate---sns.swarmplot()">Univariate - <code>sns.swarmplot()</code><a class="anchor-link" href="#Univariate---sns.swarmplot()">&#182;</a></h5><p>This is another way to examine a distribution of a variable. I could easliy bring in the <code>hue</code> argument and make this bivariate exploration.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[45]:</div>
+<div class="prompt input_prompt">In&nbsp;[50]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create figure and axes, 2 rows and 1 column, share x and y axes.</span>
-<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">swarmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">train</span><span class="o">.</span><span class="n">fare</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;dodgerblue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">8</span><span class="p">)</span>
 
-<span class="c1"># Plot first histogram from survived subset, fare variable.</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">train</span><span class="p">[</span><span class="n">train</span><span class="o">.</span><span class="n">survived</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">fare</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> 
-         <span class="n">color</span><span class="o">=</span><span class="s1">&#39;dodgerblue&#39;</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-
-<span class="n">ax1</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Survived&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;US $&#39;</span><span class="p">)</span>
-
-<span class="c1"># Plot second historgram from did not survive subset, fare variable.</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">train</span><span class="p">[</span><span class="n">train</span><span class="o">.</span><span class="n">survived</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fare</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> 
-         <span class="n">color</span><span class="o">=</span><span class="s1">&#39;dodgerblue&#39;</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-
-<span class="n">ax2</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Did Not Survive&#39;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Fare Price&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;US $&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribution of Fare&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Fare in $&#39;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -16711,6 +16961,174 @@ Name: embark_town, dtype: int64</pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Bivariate-&amp;-Multivariate-Exploration">Bivariate &amp; Multivariate Exploration<a class="anchor-link" href="#Bivariate-&amp;-Multivariate-Exploration">&#182;</a></h4><p>Once you begin bi- and multivariate exploration to look at relationships between variables, you <strong>must</strong> split your data first, and use your train dataset to keep your unseen data in validate and test unseen. Bivariate and multivariate analyses use dependent variables to explain independent variables. "Bivariate and multivariate analyses are statistical methods to investigate relationships between data samples. Bivariate analysis looks at two paired data sets, studying whether a relationship exists between them. Multivariate analysis uses two or more variables and analyzes which, if any, are correlated with a specific outcome. The goal in the latter case is to determine which variables influence or cause the outcome." <a href="https://sciencing.com/advantages-disadvantages-multiple-regression-model-12070171.html">source</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="sns.pairplot()-&amp;-sns.pairgrid()"><code>sns.pairplot()</code> &amp; <code>sns.pairgrid()</code><a class="anchor-link" href="#sns.pairplot()-&amp;-sns.pairgrid()">&#182;</a></h5><p>These two seaborn plotting methods allow you to see a lot quickly.</p>
+<p><a href="https://stackoverflow.com/questions/34087126/plot-lower-triangle-in-a-seaborn-pairgrid">source of code</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[51]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">train</span><span class="p">,</span> <span class="n">corner</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;survived&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="output_151_0.png"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[52]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">hide_current_axis</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">PairGrid</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;survived&#39;</span><span class="p">,</span> <span class="n">diag_sharey</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">map_lower</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">map_diag</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">,</span> <span class="n">multiple</span><span class="o">=</span><span class="s2">&quot;stack&quot;</span><span class="p">,</span> <span class="n">element</span><span class="o">=</span><span class="s2">&quot;step&quot;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">map_upper</span><span class="p">(</span><span class="n">hide_current_axis</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="output_152_0.png"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="subplots-.hist()">subplots <code>.hist()</code><a class="anchor-link" href="#subplots-.hist()">&#182;</a></h5><p>Histogram Subplots to View Distribution of Fare by Survival Status.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[53]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create figure and axes, 2 rows and 1 column, share x and y axes.</span>
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Plot first histogram from survived subset, fare variable.</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">train</span><span class="p">[</span><span class="n">train</span><span class="o">.</span><span class="n">survived</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">fare</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> 
+         <span class="n">color</span><span class="o">=</span><span class="s1">&#39;dodgerblue&#39;</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Survived&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;US $&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot second historgram from did not survive subset, fare variable.</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">train</span><span class="p">[</span><span class="n">train</span><span class="o">.</span><span class="n">survived</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fare</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> 
+         <span class="n">color</span><span class="o">=</span><span class="s1">&#39;dodgerblue&#39;</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">ax2</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Did Not Survive&#39;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Fare Price&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;US $&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="output_155_0.png"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h5 id="subplots-sns.countplot()">subplots <code>sns.countplot()</code><a class="anchor-link" href="#subplots-sns.countplot()">&#182;</a></h5><p>Compare Categorical Values in <code>Embarked</code> by survival status using subplot Barplots.</p>
 
 </div>
@@ -16718,7 +17136,7 @@ Name: embark_town, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[46]:</div>
+<div class="prompt input_prompt">In&nbsp;[54]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">train</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
@@ -16734,7 +17152,7 @@ Name: embark_town, dtype: int64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[46]:</div>
+    <div class="prompt output_prompt">Out[54]:</div>
 
 
 
@@ -16802,7 +17220,7 @@ Name: embark_town, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[47]:</div>
+<div class="prompt input_prompt">In&nbsp;[55]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">211</span><span class="p">)</span>
@@ -16839,7 +17257,7 @@ Name: embark_town, dtype: int64</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="output_151_0.png"
+<img src="output_159_0.png"
 >
 </div>
 
@@ -16867,7 +17285,7 @@ Name: embark_town, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[48]:</div>
+<div class="prompt input_prompt">In&nbsp;[56]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;fare&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;survived&#39;</span><span class="p">)</span>
@@ -16894,7 +17312,7 @@ Name: embark_town, dtype: int64</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="output_154_0.png"
+<img src="output_162_0.png"
 >
 </div>
 
@@ -16922,7 +17340,7 @@ Name: embark_town, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[49]:</div>
+<div class="prompt input_prompt">In&nbsp;[57]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># The kind default argument is &#39;strip&#39;, but you have many options available.</span>
@@ -16949,7 +17367,7 @@ Name: embark_town, dtype: int64</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="output_157_0.png"
+<img src="output_165_0.png"
 >
 </div>
 
@@ -16961,7 +17379,7 @@ Name: embark_town, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[50]:</div>
+<div class="prompt input_prompt">In&nbsp;[58]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Bring in a third dimension using the hue argument.</span>
@@ -16988,7 +17406,7 @@ Name: embark_town, dtype: int64</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="output_158_0.png"
+<img src="output_166_0.png"
 >
 </div>
 
@@ -17000,7 +17418,7 @@ Name: embark_town, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[87]:</div>
+<div class="prompt input_prompt">In&nbsp;[59]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Change the argument you pass to the kind parameter.</span>
@@ -17008,194 +17426,6 @@ Name: embark_town, dtype: int64</pre>
 <span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;fare&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;survived&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;box&#39;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Second and Third Class Tickets All Below $100&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-
-<div class="output_png output_subarea ">
-<img src="output_159_0.png"
->
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[100]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># I can pass arguments to the col and row parameters, too.</span>
-
-<span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;embark_town&#39;</span><span class="p">,</span>  
-                <span class="n">y</span><span class="o">=</span><span class="s1">&#39;fare&#39;</span><span class="p">,</span>  
-                <span class="n">col</span><span class="o">=</span><span class="s1">&#39;survived&#39;</span><span class="p">,</span>
-                <span class="n">row</span><span class="o">=</span><span class="s1">&#39;class&#39;</span><span class="p">,</span>
-                <span class="n">data</span><span class="o">=</span><span class="n">train</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-
-<div class="output_png output_subarea ">
-<img src="output_160_0.png"
->
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h5 id="sns.lmplot()"><code>sns.lmplot()</code><a class="anchor-link" href="#sns.lmplot()">&#182;</a></h5><p>We can check for a linear fit between two continuous variables; fare and age are the ones we can practice with here. We can even bring in another dimension using the <code>col</code> or <code>hue</code> arguments.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[51]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;fare&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s1">&#39;survived&#39;</span><span class="p">,</span> <span class="n">line_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;red&#39;</span><span class="p">})</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-
-<div class="output_png output_subarea ">
-<img src="output_163_0.png"
->
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[52]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;fare&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;survived&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-
-<div class="output_png output_subarea ">
-<img src="output_164_0.png"
->
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h5 id="sns.boxplot()"><code>sns.boxplot()</code><a class="anchor-link" href="#sns.boxplot()">&#182;</a></h5><p>Boxplots to show Distribution of Age by Sex and Survival</p>
-<div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;categorical&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;continous&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span> <span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;categorical&#39;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[53]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;survived&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;Purples&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;How Do Age and Sex Relate to Survival?&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
@@ -17225,33 +17455,19 @@ Name: embark_town, dtype: int64</pre>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h5 id="sns.swarmplot()"><code>sns.swarmplot()</code><a class="anchor-link" href="#sns.swarmplot()">&#182;</a></h5><p>Swarmplots to show Distribution of a Continuous Variable grouped by a Categorical Variable. Hue brings in a third dimension.</p>
-<div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">swarmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;categorical&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;continous&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span> <span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;categorical&#39;</span>  <span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[54]:</div>
+<div class="prompt input_prompt">In&nbsp;[60]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">swarmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span> <span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;survived&#39;</span>  <span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># I can pass arguments to the col and row parameters, too.</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;How Do Age and Sex Relate to Survival?&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;embark_town&#39;</span><span class="p">,</span>  
+                <span class="n">y</span><span class="o">=</span><span class="s1">&#39;fare&#39;</span><span class="p">,</span>  
+                <span class="n">col</span><span class="o">=</span><span class="s1">&#39;survived&#39;</span><span class="p">,</span>
+                <span class="n">row</span><span class="o">=</span><span class="s1">&#39;class&#39;</span><span class="p">,</span>
+                <span class="n">data</span><span class="o">=</span><span class="n">train</span><span class="p">)</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
@@ -17271,7 +17487,7 @@ Name: embark_town, dtype: int64</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="output_170_0.png"
+<img src="output_168_0.png"
 >
 </div>
 
@@ -17292,40 +17508,112 @@ Name: embark_town, dtype: int64</pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h5 id="sns.violinplot()"><code>sns.violinplot()</code><a class="anchor-link" href="#sns.violinplot()">&#182;</a></h5><p>Violinplots are Similar to Boxplots.</p>
-<div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;categorical&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;continous&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span> <span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;categorical&#39;</span>  <span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="https://i.pinimg.com/564x/52/a4/5b/52a45b80a943be80f89e747c719fe4ea.jpg" alt="Violinplots Explained"></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="https://www.analyticsvidhya.com/blog/2020/07/univariate-analysis-visualization-with-illustrations-in-python/">source</a></p>
+<h5 id="sns.lmplot()"><code>sns.lmplot()</code><a class="anchor-link" href="#sns.lmplot()">&#182;</a></h5><p>We can check for a linear fit between two continuous variables; fare and age are the ones we can practice with here. We can even bring in another dimension using the <code>col</code> or <code>hue</code> arguments.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[55]:</div>
+<div class="prompt input_prompt">In&nbsp;[61]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;fare&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span> <span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;survived&#39;</span>  <span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;fare&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s1">&#39;survived&#39;</span><span class="p">,</span> <span class="n">line_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;red&#39;</span><span class="p">})</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;How Do Fare and Sex Relate to Survival Status?&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="output_171_0.png"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[62]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;fare&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;survived&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="output_172_0.png"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="sns.boxplot()"><code>sns.boxplot()</code><a class="anchor-link" href="#sns.boxplot()">&#182;</a></h5><p>Boxplots to show Distribution of Age by Sex and Survival</p>
+<div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;categorical&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;continous&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span> <span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;categorical&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[63]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;survived&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;Purples&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;How Do Age and Sex Relate to Survival?&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;fare in US $&#39;</span><span class="p">)</span>
-
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
@@ -17366,6 +17654,136 @@ Name: embark_town, dtype: int64</pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="sns.swarmplot()"><code>sns.swarmplot()</code><a class="anchor-link" href="#sns.swarmplot()">&#182;</a></h5><p>Swarmplots to show Distribution of a Continuous Variable grouped by a Categorical Variable. Hue brings in a third dimension.</p>
+<div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">swarmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;categorical&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;continous&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span> <span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;categorical&#39;</span>  <span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[64]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">swarmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span> <span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;survived&#39;</span>  <span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;How Do Age and Sex Relate to Survival?&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="output_178_0.png"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="sns.violinplot()"><code>sns.violinplot()</code><a class="anchor-link" href="#sns.violinplot()">&#182;</a></h5><p>Violinplots are Similar to Boxplots.</p>
+<div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;categorical&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;continous&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span> <span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;categorical&#39;</span>  <span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="https://i.pinimg.com/564x/52/a4/5b/52a45b80a943be80f89e747c719fe4ea.jpg" width="250" title="violinplot image"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://www.analyticsvidhya.com/blog/2020/07/univariate-analysis-visualization-with-illustrations-in-python/">source</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[65]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;fare&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span> <span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;survived&#39;</span>  <span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;How Do Fare and Sex Relate to Survival Status?&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;fare in US $&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="output_183_0.png"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h5 id="pd.crosstab-with-sns.heatmap()"><code>pd.crosstab</code> with <code>sns.heatmap()</code><a class="anchor-link" href="#pd.crosstab-with-sns.heatmap()">&#182;</a></h5><p>Crosstab with Heatmap to Group Variables and Visualize Correlations.</p>
 <p>See lots of formatting options <a href="https://likegeeks.com/seaborn-heatmap-tutorial/">here</a>.</p>
 
@@ -17374,7 +17792,7 @@ Name: embark_town, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[56]:</div>
+<div class="prompt input_prompt">In&nbsp;[66]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create crosstab with raw values.</span>
@@ -17409,7 +17827,7 @@ Name: embark_town, dtype: int64</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="output_178_0.png"
+<img src="output_186_0.png"
 >
 </div>
 
@@ -17429,7 +17847,7 @@ Name: embark_town, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[57]:</div>
+<div class="prompt input_prompt">In&nbsp;[67]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create crosstab with values as percentages of overall population</span>
@@ -17465,7 +17883,7 @@ Name: embark_town, dtype: int64</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="output_180_0.png"
+<img src="output_188_0.png"
 >
 </div>
 
@@ -17485,7 +17903,7 @@ Name: embark_town, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[58]:</div>
+<div class="prompt input_prompt">In&nbsp;[68]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create crosstab with values as percentages of overall population</span>
@@ -17521,7 +17939,7 @@ Name: embark_town, dtype: int64</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="output_182_0.png"
+<img src="output_190_0.png"
 >
 </div>
 
@@ -17552,7 +17970,7 @@ Name: embark_town, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[59]:</div>
+<div class="prompt input_prompt">In&nbsp;[69]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">train</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;survived&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">fare</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
@@ -17568,7 +17986,7 @@ Name: embark_town, dtype: int64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[59]:</div>
+    <div class="prompt output_prompt">Out[69]:</div>
 
 
 
@@ -17596,7 +18014,7 @@ Name: fare, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[60]:</div>
+<div class="prompt input_prompt">In&nbsp;[70]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Plot your groupby object quickly.</span>
@@ -17628,7 +18046,7 @@ Name: fare, dtype: float64</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="output_187_0.png"
+<img src="output_195_0.png"
 >
 </div>
 
@@ -17656,7 +18074,7 @@ Name: fare, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[61]:</div>
+<div class="prompt input_prompt">In&nbsp;[71]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Get a frequency table for class grouped by embark town.</span>
@@ -17674,7 +18092,7 @@ Name: fare, dtype: float64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[61]:</div>
+    <div class="prompt output_prompt">Out[71]:</div>
 
 
 
@@ -17700,7 +18118,7 @@ Name: class, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[62]:</div>
+<div class="prompt input_prompt">In&nbsp;[72]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Turn the multi-level index into columns using the .unstack() method.</span>
@@ -17718,7 +18136,7 @@ Name: class, dtype: float64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[62]:</div>
+    <div class="prompt output_prompt">Out[72]:</div>
 
 
 
@@ -17784,7 +18202,7 @@ Name: class, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[63]:</div>
+<div class="prompt input_prompt">In&nbsp;[73]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Plot the above table</span>
@@ -17824,7 +18242,7 @@ Name: class, dtype: float64</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="output_192_0.png"
+<img src="output_200_0.png"
 >
 </div>
 
@@ -17844,7 +18262,7 @@ Name: class, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[64]:</div>
+<div class="prompt input_prompt">In&nbsp;[74]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">train</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;sex&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">survived</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">ec</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s1">&#39;dodgerblue&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=.</span><span class="mi">9</span><span class="p">)</span>
@@ -17877,7 +18295,7 @@ Name: class, dtype: float64</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="output_194_0.png"
+<img src="output_202_0.png"
 >
 </div>
 
@@ -17905,7 +18323,7 @@ Name: class, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[65]:</div>
+<div class="prompt input_prompt">In&nbsp;[75]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># This table gives the total female or male passengers in each class.</span>
@@ -17923,7 +18341,7 @@ Name: class, dtype: float64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[65]:</div>
+    <div class="prompt output_prompt">Out[75]:</div>
 
 
 
@@ -17984,7 +18402,7 @@ Name: class, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[66]:</div>
+<div class="prompt input_prompt">In&nbsp;[76]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># This table gives the total female or male passengers who survived in each class.</span>
@@ -18002,7 +18420,7 @@ Name: class, dtype: float64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[66]:</div>
+    <div class="prompt output_prompt">Out[76]:</div>
 
 
 
@@ -18063,7 +18481,7 @@ Name: class, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[67]:</div>
+<div class="prompt input_prompt">In&nbsp;[77]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># This table gives us the survival rate for female or male passengers in each class.</span>
@@ -18081,7 +18499,7 @@ Name: class, dtype: float64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[67]:</div>
+    <div class="prompt output_prompt">Out[77]:</div>
 
 
 
@@ -18142,7 +18560,7 @@ Name: class, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[68]:</div>
+<div class="prompt input_prompt">In&nbsp;[78]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># We can create the table above in this way, too. 95.8% of first class females survived.</span>
@@ -18160,139 +18578,7 @@ Name: class, dtype: float64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[68]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th>sex</th>
-      <th>female</th>
-      <th>male</th>
-    </tr>
-    <tr>
-      <th>class</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>First</th>
-      <td>0.958333</td>
-      <td>0.362319</td>
-    </tr>
-    <tr>
-      <th>Second</th>
-      <td>0.956522</td>
-      <td>0.181818</td>
-    </tr>
-    <tr>
-      <th>Third</th>
-      <td>0.530864</td>
-      <td>0.111702</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[80]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Let&#39;s plot the above table.</span>
-
-<span class="n">ctab</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">train</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">],</span> <span class="n">train</span><span class="o">.</span><span class="n">sex</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="n">train</span><span class="o">.</span><span class="n">survived</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">ctab</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Purples&#39;</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;.1%&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Survival Rate was Better for Females No Matter Their Ticket Class&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-
-<div class="output_png output_subarea ">
-<img src="output_201_0.png"
->
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>OR</p>
-<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">values</span><span class="p">,</span>  <span class="n">rows</span><span class="p">,</span>   <span class="n">columns</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[70]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># I can accomplish the same using a pivot table.</span>
-
-<span class="n">table</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="s1">&#39;survived&#39;</span><span class="p">,</span> <span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="s1">&#39;sex&#39;</span><span class="p">)</span>
-<span class="n">table</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[70]:</div>
+    <div class="prompt output_prompt">Out[78]:</div>
 
 
 
@@ -18356,6 +18642,138 @@ Name: class, dtype: float64</pre>
 <div class="prompt input_prompt">In&nbsp;[79]:</div>
 <div class="inner_cell">
     <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Let&#39;s plot the above table.</span>
+
+<span class="n">ctab</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">train</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">],</span> <span class="n">train</span><span class="o">.</span><span class="n">sex</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="n">train</span><span class="o">.</span><span class="n">survived</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">ctab</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Purples&#39;</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;.1%&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Survival Rate was Better for Females No Matter Their Ticket Class&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="output_209_0.png"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>OR</p>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">values</span><span class="p">,</span>  <span class="n">rows</span><span class="p">,</span>   <span class="n">columns</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[80]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># I can accomplish the same using a pivot table.</span>
+
+<span class="n">table</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="s1">&#39;survived&#39;</span><span class="p">,</span> <span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="s1">&#39;sex&#39;</span><span class="p">)</span>
+<span class="n">table</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[80]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>sex</th>
+      <th>female</th>
+      <th>male</th>
+    </tr>
+    <tr>
+      <th>class</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>First</th>
+      <td>0.958333</td>
+      <td>0.362319</td>
+    </tr>
+    <tr>
+      <th>Second</th>
+      <td>0.956522</td>
+      <td>0.181818</td>
+    </tr>
+    <tr>
+      <th>Third</th>
+      <td>0.530864</td>
+      <td>0.111702</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[81]:</div>
+<div class="inner_cell">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;.1%&#39;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Survival Rate was Better for Females No Matter Their Ticket Class&#39;</span><span class="p">)</span>
@@ -18380,7 +18798,7 @@ Name: class, dtype: float64</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="output_204_0.png"
+<img src="output_212_0.png"
 >
 </div>
 
@@ -18415,7 +18833,7 @@ Name: class, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[72]:</div>
+<div class="prompt input_prompt">In&nbsp;[82]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># splits age into 2 bins, 0-12 and 13-80</span>
@@ -18434,7 +18852,7 @@ Name: class, dtype: float64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[72]:</div>
+    <div class="prompt output_prompt">Out[82]:</div>
 
 
 
@@ -18579,7 +18997,7 @@ Name: class, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[73]:</div>
+<div class="prompt input_prompt">In&nbsp;[83]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Now I can check out the survival rate for children and adults.</span>
@@ -18597,7 +19015,7 @@ Name: class, dtype: float64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[73]:</div>
+    <div class="prompt output_prompt">Out[83]:</div>
 
 
 
@@ -18617,7 +19035,7 @@ Name: survived, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[74]:</div>
+<div class="prompt input_prompt">In&nbsp;[84]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">train</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;age_group&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">survived</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">ec</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s1">&#39;dodgerblue&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=.</span><span class="mi">9</span><span class="p">)</span>
@@ -18645,7 +19063,7 @@ Name: survived, dtype: float64</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="output_210_0.png"
+<img src="output_218_0.png"
 >
 </div>
 
@@ -18657,7 +19075,7 @@ Name: survived, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[75]:</div>
+<div class="prompt input_prompt">In&nbsp;[85]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># I can also inspect both the survival and death rates for children and adults.</span>
@@ -18675,7 +19093,7 @@ Name: survived, dtype: float64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[75]:</div>
+    <div class="prompt output_prompt">Out[85]:</div>
 
 
 
@@ -18697,7 +19115,7 @@ Name: survived, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[76]:</div>
+<div class="prompt input_prompt">In&nbsp;[86]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># We can visualize the above code below to understand our data; </span>
@@ -18737,7 +19155,7 @@ Name: survived, dtype: float64</pre>
 
 
 <div class="output_png output_subarea ">
-<img src="output_212_0.png"
+<img src="output_220_0.png"
 >
 </div>
 
@@ -18783,15 +19201,16 @@ Name: survived, dtype: float64</pre>
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li><p><strong>A Logistic Regression Model</strong> maps any real value into a number between 0 and 1 representing the probability that an observation is in the positive class.</p>
+<li><p><strong>A Logistic Regression Model</strong> maps any real value into a number between 0 and 1 using the probability that an observation is in the positive class, 1.</p>
 </li>
 <li><p><strong>Overall</strong>, makes a great baseline model because of the quick and easy implementation and ease of interpretation.</p>
 </li>
 <li><p><strong>Pros:</strong> Easy to interpret, fast to train and predict making this a great first classification model to try.</p>
 </li>
-<li><p><strong>Cons:</strong> Not as interpretable as showing a picture like a Decision Tree Classifier, assumption that the X predictors are independent, multi-class classification gets more complicated to interpret and explain</p>
+<li><p><strong>Cons:</strong> Not as interpretable as showing a picture like a Decision Tree Classifier, assumption that the X predictors are independent, multi-class classification gets more complicated to interpret and explain.</p>
 </li>
 </ul>
+<p>Check out this guide to answering questions about Logistic Regression in interviews <a href="https://medium.com/analytics-vidhya/interview-questions-on-logistic-regression-1ebd1666bbbd">here</a>!</p>
 
 </div>
 </div>
@@ -18866,7 +19285,7 @@ Name: survived, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[55]:</div>
+<div class="prompt input_prompt">In&nbsp;[87]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">train</span><span class="o">.</span><span class="n">survived</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -18882,7 +19301,7 @@ Name: survived, dtype: float64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[55]:</div>
+    <div class="prompt output_prompt">Out[87]:</div>
 
 
 
@@ -18916,7 +19335,7 @@ Name: survived, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[56]:</div>
+<div class="prompt input_prompt">In&nbsp;[88]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># I will decide here what my X variables will be; my y is `survived`, my target.</span>
@@ -18934,7 +19353,7 @@ Name: survived, dtype: float64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[56]:</div>
+    <div class="prompt output_prompt">Out[88]:</div>
 
 
 
@@ -19004,7 +19423,7 @@ Name: survived, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[57]:</div>
+<div class="prompt input_prompt">In&nbsp;[89]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># I will drop any remaining categorical features I have left.</span>
@@ -19026,7 +19445,7 @@ Name: survived, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[58]:</div>
+<div class="prompt input_prompt">In&nbsp;[90]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># One last check of my data; all of my columns need to be numeric</span>
@@ -19044,7 +19463,7 @@ Name: survived, dtype: float64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[58]:</div>
+    <div class="prompt output_prompt">Out[90]:</div>
 
 
 
@@ -19104,7 +19523,7 @@ Name: survived, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[59]:</div>
+<div class="prompt input_prompt">In&nbsp;[91]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># This is my target variable, my label.</span>
@@ -19122,7 +19541,7 @@ Name: survived, dtype: float64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[59]:</div>
+    <div class="prompt output_prompt">Out[91]:</div>
 
 
 
@@ -19181,7 +19600,7 @@ Name: survived, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[60]:</div>
+<div class="prompt input_prompt">In&nbsp;[92]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create a simple Logistic Regression model to start.</span>
@@ -19203,7 +19622,7 @@ Name: survived, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[61]:</div>
+<div class="prompt input_prompt">In&nbsp;[93]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">logit</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
@@ -19219,7 +19638,7 @@ Name: survived, dtype: float64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[61]:</div>
+    <div class="prompt output_prompt">Out[93]:</div>
 
 
 
@@ -19241,18 +19660,48 @@ Name: survived, dtype: float64</pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h5 id="Print-the-coefficients-and-intercept-of-the-model">Print the coefficients and intercept of the model<a class="anchor-link" href="#Print-the-coefficients-and-intercept-of-the-model">&#182;</a></h5>
+<h5 id="Look-at-our-features-with-their-coefficients-from-our-LR-model">Look at our features with their coefficients from our LR model<a class="anchor-link" href="#Look-at-our-features-with-their-coefficients-from-our-LR-model">&#182;</a></h5>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[62]:</div>
+<div class="prompt input_prompt">In&nbsp;[94]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Columns: </span><span class="si">{</span><span class="n">X_train</span><span class="o">.</span><span class="n">columns</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Coefficient: </span><span class="si">{</span><span class="n">logit</span><span class="o">.</span><span class="n">coef_</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Intercept: </span><span class="si">{</span><span class="n">logit</span><span class="o">.</span><span class="n">intercept_</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create a list of our model features.</span>
+
+<span class="n">features</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[95]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create a list of the weights for each feature from our model.</span>
+
+<span class="n">weights</span> <span class="o">=</span> <span class="n">logit</span><span class="o">.</span><span class="n">coef_</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[96]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Store our lists from above in a DataFrame.</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">features</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;index&#39;</span><span class="p">:</span> <span class="s1">&#39;feature&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;weight&#39;</span><span class="p">})</span>
 </pre></div>
 
     </div>
@@ -19265,27 +19714,97 @@ Name: survived, dtype: float64</pre>
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+    <div class="prompt output_prompt">Out[96]:</div>
 
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Columns: Index([&#39;pclass&#39;, &#39;age&#39;, &#39;sibsp&#39;, &#39;parch&#39;, &#39;fare&#39;, &#39;alone&#39;, &#39;is_female&#39;, &#39;Q&#39;,
-       &#39;S&#39;],
-      dtype=&#39;object&#39;)
 
-Coefficient: [[-1.18971499e+00 -3.56146280e-02 -5.18819408e-01 -1.48130530e-01
-  -9.39922926e-04 -6.59951184e-01  2.72614345e+00  7.89591377e-01
-   7.16839055e-02]]
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-Intercept: [2.79501842]
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
 
-</pre>
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>feature</th>
+      <th>weight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>pclass</td>
+      <td>-1.189715</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>age</td>
+      <td>-0.035615</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>sibsp</td>
+      <td>-0.518819</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>parch</td>
+      <td>-0.148131</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>fare</td>
+      <td>-0.000940</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>alone</td>
+      <td>-0.659951</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>is_female</td>
+      <td>2.726143</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Q</td>
+      <td>0.789591</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>S</td>
+      <td>0.071684</td>
+    </tr>
+  </tbody>
+</table>
 </div>
 </div>
 
 </div>
+
+</div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -19313,7 +19832,7 @@ Intercept: [2.79501842]
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3><strong><font color=red>What Are Evaluation Metrics for Classification Models?</font></strong></h3>
 <p>There are different metrics we can use to understand how well our classification model is predicting. Context will guide you toward the most valuable metric for your particular situation.</p>
-<p><img src="https://i.stack.imgur.com/LIWH1.jpg" alt="image.png"></p>
+<p><img src="https://i.stack.imgur.com/LIWH1.jpg" width="400" title="classification report image"></p>
 <hr>
 
 </div>
@@ -19322,10 +19841,28 @@ Intercept: [2.79501842]
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<blockquote><p><strong>Accuracy:</strong> This tells you how often your classifier is <strong>predicting correctly overall</strong>.</p>
-</blockquote>
-<p>This is the ratio of all of your correct predictions over all of your observations.</p>
-<p>(Total Number Correct / Total Number of Data Points) -&gt; (TP + TN / TP + TN + FP + FN)</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Accuracy">Accuracy<a class="anchor-link" href="#Accuracy">&#182;</a></h4><p>$\frac{TP + TN}{TP + TN + FP + FN}$ -&gt;
+$\frac{Total Number Correct}{Total  Number  of  Data  Points}$</p>
+<ul>
+<li><p>This tells you how often your classifier is <strong>predicting correctly overall</strong>.</p>
+</li>
+<li><p>This is the ratio of all of your correct predictions over all of your observations.</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <hr>
 
 </div>
@@ -19334,12 +19871,16 @@ Intercept: [2.79501842]
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<blockquote><p><strong>Recall:</strong> The Recall score (<strong>True Positive Rate or Sensitivity</strong>) tells you how often your classifier is catching the positive cases in your dataset. It describes how good the model is at predicting the positive class when the actual outcome is positive. In other words, Recall tells you what percentage of the time your model is identifying the relevant instance in your dataset.</p>
-</blockquote>
-<p>You have to decide which is more important in your situation. Is it more expensive in your specific context to miss a positive instance? If so, optimize for Recall.</p>
+<h4 id="Recall">Recall<a class="anchor-link" href="#Recall">&#182;</a></h4><p>$\frac{TP}{TP + FN}$ -&gt;
+$\frac{Total Number of Correct Positive Predictions}{Total Number of Actual Positive Observations in Dataset}$</p>
+<ul>
+<li>The Recall score (<strong>True Positive Rate or Sensitivity</strong>) tells you how often your classifier is catching the positive cases in your dataset. It describes how good the model is at predicting the positive class when the actual outcome is positive. In other words, Recall tells you what percentage of the time your model is identifying the relevant instance in your dataset.</li>
+</ul>
+<ul>
+<li>You have to decide which is more important in your situation. Is it more expensive in your specific context to miss a positive instance? If so, optimize for Recall.</li>
+</ul>
 <p><strong><font color=green>The Higher the Recall Score == The better your Classifier is at catching the actual positive cases in your dataset.</font></strong></p>
 <p><strong><font color=red>The Lower the Recall Score == The more your Classifier is making Type II Errors / Misses / False Negatives.</font></strong></p>
-<p>(Total Number of Correct Positive Predictions / Total Number of Actual Positive Observations in Dataset) -&gt; (TP / TP + FN)</p>
 <hr>
 
 </div>
@@ -19348,14 +19889,16 @@ Intercept: [2.79501842]
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<blockquote><p><strong>Precision:</strong> The Precision score tells you how often your model was able to <strong>predict positives correctly.</strong> In other words, precision is the proportion of observations your model predicts to be positive that were actually positive and not false alarms or false positives.</p>
-</blockquote>
-<p><strong><font color=green>The Higher the Precision Score == The better your Classifier is at predicting positives correctly in your dataset.</font></strong></p>
-<p><strong><font color=red>The lower the Precision Score == The more your Classifier predicted a lot of positives where there were none, False Positives / Type I Errors / False Alarms</font></strong></p>
+<h4 id="Precision">Precision<a class="anchor-link" href="#Precision">&#182;</a></h4><p>$\frac{TP}{TP + FP}$ -&gt;
+$\frac{Total Number of Correct Positive Predictions}{Total Number of Observations Predicted as Postive by Model}$</p>
+<ul>
+<li>The Precision score tells you how often your model was able to <strong>predict positives correctly.</strong> In other words, precision is the proportion of observations your model predicts to be positive that were actually positive and not false alarms or false positives.</li>
+</ul>
 <ul>
 <li>If your model's Precision score goes up, the cost is that your model's Recall score goes down. You have to decide which is more important in your situation. Is it less costly to falsely predict that an instance or observation is the positive class (false alarm) than to miss a Positive instance? If so, optimize for precision.</li>
 </ul>
-<p>(Total Number of Correct Positive Predictions / Total Number of Observations Predicted as Postive by Model) -&gt; (TP / TP + FP)</p>
+<p><strong><font color=green>The Higher the Precision Score == The better your Classifier is at predicting positives correctly in your dataset.</font></strong></p>
+<p><strong><font color=red>The lower the Precision Score == The more your Classifier predicted a lot of positives where there were none, False Positives / Type I Errors / False Alarms</font></strong></p>
 <hr>
 
 </div>
@@ -19364,8 +19907,9 @@ Intercept: [2.79501842]
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<blockquote><p><strong>f1-score:</strong> The balanced harmonic mean of Recall and Precision, giving both metrics equal weight. The higher the F-Measure is, the better when you are looking to optimize for both Recall and Precision.</p>
-</blockquote>
+<h4 id="f1-score">f1-score<a class="anchor-link" href="#f1-score">&#182;</a></h4><ul>
+<li>The balanced harmonic mean of Recall and Precision, giving both metrics equal weight. The higher the F-Measure is, the better when you are looking to optimize for both Recall and Precision.</li>
+</ul>
 <hr>
 
 </div>
@@ -19374,11 +19918,12 @@ Intercept: [2.79501842]
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<blockquote><p><strong>ROC Curve:</strong> The Receiver Operating Characteristic Curve (ROC Curve) summarizes the trade-off between the true positive rate and false positive rate for a predictive model using different probability thresholds. The higher the area under the curve, the better your model is at separating or predicting positive and negative classes. <em>ROC curves are appropriate when the observations are balanced between each class in a binary classification problem.</em></p>
-</blockquote>
-<p><img src="https://3qeqpr26caki16dnhd19sv6by6v-wpengine.netdna-ssl.com/wp-content/uploads/2018/08/ROC-Curve-Plot-for-a-No-Skill-Classifier-and-a-Logistic-Regression-Model.png" alt="image.png"></p>
-<ul>
-<li>It is a plot of the false positive rate (x-axis) versus the true positive rate (y-axis) for a number of different candidate threshold values between 0.0 and 1.0. Put another way, it plots the false alarm rate versus the hit rate.</li>
+<h4 id="ROC-Curve">ROC Curve<a class="anchor-link" href="#ROC-Curve">&#182;</a></h4><ul>
+<li><p>The Receiver Operating Characteristic Curve (ROC Curve) summarizes the trade-off between the true positive rate and false positive rate for a predictive model using different probability thresholds. The higher the area under the curve, the better your model is at separating or predicting positive and negative classes. <em>ROC curves are appropriate when the observations are balanced between each class in a binary classification problem.</em>
+<img src="https://3qeqpr26caki16dnhd19sv6by6v-wpengine.netdna-ssl.com/wp-content/uploads/2018/08/ROC-Curve-Plot-for-a-No-Skill-Classifier-and-a-Logistic-Regression-Model.png" width="400" title="ROC Curve Image"></p>
+</li>
+<li><p>It is a plot of the false positive rate (x-axis) versus the true positive rate (y-axis) for a number of different candidate threshold values between 0.0 and 1.0. Put another way, it plots the false alarm rate versus the hit rate.</p>
+</li>
 </ul>
 <hr>
 
@@ -19483,18 +20028,21 @@ Intercept: [2.79501842]
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[80]:</div>
+<div class="prompt input_prompt">In&nbsp;[97]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create eval_df and rename the train survived column actual.</span>
 <span class="n">train_eval_df</span> <span class="o">=</span> <span class="n">train</span><span class="p">[[</span><span class="s1">&#39;survived&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;survived&#39;</span><span class="p">:</span> <span class="s1">&#39;actual&#39;</span><span class="p">})</span>
 
+<span class="c1"># Add your baseline predictions.</span>
+<span class="n">train_eval_df</span><span class="p">[</span><span class="s1">&#39;baseline&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
 <span class="c1"># Predict whether a passenger will survive using the X_train data; add column to eval_df</span>
-<span class="n">train_eval_df</span><span class="p">[</span><span class="s1">&#39;predicted&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">logit</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">train_eval_df</span><span class="p">[</span><span class="s1">&#39;LR1_predicted&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">logit</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
 
 <span class="c1"># Estimate the probability of a passenger surviving using the X_train data; add col to eval_df</span>
 
-<span class="n">train_eval_df</span><span class="p">[</span><span class="s1">&#39;probs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">logit</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_train</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">train_eval_df</span><span class="p">[</span><span class="s1">&#39;LR1_proba&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">logit</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_train</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
 
 <span class="n">train_eval_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
@@ -19509,7 +20057,7 @@ Intercept: [2.79501842]
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[80]:</div>
+    <div class="prompt output_prompt">Out[97]:</div>
 
 
 
@@ -19533,13 +20081,15 @@ Intercept: [2.79501842]
     <tr style="text-align: right;">
       <th></th>
       <th>actual</th>
-      <th>predicted</th>
-      <th>probs</th>
+      <th>baseline</th>
+      <th>LR1_predicted</th>
+      <th>LR1_proba</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>583</th>
+      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0.407457</td>
@@ -19548,10 +20098,12 @@ Intercept: [2.79501842]
       <th>165</th>
       <td>1</td>
       <td>0</td>
+      <td>0</td>
       <td>0.207752</td>
     </tr>
     <tr>
       <th>50</th>
+      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0.038700</td>
@@ -19559,12 +20111,14 @@ Intercept: [2.79501842]
     <tr>
       <th>259</th>
       <td>1</td>
+      <td>0</td>
       <td>1</td>
       <td>0.779046</td>
     </tr>
     <tr>
       <th>306</th>
       <td>1</td>
+      <td>0</td>
       <td>1</td>
       <td>0.924861</td>
     </tr>
@@ -19596,18 +20150,21 @@ Intercept: [2.79501842]
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[81]:</div>
+<div class="prompt input_prompt">In&nbsp;[98]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create eval_df and rename survived column actual.</span>
 <span class="n">val_eval_df</span> <span class="o">=</span> <span class="n">validate</span><span class="p">[[</span><span class="s1">&#39;survived&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;survived&#39;</span><span class="p">:</span> <span class="s1">&#39;actual&#39;</span><span class="p">})</span>
 
+<span class="c1"># Add your baseline predictions.</span>
+<span class="n">val_eval_df</span><span class="p">[</span><span class="s1">&#39;baseline&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
 <span class="c1"># Predict whether a passenger will survive using the training data; add column to eval_df</span>
-<span class="n">val_eval_df</span><span class="p">[</span><span class="s1">&#39;predicted&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">logit</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_validate</span><span class="p">)</span>
+<span class="n">val_eval_df</span><span class="p">[</span><span class="s1">&#39;LR1_predicted&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">logit</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_validate</span><span class="p">)</span>
 
 <span class="c1"># Estimate the probability of a passenger surviving using the training data; add col to eval_df</span>
 
-<span class="n">val_eval_df</span><span class="p">[</span><span class="s1">&#39;probs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">logit</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_validate</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">val_eval_df</span><span class="p">[</span><span class="s1">&#39;LR1_proba&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">logit</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_validate</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
 
 <span class="n">val_eval_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
@@ -19622,7 +20179,7 @@ Intercept: [2.79501842]
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[81]:</div>
+    <div class="prompt output_prompt">Out[98]:</div>
 
 
 
@@ -19646,13 +20203,15 @@ Intercept: [2.79501842]
     <tr style="text-align: right;">
       <th></th>
       <th>actual</th>
-      <th>predicted</th>
-      <th>probs</th>
+      <th>baseline</th>
+      <th>LR1_predicted</th>
+      <th>LR1_proba</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>610</th>
+      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0.342058</td>
@@ -19661,10 +20220,12 @@ Intercept: [2.79501842]
       <th>424</th>
       <td>0</td>
       <td>0</td>
+      <td>0</td>
       <td>0.116145</td>
     </tr>
     <tr>
       <th>568</th>
+      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0.076009</td>
@@ -19672,11 +20233,13 @@ Intercept: [2.79501842]
     <tr>
       <th>334</th>
       <td>1</td>
+      <td>0</td>
       <td>1</td>
       <td>0.937128</td>
     </tr>
     <tr>
       <th>101</th>
+      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0.081153</td>
@@ -19709,7 +20272,7 @@ Intercept: [2.79501842]
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[83]:</div>
+<div class="prompt input_prompt">In&nbsp;[99]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Reminder of what our X_train looks like.</span>
@@ -19727,7 +20290,7 @@ Intercept: [2.79501842]
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[83]:</div>
+    <div class="prompt output_prompt">Out[99]:</div>
 
 
 
@@ -19787,7 +20350,7 @@ Intercept: [2.79501842]
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[86]:</div>
+<div class="prompt input_prompt">In&nbsp;[100]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Reminder of what our y_train looks like.</span>
@@ -19805,7 +20368,7 @@ Intercept: [2.79501842]
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[86]:</div>
+    <div class="prompt output_prompt">Out[100]:</div>
 
 
 
@@ -19849,7 +20412,7 @@ Intercept: [2.79501842]
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[85]:</div>
+<div class="prompt input_prompt">In&nbsp;[101]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Get our accuracy score for our logistic regression model.</span>
@@ -19867,7 +20430,7 @@ Intercept: [2.79501842]
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[85]:</div>
+    <div class="prompt output_prompt">Out[101]:</div>
 
 
 
@@ -19903,10 +20466,10 @@ Intercept: [2.79501842]
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[82]:</div>
+<div class="prompt input_prompt">In&nbsp;[102]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">recall_score</span><span class="p">(</span><span class="n">train_eval_df</span><span class="o">.</span><span class="n">actual</span><span class="p">,</span> <span class="n">train_eval_df</span><span class="o">.</span><span class="n">predicted</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">recall_score</span><span class="p">(</span><span class="n">train_eval_df</span><span class="o">.</span><span class="n">actual</span><span class="p">,</span> <span class="n">train_eval_df</span><span class="o">.</span><span class="n">LR1_predicted</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -19919,7 +20482,7 @@ Intercept: [2.79501842]
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[82]:</div>
+    <div class="prompt output_prompt">Out[102]:</div>
 
 
 
@@ -19955,10 +20518,10 @@ Intercept: [2.79501842]
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[67]:</div>
+<div class="prompt input_prompt">In&nbsp;[103]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">precision_score</span><span class="p">(</span><span class="n">train_eval_df</span><span class="o">.</span><span class="n">actual</span><span class="p">,</span> <span class="n">train_eval_df</span><span class="o">.</span><span class="n">yhat</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">precision_score</span><span class="p">(</span><span class="n">train_eval_df</span><span class="o">.</span><span class="n">actual</span><span class="p">,</span> <span class="n">train_eval_df</span><span class="o">.</span><span class="n">LR1_predicted</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -19971,7 +20534,7 @@ Intercept: [2.79501842]
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[67]:</div>
+    <div class="prompt output_prompt">Out[103]:</div>
 
 
 
@@ -20019,10 +20582,10 @@ Intercept: [2.79501842]
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[108]:</div>
+<div class="prompt input_prompt">In&nbsp;[104]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tn</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">fn</span><span class="p">,</span> <span class="n">tp</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">train_eval_df</span><span class="o">.</span><span class="n">actual</span><span class="p">,</span> <span class="n">y_pred</span><span class="o">=</span><span class="n">train_eval_df</span><span class="o">.</span><span class="n">predicted</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tn</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">fn</span><span class="p">,</span> <span class="n">tp</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">train_eval_df</span><span class="o">.</span><span class="n">actual</span><span class="p">,</span> <span class="n">y_pred</span><span class="o">=</span><span class="n">train_eval_df</span><span class="o">.</span><span class="n">LR1_predicted</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  predicted&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  0    1&#39;</span><span class="p">)</span>
@@ -20066,10 +20629,10 @@ Intercept: [2.79501842]
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[109]:</div>
+<div class="prompt input_prompt">In&nbsp;[105]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">train_eval_df</span><span class="o">.</span><span class="n">actual</span><span class="p">,</span> <span class="n">y_pred</span><span class="o">=</span><span class="n">train_eval_df</span><span class="o">.</span><span class="n">predicted</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">train_eval_df</span><span class="o">.</span><span class="n">actual</span><span class="p">,</span> <span class="n">y_pred</span><span class="o">=</span><span class="n">train_eval_df</span><span class="o">.</span><span class="n">LR1_predicted</span><span class="p">)</span>
 <span class="n">cm</span>
 </pre></div>
 
@@ -20083,7 +20646,7 @@ Intercept: [2.79501842]
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[109]:</div>
+    <div class="prompt output_prompt">Out[105]:</div>
 
 
 
@@ -20101,7 +20664,7 @@ Intercept: [2.79501842]
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[110]:</div>
+<div class="prompt input_prompt">In&nbsp;[106]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">xlabels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Pred Did Not Survive&#39;</span><span class="p">,</span> <span class="s1">&#39;Pred Survived&#39;</span><span class="p">]</span>
@@ -20130,7 +20693,7 @@ Intercept: [2.79501842]
 
 
 <div class="output_png output_subarea ">
-<img src="output_275_0.png"
+<img src="output_288_0.png"
 >
 </div>
 
@@ -20150,16 +20713,75 @@ Intercept: [2.79501842]
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[107]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">train_eval_df</span><span class="o">.</span><span class="n">actual</span><span class="p">,</span> 
-            <span class="n">columns</span><span class="o">=</span><span class="n">train_eval_df</span><span class="o">.</span><span class="n">yhat</span><span class="p">,</span> 
+            <span class="n">columns</span><span class="o">=</span><span class="n">train_eval_df</span><span class="o">.</span><span class="n">LR1_predicted</span><span class="p">,</span> 
             <span class="n">rownames</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Actual&#39;</span><span class="p">],</span> 
             <span class="n">colnames</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Predicted&#39;</span><span class="p">])</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[107]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Predicted</th>
+      <th>0</th>
+      <th>1</th>
+    </tr>
+    <tr>
+      <th>Actual</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>269</td>
+      <td>38</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>55</td>
+      <td>136</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -20181,15 +20803,41 @@ Intercept: [2.79501842]
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[108]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># My LR model is beating my baseline accuracy at predicting my target value, survived.</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">train_eval_df</span><span class="o">.</span><span class="n">actual</span><span class="p">,</span> <span class="n">y_pred</span><span class="o">=</span><span class="n">train_eval_df</span><span class="o">.</span><span class="n">yhat</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">train_eval_df</span><span class="o">.</span><span class="n">actual</span><span class="p">,</span> <span class="n">y_pred</span><span class="o">=</span><span class="n">train_eval_df</span><span class="o">.</span><span class="n">LR1_predicted</span><span class="p">))</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>              precision    recall  f1-score   support
+
+           0       0.83      0.88      0.85       307
+           1       0.78      0.71      0.75       191
+
+    accuracy                           0.81       498
+   macro avg       0.81      0.79      0.80       498
+weighted avg       0.81      0.81      0.81       498
+
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -20204,15 +20852,41 @@ Intercept: [2.79501842]
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[109]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># I can try this model on out-of-sample data using my validate dataset.</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">val_eval_df</span><span class="o">.</span><span class="n">actual</span><span class="p">,</span> <span class="n">y_pred</span><span class="o">=</span><span class="n">val_eval_df</span><span class="o">.</span><span class="n">yhat</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">val_eval_df</span><span class="o">.</span><span class="n">actual</span><span class="p">,</span> <span class="n">y_pred</span><span class="o">=</span><span class="n">val_eval_df</span><span class="o">.</span><span class="n">LR1_predicted</span><span class="p">))</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>              precision    recall  f1-score   support
+
+           0       0.80      0.86      0.83       132
+           1       0.74      0.66      0.70        82
+
+    accuracy                           0.78       214
+   macro avg       0.77      0.76      0.76       214
+weighted avg       0.78      0.78      0.78       214
+
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
