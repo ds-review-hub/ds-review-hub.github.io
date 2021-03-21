@@ -50,6 +50,9 @@ ___
 
 >This page walks through the data science pipeline for a simple classification project. Lots of handy code snippets and explanations.
 
+[Regression Project Overview Notebook](https://ds-review-hub.github.io/regression_review)
+
+>This page walks through the data science pipeline for a simple regression project. It is much less detailed than the Classification Review notebook, but it contains helpful explanations and code snippets to work your way through a ML Regression Project.
 ___
 ## Links to Workshops and Extras
 
