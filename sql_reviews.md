@@ -2,6 +2,10 @@
 
 >These notebooks introduce SQL as a tool to interrogate databases and acquire data for use with python libraries like numpy and pandas. They will cover everything from RDBMS terms and structure to subqueries that involve joining and filtering data from multiple tables.
 
+- [Basic SELECT Statements Lesson](https://ds-review-hub.github.io/basic_statement_lesson)
+
+>If you want to code along with me during the SELECT Statements lesson, here is my code.
+
 - [SQL Intro Review Notebook](https://ds-review-hub.github.io/sql_intro)
 
 >This notebook starts out with an important overview of fundamentals and goes through using `GROUP BY` clauses.
