@@ -13258,7 +13258,9 @@ $( document ).ready(function(){
 <span class="k">SELECT</span> <span class="n">item_name</span>
 <span class="k">FROM</span> <span class="n">orders</span><span class="p">;</span>
 
-<span class="k">SELECT</span> <span class="n">item_name</span><span class="p">,</span> <span class="n">item_price</span>
+<span class="k">SELECT</span> 
+    <span class="n">item_name</span><span class="p">,</span> 
+    <span class="n">item_price</span>
 <span class="k">FROM</span> <span class="n">orders</span><span class="p">;</span>
 
 <span class="cm">/*</span>
@@ -13342,11 +13344,14 @@ $( document ).ready(function(){
 <span class="k">FROM</span> <span class="n">orders</span> 
 <span class="k">WHERE</span> <span class="n">quantity</span> <span class="k">BETWEEN</span> <span class="mi">3</span> <span class="k">AND</span> <span class="mi">5</span><span class="p">;</span>
 
-<span class="c1">-- Filter using a WHERE statement &gt;, &lt;, &lt;&gt; operators.</span>
+<span class="c1">-- Filter using a WHERE statement &gt;, &lt;, &lt;&gt; operators. </span>
+
+<span class="c1">-- (returns 870 records)</span>
 <span class="k">SELECT</span> <span class="o">*</span>
 <span class="k">FROM</span> <span class="n">orders</span> 
 <span class="k">WHERE</span> <span class="n">order_id</span> <span class="o">&gt;</span> <span class="mi">1500</span><span class="p">;</span>
 
+<span class="c1">-- (returns 267 records)</span>
 <span class="k">SELECT</span> <span class="o">*</span>
 <span class="k">FROM</span> <span class="n">orders</span>
 <span class="k">WHERE</span> <span class="n">quantity</span> <span class="o">&lt;&gt;</span> <span class="mi">1</span><span class="p">;</span>
@@ -13384,6 +13389,7 @@ $( document ).ready(function(){
 <span class="cm">/*</span>
 <span class="cm">Notice that if I have spaces in my column alias, I have to put it in single quotes.</span>
 <span class="cm">If I do not have a space in my colum alias, I do not have to put it in quotes.</span>
+<span class="cm">*/</span>
 </pre></div>
 
 </div>
