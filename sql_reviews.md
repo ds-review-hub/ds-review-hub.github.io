@@ -6,7 +6,7 @@
 
 >If you want to code along with me during the `SELECT` Statements lesson, here is my code.
 
-- [`WHERE` Cluase Lesson](https://ds-review-hub.github.io/where_lesson)
+- [`WHERE` Clause Lesson](https://ds-review-hub.github.io/where_lesson)
 
 >If you want to code laong with me during the `WHERE` Clause lesson, here is my code.
 
