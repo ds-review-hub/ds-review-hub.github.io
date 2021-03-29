@@ -10,6 +10,10 @@
 
 >If you want to code along with me during the `WHERE` Clause lesson, here is my code.
 
+- [`GROUP BY` Clause Lesson](https://ds-review-hub.github.io/group_by_lesson)
+
+>If yu want to code along with me during the `GROUP BY` Clause lesson, here is my code.
+
 - [SQL Intro Review Notebook](https://ds-review-hub.github.io/sql_intro)
 
 >This notebook starts out with an important overview of fundamentals and goes through using `GROUP BY` clauses.
