@@ -13381,7 +13381,7 @@ $( document ).ready(function(){
     <span class="k">from</span> <span class="n">salaries</span> 
     <span class="k">where</span> <span class="n">salary</span> <span class="k">between</span> <span class="mi">60000</span> <span class="k">and</span> <span class="mi">70000</span>
 <span class="p">)</span> <span class="k">as</span> <span class="n">sal</span>
-<span class="k">JOIN</span> <span class="n">dept_emp</span> <span class="n">USEING</span><span class="p">(</span><span class="n">emp_no</span><span class="p">)</span>
+<span class="k">JOIN</span> <span class="n">dept_emp</span> <span class="k">USING</span><span class="p">(</span><span class="n">emp_no</span><span class="p">)</span>
 <span class="k">JOIN</span> <span class="n">departments</span> <span class="k">USING</span><span class="p">(</span><span class="n">dept_no</span><span class="p">);</span>
 </pre></div>
 <p>However, you can also use a subquery in a <code>JOIN</code> clause. Here, we are selecting from a derived table. This method can be computationally expensive, but it gifts you with added flexibility.</p>
@@ -13425,20 +13425,39 @@ $( document ).ready(function(){
 <p>I can also return the result of a mathematical calculation using subqueries.</p>
 <div class="highlight"><pre><span></span><span class="c1">-- Find the percent of employees whose salaries are within one standard deviation of the highest salary.</span>
 
-<span class="k">SELECT</span><span class="p">(</span>
-       <span class="p">(</span><span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span>
-        <span class="k">FROM</span> <span class="n">salaries</span>
-        <span class="k">WHERE</span> <span class="n">to_date</span> <span class="o">&gt;</span> <span class="n">CURDATE</span><span class="p">()</span>
-            <span class="k">AND</span> <span class="n">salary</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="k">SELECT</span><span class="p">(</span><span class="k">MAX</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span> <span class="o">-</span> <span class="n">STDDEV</span><span class="p">(</span><span class="n">salary</span><span class="p">))</span>
-                           <span class="k">FROM</span> <span class="n">salaries</span><span class="p">))</span> 
-        <span class="o">/</span>
-       <span class="p">(</span><span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">AS</span> <span class="n">total_emp</span>
-        <span class="k">FROM</span> <span class="n">employees</span><span class="p">)</span>
-       <span class="p">)</span> <span class="o">*</span> <span class="mi">100</span> <span class="k">AS</span> <span class="n">percent_employees</span><span class="p">;</span>
+<span class="k">SELECT</span>
+<span class="p">(</span><span class="k">SELECT</span>
+    <span class="k">COUNT</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span>
+<span class="k">FROM</span> <span class="n">salaries</span>
+<span class="k">WHERE</span> <span class="n">to_date</span> <span class="o">&gt;</span> <span class="n">CURDATE</span><span class="p">()</span>
+    <span class="k">AND</span> <span class="n">salary</span> <span class="o">&gt;=</span> <span class="p">(</span>
+                    <span class="k">SELECT</span>
+                    <span class="k">MAX</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span> <span class="o">-</span> <span class="n">STDDEV</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span>
+                    <span class="k">FROM</span> <span class="n">salaries</span>
+                    <span class="k">WHERE</span> <span class="n">to_date</span> <span class="o">&gt;</span> <span class="n">CURDATE</span><span class="p">()</span>
+                    <span class="p">))</span>
+<span class="o">/</span>
+<span class="p">(</span><span class="k">SELECT</span>
+    <span class="k">COUNT</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span>
+<span class="k">FROM</span> <span class="n">salaries</span>
+<span class="k">WHERE</span> <span class="n">to_date</span> <span class="o">&gt;</span> <span class="n">CURDATE</span><span class="p">())</span> <span class="o">*</span> <span class="mi">100</span> <span class="k">AS</span> <span class="n">percent_of_salaries</span><span class="p">;</span>
 </pre></div>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
 </div>
     </div>
   </div>
