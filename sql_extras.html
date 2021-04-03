@@ -13114,8 +13114,8 @@ $( document ).ready(function(){
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Case-Statements">Case Statements<a class="anchor-link" href="#Case-Statements">&#182;</a></h3><p><strong>The SQL <code>CASE</code> Statement</strong> is a conditional expression that allows me to create a new temporary column in my result set based on 'If this, then...' logic. A <code>CASE</code>statement is added to the <code>SELECT</code> statement, after all of the existing fields I have selected; it begins with <code>CASE</code> and ends with <code>END AS new_field_name</code>. <strong>Don't forget the comma after the last item in your <code>SELECT</code> list! This is a common error for me, so I want to point it out.</strong></p>
-<div class="alert alert-block alert-warning">It's helpful to include an `ELSE` clause to catch any possible values that fall outside of your conditional clauses because otherwise, if those values exist, they will be returned as `NULL`.</div>
+<h3 id="Case-Statements">Case Statements<a class="anchor-link" href="#Case-Statements">&#182;</a></h3><p><strong>The SQL <code>CASE</code> Statement</strong> is a conditional expression that allows me to create a new temporary column in my result set based on If/Then logic. A <code>CASE</code>statement is added to the <code>SELECT</code> statement; it begins with <code>CASE</code> and ends with <code>END AS new_field_name</code>. <strong>Don't forget the comma after the last item in your <code>SELECT</code> list! This is a common error for me, so I want to point it out.</strong></p>
+<div class="alert alert-block alert-warning">It's helpful to include an ELSE clause to catch any possible values that fall outside of your conditional clauses because otherwise, if those values exist, they will be returned as NULL.</div>
 </div>
 </div>
 </div>
@@ -13123,7 +13123,11 @@ $( document ).ready(function(){
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2><font color=orange>So What Can I Do with a Case Statement?</font></h2>
-<p>Using <code>CASE</code> statements comes in very handy when I want to create new fields from existing data in my dataset using conditionals, but I don't have database permissions to create a new table. Temporary tables are useful in this situation, as well. I'll dig into those next.</p>
+<ul>
+<li>This allows me to Zoom Out or change the granularity of my data; you may also hear this referred to as reducing the noise in your data.</li>
+<li><code>CASE</code> Statements allow me to create a categorical value from a continuous one by binning my data or creating buckets.</li>
+<li>Using <code>CASE</code> Statements comes in very handy when I want to create new fields from existing data in my dataset using conditionals, but I don't have database permissions to create a new table. Temporary tables are useful in this situation, as well. I'll dig into those next.</li>
+</ul>
 
 </div>
 </div>
@@ -13139,24 +13143,26 @@ $( document ).ready(function(){
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Create-Categories-to-Classify-Values">Create Categories to Classify Values<a class="anchor-link" href="#Create-Categories-to-Classify-Values">&#182;</a></h4><blockquote><p>For example, if I have a field called <code>high_temp</code> containing integers that represent the high temperature recorded for a particular day, I can add a <code>CASE</code> statement to my query that will create a new field called <code>weather</code> classifying values in <code>high_temp</code> as one of three categorical variables, <code>cold</code>, <code>warm</code>, <code>hot</code>, based on temperature ranges that I set as conditionals.</p>
+<h4 id="Create-Categories-to-Classify-Values">Create Categories to Classify Values<a class="anchor-link" href="#Create-Categories-to-Classify-Values">&#182;</a></h4><blockquote><p><strong>For example</strong>, if I have a field called <code>high_temp</code> containing integers that represent the high temperature recorded for a particular day, I can add a <code>CASE</code> statement to my query that will create a new field called <code>weather</code> classifying values in <code>high_temp</code> as one of three categorical variables, <code>cold</code>, <code>warm</code>, or <code>hot</code>, based on temperature ranges that I set as conditionals.</p>
 </blockquote>
-<p>I can create a column of categorical variables from a numeric column. I can even add a <code>GROUP BY</code> and a <code>COUNT(*)</code> to find out which category in the <code>weather</code> field has the highest count.</p>
+<p>I can create categorical variables from a numeric one. I can even add a <code>GROUP BY</code> and a <code>COUNT(*)</code> to find out which category in the <code>weather</code> field has the highest count.</p>
 <div class="highlight"><pre><span></span><span class="n">USE</span> <span class="n">us_weather_db</span><span class="p">;</span>
 <span class="k">SELECT</span> <span class="n">high_temp</span><span class="p">,</span>
        <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">AS</span> <span class="n">days</span><span class="p">,</span>
-       <span class="k">CASE</span> <span class="n">high_temp</span> <span class="o">&gt;</span> <span class="mi">90</span> <span class="k">THEN</span> <span class="s1">&#39;hot&#39;</span>
+       <span class="k">CASE</span> 
+           <span class="k">WHEN</span> <span class="n">high_temp</span> <span class="o">&gt;</span> <span class="mi">90</span> <span class="k">THEN</span> <span class="s1">&#39;hot&#39;</span>
            <span class="k">WHEN</span> <span class="n">high_temp</span> <span class="k">BETWEEN</span> <span class="mi">70</span> <span class="k">AND</span> <span class="mi">90</span> <span class="k">THEN</span> <span class="s1">&#39;warm&#39;</span>
            <span class="k">WHEN</span> <span class="n">high_temp</span> <span class="o">&lt;</span> <span class="mi">70</span> <span class="k">THEN</span> <span class="s1">&#39;cold&#39;</span>
            <span class="k">ELSE</span> <span class="s1">&#39;idk&#39;</span>
-       <span class="k">END</span> <span class="k">AS</span> <span class="s1">&#39;weather&#39;</span>
+           <span class="k">END</span> <span class="k">AS</span> <span class="n">weather</span>
 <span class="k">FROM</span> <span class="n">us_weather</span>
 <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">high_temp</span>
 <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">days</span> <span class="k">DESC</span><span class="p">;</span>
 </pre></div>
-<p>My query can have conditionals that use values from more than one field to create a new column. By throwing in a <code>COUNT(*) AS number_customers</code>, I have a useful result set for making comparisons.</p>
+<p>My query can have conditionals that use values from more than one column or field to create a new column. By throwing in a <code>COUNT(*) AS number_customers</code>, I have a useful result set for making comparisons.</p>
 <div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">AS</span> <span class="n">number_customers</span><span class="p">,</span>
-       <span class="k">CASE</span> <span class="k">WHEN</span> <span class="n">internet_service_type_id</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">AND</span> <span class="n">device_protection</span> <span class="o">=</span> <span class="s1">&#39;Yes&#39;</span> 
+       <span class="k">CASE</span> 
+           <span class="k">WHEN</span> <span class="n">internet_service_type_id</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">AND</span> <span class="n">device_protection</span> <span class="o">=</span> <span class="s1">&#39;Yes&#39;</span> 
                  <span class="k">THEN</span> <span class="s1">&#39;DSL_Protected&#39;</span>
             <span class="k">WHEN</span> <span class="n">internet_service_type_id</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">AND</span> <span class="n">device_protection</span> <span class="o">=</span> <span class="s1">&#39;No&#39;</span> 
                  <span class="k">THEN</span> <span class="s1">&#39;DSL_Unprotected&#39;</span>
@@ -13167,7 +13173,7 @@ $( document ).ready(function(){
             <span class="k">WHEN</span> <span class="n">internet_service_type_id</span> <span class="o">=</span> <span class="mi">3</span> 
                  <span class="k">THEN</span> <span class="s1">&#39;No_Internet_Service&#39;</span>
             <span class="k">ELSE</span> <span class="n">internet_service_type_id</span>
-       <span class="k">END</span> <span class="k">AS</span> <span class="n">internet_types</span>
+            <span class="k">END</span> <span class="k">AS</span> <span class="n">internet_types</span>
 <span class="k">FROM</span> <span class="n">customers</span>
 <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">internet_types</span>
 <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">number_customers</span><span class="p">;</span>
@@ -13185,7 +13191,15 @@ $( document ).ready(function(){
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Normalize-Values-in-Your-Dataset">Normalize Values in Your Dataset<a class="anchor-link" href="#Normalize-Values-in-Your-Dataset">&#182;</a></h4><p>Sometimes my dataset may be messy (hahaha, sometimes), and I will need to normalize the values. <code>CASE</code> can come in handy here, as well.</p>
+<hr>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Normalize-Values-in-Your-Dataset">Normalize Values in Your Dataset<a class="anchor-link" href="#Normalize-Values-in-Your-Dataset">&#182;</a></h4><p>Sometimes my dataset may be messy (hahaha, sometimes), and I will need to normalize the values. <code>CASE</code> can come in handy here, as well. <strong>Notice that my CASE Statement syntax is slightly different here; since I'm only referencing a single column in my logic, and I'm not only testing for equality, I can write my statement like you see below.</strong></p>
 <div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">title</span><span class="p">,</span>
        <span class="n">salary</span><span class="p">,</span>
        <span class="n">gender</span><span class="p">,</span>
@@ -13195,9 +13209,17 @@ $( document ).ready(function(){
            <span class="k">WHEN</span> <span class="s1">&#39;F&#39;</span> <span class="k">THEN</span> <span class="s1">&#39;female&#39;</span>
            <span class="k">WHEN</span> <span class="s1">&#39;1&#39;</span> <span class="k">THEN</span> <span class="s1">&#39;female&#39;</span>
            <span class="k">ELSE</span> <span class="s1">&#39;neither&#39;</span>
-       <span class="k">END</span> <span class="k">AS</span> <span class="n">gender_norm</span>
+           <span class="k">END</span> <span class="k">AS</span> <span class="n">gender_norm</span>
 <span class="k">FROM</span> <span class="n">us_employees</span><span class="p">;</span>
 </pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
 
 </div>
 </div>
@@ -13211,7 +13233,7 @@ $( document ).ready(function(){
        <span class="k">CASE</span> <span class="n">sex</span> 
            <span class="k">WHEN</span> <span class="s1">&#39;female&#39;</span> <span class="k">THEN</span> <span class="mi">1</span>
            <span class="k">ELSE</span> <span class="mi">0</span>
-       <span class="k">END</span> <span class="k">AS</span> <span class="n">is_female</span>
+           <span class="k">END</span> <span class="k">AS</span> <span class="n">is_female</span>
 <span class="k">FROM</span> <span class="n">passengers</span><span class="p">;</span> 
 
 <span class="o">-&gt;</span> <span class="n">male</span>     <span class="mi">0</span>
@@ -13238,6 +13260,14 @@ $( document ).ready(function(){
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Create-a-Dummy-Variable">Create a Dummy Variable<a class="anchor-link" href="#Create-a-Dummy-Variable">&#182;</a></h4><p>I can add a condition in my <code>SELECT</code> statement that will return <code>1</code> if the condition evaluates to True and a <code>1</code> if the condition evaluates to False.</p>
 <div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">sex</span><span class="p">,</span> 
        <span class="n">sex</span> <span class="o">=</span> <span class="s1">&#39;female&#39;</span> <span class="k">AS</span> <span class="n">is_female</span>
@@ -13249,6 +13279,14 @@ $( document ).ready(function(){
    <span class="n">female</span>   <span class="mi">1</span>
    <span class="n">male</span>     <span class="mi">0</span>
 </pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
 
 </div>
 </div>
@@ -13314,6 +13352,14 @@ $( document ).ready(function(){
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Modify-Temporary-Tables">Modify Temporary Tables<a class="anchor-link" href="#Modify-Temporary-Tables">&#182;</a></h3><p>After you create a temporary table, you can make changes.</p>
 <div class="highlight"><pre><span></span><span class="n">USE</span> <span class="n">bayes_123</span><span class="p">;</span>
 
@@ -13359,7 +13405,7 @@ $( document ).ready(function(){
 
 <span class="c1">-- You can remove a temporary table before ending a session or terminating a connection.</span>
 
-<span class="k">DROP</span> <span class="k">TABLE</span> <span class="k">table_name</span><span class="p">;</span>
+<span class="k">DROP</span> <span class="k">TEMPORARY</span> <span class="k">TABLE</span> <span class="k">table_name</span><span class="p">;</span>
 </pre></div>
 
 </div>
