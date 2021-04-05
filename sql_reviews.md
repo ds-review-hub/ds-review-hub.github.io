@@ -4,15 +4,19 @@
 
 - [Basic `SELECT` Statements Lesson](https://ds-review-hub.github.io/basic_statements_lesson)
 
->If you want to code along with me during the `SELECT` Statements lesson, here is my code.
+>If you want to code or follow along with me during the `SELECT` Statements lesson, here is my code.
 
 - [`WHERE` Clause Lesson](https://ds-review-hub.github.io/where_lesson)
 
->If you want to code along with me during the `WHERE` Clause lesson, here is my code.
+>If you want to code or follow along with me during the `WHERE` Clause lesson, here is my code.
 
 - [`GROUP BY` Clause Lesson](https://ds-review-hub.github.io/group_by_lesson)
 
->If yu want to code along with me during the `GROUP BY` Clause lesson, here is my code.
+>If you want to code or follow along with me during the `GROUP BY` Clause lesson, here is my code.
+
+- [`CASE` Statements Lesson](https://ds-review-hub.github.io/case_statements_lesson)
+
+>If you want to code or follow along with me during the `CASE` Statements lesson, here is my code.
 
 - [SQL Intro Review Notebook](https://ds-review-hub.github.io/sql_intro)
 
