@@ -42,6 +42,10 @@ ___
 
 >This page houses helpful resources for you to use when learning and reviewing statistic for data science.
 
+[API Review Notebook](https://ds-review-hub.github.io/api_review)
+
+>Want an overview of REST APIs and using the python `requests` module? This notebook provides just that and lots of extra resources to play with througout.
+
 ___
 ## Machine Learning
 
