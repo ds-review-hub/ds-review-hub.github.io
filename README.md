@@ -58,6 +58,10 @@ ___
 
 >This page walks through the data science pipeline for a simple regression project. It is much less detailed than the Classification Review notebook, but it contains helpful explanations and code snippets to work your way through a ML Regression Project.
 
+[Time Series Review - Acquire to Explore](https://ds-review-hub.github.io/time_series_review/time_series_review)
+
+>This page revisits aquiring data by hitting an API in less depth than the API Review Notebook but goes into some preparing and exploring of data with a DateTimeIndex.
+
 ___
 ## Links to Workshops and Extras
 
