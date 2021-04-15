@@ -46,6 +46,10 @@ ___
 
 >Want an overview of REST APIs and using the python `requests` module? This notebook provides just that and lots of extra resources to play with througout.
 
+[Time Series Review - Acquire and Prepare](https://ds-review-hub.github.io/time_series_review/time_series_review)
+
+>This page revisits acquiring data by hitting an API in less depth than the API Review Notebook but also moves into some preparing and light exploring of data with a DateTimeIndex.
+
 ___
 ## Machine Learning
 
@@ -57,11 +61,6 @@ ___
 [Regression Project Overview Notebook](https://ds-review-hub.github.io/regression_review)
 
 >This page walks through the data science pipeline for a simple regression project. It is much less detailed than the Classification Review notebook, but it contains helpful explanations and code snippets to work your way through a ML Regression Project.
-
-[Time Series Review - Acquire and Prepare](https://ds-review-hub.github.io/time_series_review/time_series_review)
-
->This page revisits aquiring data by hitting an API in less depth than the API Review Notebook but goes into some preparing and light exploring of data with a DateTimeIndex.
-
 ___
 ## Links to Workshops and Extras
 

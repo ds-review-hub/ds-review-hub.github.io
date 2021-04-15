@@ -10,6 +10,10 @@ Pandas Review Notebooks
 
 >These notebooks introduce the pandas library from Series objects to DataFrame objects including their common attributes, methods, and chaining techniques.
 
+[Introduction to Pandas Canva](https://ds-review-hub.github.io/Meet the Pandas Series)
+
+>This is a high-level overview of pandas objects and what makes them so useful.
+
 [Pandas Series Review Notebook](https://ds-review-hub.github.io/pandas_series_review/pandas_series_review)
 
 >This notebook covers creating, indexing, and using methods and attributes with the pandas Series object.
