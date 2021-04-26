@@ -1,5 +1,9 @@
 # Storytelling Resources
 
+[Storytelling Resource Map for Storytelling Module](https://ds-review-hub.github.io/storytelling_resource_map.pdf)
+
+>This pdf will connect you to the materials for the Storytelling Module. Each unit in the module has a map that allows you to access and explore created and curated multi-media resources, dig deeper into topics, and choose your own learning adventure.
+
 [Message Mapping](https://ds-review-hub.github.io/message_map.pdf)
 
 >This is a great strategy for structuring the core content of your presentations; I read about it in Caroline Goyder's amazing book, <u>Gravitas: Communicate with Confidence, Influence and Authority.</u> This <b>'problem-to-solution'</b> style of crafting a story is also covered thoroughly in Nancy Duarte's <u>Resonate</u> and <u>Data Story</u>. If you're a mythology fan, you will recognize this structure as Joseph Campbell's Hero's Journey, too. 
