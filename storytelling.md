@@ -1,6 +1,6 @@
 # Storytelling Resources
 
-[Storytelling Resource Map for Storytelling Module](https://ds-review-hub.github.io/storytelling_resource_map.pdf)
+[Storytelling Resource Maps for Storytelling Module](https://ds-review-hub.github.io/storytelling_resource_map.pdf)
 
 >This pdf will connect you to the materials for the Storytelling Module. Each unit in the module has a map that allows you to access and explore created and curated multi-media resources, dig deeper into topics, and choose your own learning adventure.
 
