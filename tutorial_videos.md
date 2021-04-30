@@ -34,6 +34,10 @@ ___
 
 [![Sean Oslin's Lunch 'n' Learn - Tableau Showcase](https://res.cloudinary.com/marcomontalbano/image/upload/v1598988871/video_to_markdown/images/youtube--0Q6_bhsgYgE-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://youtu.be/0Q6_bhsgYgE "Sean Oslin's Lunch 'n' Learn - Tableau Showcase")
 
+___
+
+### <font color="orange">Color Me Informed with Sean Oslin</font>
+
 [![Sean Oslin's Lunch 'n' Learn - Color Me Informed](https://res.cloudinary.com/marcomontalbano/image/upload/v1619786469/video_to_markdown/images/youtube--H9n51qH_s_0-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/watch?v=H9n51qH_s_0 "Sean Oslin's Lunch 'n' Learn - Color Me Informed")
 
 [Sean's Color Me Informed Presentation Slides](https://ds-review-hub.github.io/color_me_informed.pptx)
