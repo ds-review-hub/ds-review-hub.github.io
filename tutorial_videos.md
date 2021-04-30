@@ -12,13 +12,13 @@ ___
 
 ___
 
-### <font color="orange">How to Create a Github Page with Faith Kane</font>
+### <font color="orange">How to Create a GitHub Page with Faith Kane</font>
 
 [![Faith Kane's Lunch 'n' Learn - How to Make a Github Page](https://res.cloudinary.com/marcomontalbano/image/upload/v1595964674/video_to_markdown/images/youtube--op2MCIJJIe4-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://youtu.be/op2MCIJJIe4 "How to Make a Github Page")
 
 ___
 
-### <font color="orange">Faith Kane's 5-minute Github Page Demo</font>
+### <font color="orange">Faith Kane's 5-minute GitHub Page Demo</font>
 
 [![Faith Kane's Github Page Demo](https://res.cloudinary.com/marcomontalbano/image/upload/v1595972391/video_to_markdown/images/youtube--4oRjeOtcoXE-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/watch?v=4oRjeOtcoXE "Faith Kane's Github Page Demo")
 
