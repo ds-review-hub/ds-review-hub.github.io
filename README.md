@@ -42,7 +42,7 @@ ___
 
 >This page houses helpful resources for you to use when learning and reviewing statistic for data science.
 
-[API Review Notebook](https://ds-review-hub.github.io/api_review)
+[REST API Review Notebook](https://ds-review-hub.github.io/api_review)
 
 >Want an overview of REST APIs and using the python `requests` module? This notebook provides just that and lots of extra resources to play with througout.
 
@@ -50,9 +50,12 @@ ___
 
 >This page revisits acquiring data by hitting an API in less depth than the API Review Notebook but also moves into some preparing and light exploring of data with a DateTimeIndex.
 
+[BeautifulSoup Data Acquisition Review](https://ds-review-hub.github.io/acquire_beautiful_soup)
+
+>This notebook walks you through acquiring data by using python's webscraping library, BeautifulSoup, and the requests library. I also create functions that make the process repeatable.
+
 ___
 ## Machine Learning
-
 
 [Classification Project Review Notebook](https://ds-review-hub.github.io/classification_project_review/classification_project_review)
 
@@ -61,6 +64,7 @@ ___
 [Regression Project Overview Notebook](https://ds-review-hub.github.io/regression_review)
 
 >This page walks through the data science pipeline for a simple regression project. It is much less detailed than the Classification Review notebook, but it contains helpful explanations and code snippets to work your way through a ML Regression Project.
+
 ___
 ## Links to Workshops and Extras
 
