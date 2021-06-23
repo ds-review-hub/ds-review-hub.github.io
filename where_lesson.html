@@ -12947,8 +12947,13 @@ ul.typeahead-list  > li > a.pull-right {
 /*# sourceMappingURL=style.min.css.map */
     </style>
 <style type="text/css">
-    .highlight .hll { background-color: #ffffcc }
-.highlight  { background: #f8f8f8; }
+    pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.highlight .hll { background-color: #ffffcc }
+.highlight { background: #f8f8f8; }
 .highlight .c { color: #408080; font-style: italic } /* Comment */
 .highlight .err { border: 1px solid #FF0000 } /* Error */
 .highlight .k { color: #008000; font-weight: bold } /* Keyword */
@@ -13016,6 +13021,19 @@ ul.typeahead-list  > li > a.pull-right {
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
 .highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
+    </style>
+<style type="text/css">
+    /*This file contains any manual css for this page that needs to override the global styles.
+This is only required when different pages style the same element differently. This is just
+a hack to deal with our current css styles and no new styling should be added in this file.*/
+
+#ipython-main-app {
+    position: relative;
+}
+#jupyter-main-app {
+    position: relative;
+}
+
     </style>
 
 
@@ -13163,6 +13181,14 @@ $( document ).ready(function(){
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Now-What?">Now What?<a class="anchor-link" href="#Now-What?">&#182;</a></h2><ul>
 <li>Let's code!</li>
 </ul>
@@ -13204,7 +13230,7 @@ $( document ).ready(function(){
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="WHERE-with-LIKE-Keyword-and-%-Wildcard"><code>WHERE</code> with <code>LIKE</code> Keyword and <code>%</code> Wildcard<a class="anchor-link" href="#WHERE-with-LIKE-Keyword-and-%-Wildcard">&#182;</a></h3><div class="highlight"><pre><span></span><span class="c1">-- Return all of the albums that start contain the pattern &#39;at&#39; somewhere in the titles. (returns 5 records)</span>
+<h3 id="WHERE-with-LIKE-Keyword-and-%-Wildcard"><code>WHERE</code> with <code>LIKE</code> Keyword and <code>%</code> Wildcard<a class="anchor-link" href="#WHERE-with-LIKE-Keyword-and-%-Wildcard">&#182;</a></h3><div class="highlight"><pre><span></span><span class="c1">-- Return all of the albums that contain the pattern &#39;at&#39; somewhere in the titles. (returns 5 records)</span>
 <span class="k">SELECT</span> <span class="n">name</span> 
 <span class="k">FROM</span> <span class="n">albums</span>
 <span class="k">WHERE</span> <span class="n">name</span> <span class="k">LIKE</span> <span class="s1">&#39;%at%&#39;</span><span class="p">;</span>
@@ -13223,6 +13249,11 @@ $( document ).ready(function(){
 <span class="k">SELECT</span> <span class="n">name</span> 
 <span class="k">FROM</span> <span class="n">albums</span>
 <span class="k">WHERE</span> <span class="n">name</span> <span class="k">LIKE</span> <span class="s1">&#39;a%&#39;</span><span class="p">;</span>
+
+<span class="c1">--Return all of the albums that begin and end with the letter &#39;a&#39;. (returns 0 records)</span>
+<span class="k">SELECT</span> <span class="n">name</span>
+<span class="k">FROM</span> <span class="n">albums</span>
+<span class="k">WHERE</span> <span class="n">name</span> <span class="k">LIKE</span> <span class="s1">&#39;a%a&#39;</span><span class="p">;</span>
 </pre></div>
 
 </div>
@@ -13260,11 +13291,11 @@ $( document ).ready(function(){
 <span class="c1">-- Check out the data types of my orders table.</span>
 <span class="k">DESCRIBE</span> <span class="n">orders</span><span class="p">;</span>
 
-<span class="c1">-- Return all of the rows and columns from the albums table. (returns 4622 records)</span>
+<span class="c1">-- Return all of the rows and columns from the orders table. (returns 4622 records)</span>
 <span class="k">SELECT</span> <span class="o">*</span>
 <span class="k">FROM</span> <span class="n">orders</span><span class="p">;</span>
 
-<span class="c1">-- Return all of the unique values in the artist column. (returns 50 records)</span>
+<span class="c1">-- Return all of the unique values in the item_name column. (returns 50 records)</span>
 <span class="k">SELECT</span> <span class="k">DISTINCT</span> <span class="n">item_name</span>
 <span class="k">FROM</span> <span class="n">orders</span><span class="p">;</span>
 
@@ -13307,9 +13338,9 @@ $( document ).ready(function(){
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="WHERE-with-IS-NULL-and-IS-NOT-NULL"><code>WHERE</code> with <code>IS NULL</code> and <code>IS NOT NULL</code><a class="anchor-link" href="#WHERE-with-IS-NULL-and-IS-NOT-NULL">&#182;</a></h3><div class="highlight"><pre><span></span><span class="c1">-- Use my own db; yours will be your username database.</span>
-<span class="n">USE</span> <span class="n">bayes_825</span><span class="p">;</span>
+<span class="n">USE</span> <span class="n">join_example_db</span><span class="p">;</span>
 
-<span class="c1">-- Return all of the columns and roles from the users table. (returns 6 records)</span>
+<span class="c1">-- Return all of the columns and rows from the users table. (returns 6 records)</span>
 <span class="k">SELECT</span> <span class="o">*</span>
 <span class="k">FROM</span> <span class="n">users</span><span class="p">;</span>
 
