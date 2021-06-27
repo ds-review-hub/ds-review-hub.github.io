@@ -12947,8 +12947,13 @@ ul.typeahead-list  > li > a.pull-right {
 /*# sourceMappingURL=style.min.css.map */
     </style>
 <style type="text/css">
-    .highlight .hll { background-color: #ffffcc }
-.highlight  { background: #f8f8f8; }
+    pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.highlight .hll { background-color: #ffffcc }
+.highlight { background: #f8f8f8; }
 .highlight .c { color: #408080; font-style: italic } /* Comment */
 .highlight .err { border: 1px solid #FF0000 } /* Error */
 .highlight .k { color: #008000; font-weight: bold } /* Keyword */
@@ -13016,6 +13021,19 @@ ul.typeahead-list  > li > a.pull-right {
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
 .highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
+    </style>
+<style type="text/css">
+    /*This file contains any manual css for this page that needs to override the global styles.
+This is only required when different pages style the same element differently. This is just
+a hack to deal with our current css styles and no new styling should be added in this file.*/
+
+#ipython-main-app {
+    position: relative;
+}
+#jupyter-main-app {
+    position: relative;
+}
+
     </style>
 
 
@@ -13443,15 +13461,17 @@ $( document ).ready(function(){
 <span class="k">FROM</span> <span class="n">employees</span><span class="p">;</span>
 </pre></div>
 <p>Here's an example using the <code>DATEDIFF()</code> and <code>CURDATE()</code> nested as a calculated field in the <code>SELECT</code> statement displaying an employee's length of employment in days.</p>
-<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">emp_no</span><span class="p">,</span> 
-        <span class="n">birth_date</span><span class="p">,</span> 
-        <span class="n">hire_date</span><span class="p">,</span> 
-        <span class="n">last_name</span><span class="p">,</span> 
-        <span class="n">gender</span><span class="p">,</span> 
-        <span class="n">DATEDIFF</span><span class="p">(</span><span class="n">CURDATE</span><span class="p">(),</span> 
-        <span class="n">hire_date</span><span class="p">)</span> <span class="k">AS</span> <span class="n">days_employeed</span>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> 
+    <span class="n">emp_no</span><span class="p">,</span> 
+    <span class="n">birth_date</span><span class="p">,</span> 
+    <span class="n">hire_date</span><span class="p">,</span> 
+    <span class="n">last_name</span><span class="p">,</span> 
+    <span class="n">gender</span><span class="p">,</span> 
+    <span class="n">DATEDIFF</span><span class="p">(</span><span class="n">CURDATE</span><span class="p">(),</span> 
+    <span class="n">hire_date</span><span class="p">)</span> <span class="k">AS</span> <span class="n">days_employeed</span>
 <span class="k">FROM</span> <span class="n">employees</span>
-<span class="k">WHERE</span> <span class="n">birth_date</span> <span class="k">LIKE</span> <span class="s1">&#39;%-12-25&#39;</span> <span class="k">AND</span> <span class="n">hire_date</span> <span class="k">BETWEEN</span> <span class="s1">&#39;90-01-01&#39;</span> <span class="k">AND</span> <span class="s1">&#39;99-12-31&#39;</span><span class="p">;</span>
+<span class="k">WHERE</span> <span class="n">birth_date</span> <span class="k">LIKE</span> <span class="s1">&#39;%-12-25&#39;</span> 
+    <span class="k">AND</span> <span class="n">hire_date</span> <span class="k">BETWEEN</span> <span class="s1">&#39;90-01-01&#39;</span> <span class="k">AND</span> <span class="s1">&#39;99-12-31&#39;</span><span class="p">;</span>
 </pre></div>
 
 </div>
@@ -13460,7 +13480,7 @@ $( document ).ready(function(){
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="GROUP-BY"><code>GROUP BY</code><a class="anchor-link" href="#GROUP-BY">&#182;</a></h4><p><strong>The <code>GROUP BY</code> clause</strong> divides rows or records into summary rows; it does this by grouping rows with identical values in a certain field or combination of fields. Basically, if a specified column, or columns, contains duplicate values, <code>GROUP BY</code> will make a group of the records with those duplicate values and display them in a single row.</p>
+<h4 id="GROUP-BY"><code>GROUP BY</code><a class="anchor-link" href="#GROUP-BY">&#182;</a></h4><p><strong>The <code>GROUP BY</code> clause</strong> divides rows or records into summary rows; it does this by grouping rows with identical values in a certain field or combination of fields. Basically, if a specified column, or columns, contains duplicate values, <code>GROUP BY</code> will make a group of the records with those duplicate values and display them in a single row. It is used to adjust the level of detail in your result set.</p>
 <ul>
 <li><p>If my function is going to run over multiple rows or records, I need a <code>GROUP BY</code> clause.</p>
 </li>
@@ -13468,7 +13488,7 @@ $( document ).ready(function(){
 </li>
 </ul>
 <h5 id="Aggregating-Data">Aggregating Data<a class="anchor-link" href="#Aggregating-Data">&#182;</a></h5><p>I can use the <code>GROUP BY</code> clause with aggregate functions to return summary statistics.</p>
-<div class="alert alert-block alert-danger">If a field is listed in your GROUP BY clause, it must be listed in your SELECT statement. Think of this as the dimension by which you will calculate a metric.</div><p>A <code>GROUP BY</code> clause can be combined with aggregate functions to turn a range of numbers into a single data point based on a variety of mathematical operations.</p>
+<div class="alert alert-block alert-danger">Any non-aggregated field listed in your SELECT statement must be included in your GROUP BY clause unless it has a 1-to-1 relationship with the field you are grouping by. Think of the field(s) you include in your GROUP BY clause as the dimension by which you will calculate a metric or measure.</div><p>A <code>GROUP BY</code> clause can be combined with aggregate functions to turn a range of numbers into a single data point based on a variety of mathematical operations.</p>
 <blockquote><p><code>SUM()</code>, <code>MIN()</code>, <code>MAX()</code>, <code>COUNT()</code>, <code>AVG()</code>, <code>STDDEV()</code></p>
 </blockquote>
 <div class="alert alert-block alert-info"><b>Tip: </b>Nest your aggregate function in a ROUND(value, digits after decimal place) function when you're ready to clean up your results.</div>
@@ -13480,7 +13500,9 @@ $( document ).ready(function(){
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Using the <code>GROUP BY</code> clause and the <code>COUNT()</code> function with the <code>*</code> column wildcard symbol to get a count of all records grouped by whether passengers have the <code>female</code> or <code>male</code> value in the gender field.</p>
 <div class="highlight"><pre><span></span><span class="n">USE</span> <span class="n">titanic_db</span><span class="p">;</span>
-<span class="k">SELECT</span> <span class="n">sex</span><span class="p">,</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">AS</span> <span class="n">passenger_count</span>
+<span class="k">SELECT</span> 
+    <span class="n">sex</span><span class="p">,</span> 
+    <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">AS</span> <span class="n">passenger_count</span>
 <span class="k">FROM</span> <span class="n">passengers</span>
 <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">sex</span><span class="p">;</span>
 
@@ -13489,7 +13511,10 @@ $( document ).ready(function(){
 </pre></div>
 <p>Using the <code>GROUP BY</code> clause with more than one field or column allows me to work with unique combinations of fields; here I look for unique first and last name combinations with a count of each unique combination. Notice that both non-aggregated fields in my <code>SELECT</code> statement are included in my <code>GROUP BY</code> clause.</p>
 <div class="highlight"><pre><span></span><span class="n">USE</span> <span class="n">employees</span><span class="p">;</span>
-<span class="k">SELECT</span> <span class="n">first_name</span><span class="p">,</span> <span class="n">last_name</span><span class="p">,</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">AS</span> <span class="n">emp_count</span>
+<span class="k">SELECT</span> 
+    <span class="n">first_name</span><span class="p">,</span> 
+    <span class="n">last_name</span><span class="p">,</span> 
+    <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">AS</span> <span class="n">emp_count</span>
 <span class="k">FROM</span> <span class="n">employees</span>
 <span class="k">WHERE</span> <span class="n">last_name</span> <span class="k">LIKE</span> <span class="s1">&#39;E%E&#39;</span>
 <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">first_name</span><span class="p">,</span> <span class="n">last_name</span>
@@ -13500,9 +13525,12 @@ $( document ).ready(function(){
    <span class="p">...</span>
 </pre></div>
 <p>Using the <code>GROUP BY</code> clause with the <code>LIKE</code> and <code>NOT LIKE</code> operators to filter the <code>last_name</code> field and getting a count of records in my result set using the <code>COUNT()</code> function.</p>
-<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">last_name</span><span class="p">,</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">AS</span> <span class="n">emp_count</span>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> 
+    <span class="n">last_name</span><span class="p">,</span> 
+    <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">AS</span> <span class="n">emp_count</span>
 <span class="k">FROM</span> <span class="n">employees</span>
-<span class="k">WHERE</span> <span class="n">last_name</span> <span class="k">LIKE</span> <span class="s1">&#39;%q%&#39;</span> <span class="k">AND</span> <span class="n">last_name</span> <span class="k">NOT</span> <span class="k">LIKE</span> <span class="s1">&#39;%qu%&#39;</span>
+<span class="k">WHERE</span> <span class="n">last_name</span> <span class="k">LIKE</span> <span class="s1">&#39;%q%&#39;</span> 
+    <span class="k">AND</span> <span class="n">last_name</span> <span class="k">NOT</span> <span class="k">LIKE</span> <span class="s1">&#39;%qu%&#39;</span>
 <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">last_name</span>
 <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">emp_count</span><span class="p">;</span>
 
@@ -13511,8 +13539,9 @@ $( document ).ready(function(){
    <span class="n">Lindqvist</span>    <span class="mi">190</span>
 </pre></div>
 <p>Using the <code>GROUP BY</code> clause with a subquery and a <code>WHERE</code> filter to get both a total and count of records in my subquery result set using both the <code>SUM()</code> and <code>COUNT()</code> functions. The <code>WHERE</code> clause is used for filtering non-aggregated data, so I'm using it outside of my subquery that's using a <code>GROUP BY</code> clause.</p>
-<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="k">SUM</span><span class="p">(</span><span class="k">names</span><span class="p">.</span><span class="n">num</span><span class="p">)</span> <span class="k">as</span> <span class="n">dup_user_names</span><span class="p">,</span>
-       <span class="k">COUNT</span><span class="p">(</span><span class="k">names</span><span class="p">.</span><span class="n">num</span><span class="p">)</span> <span class="k">as</span> <span class="n">unique_dup_user_names</span>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> 
+    <span class="k">SUM</span><span class="p">(</span><span class="k">names</span><span class="p">.</span><span class="n">num</span><span class="p">)</span> <span class="k">as</span> <span class="n">dup_user_names</span><span class="p">,</span>
+    <span class="k">COUNT</span><span class="p">(</span><span class="k">names</span><span class="p">.</span><span class="n">num</span><span class="p">)</span> <span class="k">as</span> <span class="n">unique_dup_user_names</span>
 <span class="k">FROM</span>
     <span class="p">(</span><span class="k">SELECT</span> <span class="k">LOWER</span><span class="p">(</span>
             <span class="n">CONCAT</span><span class="p">(</span>
@@ -13555,6 +13584,19 @@ $( document ).ready(function(){
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
 </div>
     </div>
   </div>
