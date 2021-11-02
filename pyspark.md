@@ -2,7 +2,7 @@
 
 PySpark Review Notebooks
 
->These notebooks and links should prove very helpful in learning and using PySpark. I use PySpark in DataBricks, so although I've written and run the code for use in a Jupyter Notebook, I've tried to include snippets for DataBricks as markdown. This is just the beginning of this resource page, so it will grow over time, but this should get your started.
+>These notebooks and links should prove very helpful in learning and using PySpark. I use PySpark in DataBricks, so although I've written and run the code for use in a Jupyter Notebook, I've tried to include snippets for DataBricks as markdown. This is just the beginning of this resource page, so it will grow over time, but this should get you started.
 
 [PySpark Basics to Intermediate](https://ds-review-hub.github.io/pyspark_review)
 
