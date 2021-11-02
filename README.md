@@ -38,6 +38,10 @@ ___
 
 >This page houses helpful resources for you to use when learning python and pandas for data analysis.
 
+[PySpark Review Notebooks and Resources]((https://ds-review-hub.github.io/pyspark_reviews)
+
+>This page houses helpful resources for you to use when learning and using PySpark.
+
 [Stats Review Notebooks and Resources](https://ds-review-hub.github.io/stats_reviews)
 
 >This page houses helpful resources for you to use when learning and reviewing statistic for data science.
